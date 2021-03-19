@@ -4,7 +4,7 @@ Zotero.DelItem = {
 
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm("Are you sure you want to move the selected item(s) including the attachments to the Trash? The attachment(s) could not be restored.")
+        var truthBeTold = window.confirm("Are you sure you want to move the selected item(s) including the attachment(s) to the Trash? The attachment(s) could not be restored.")
         if (truthBeTold) {
         Zotero.DelItem.DelItems(items)
         }
