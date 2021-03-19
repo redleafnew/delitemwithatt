@@ -4,7 +4,7 @@
 
 
 从[https://github.com/redleafnew/delitemwithatt/releases](https://github.com/redleafnew/delitemwithatt/releases)下载xpi，然后在Zotero或JurisM中通过Tools-Addons-Install Add-on From File安装。安装完成后在条目上右击会出现：`删除条目包括附件`，确认后会在删除所选条目的同时将附件删除。在分类上右击时会出现：`删除分类条目包括附件`，确认后会在删除分类的同时将分类中的条目包含附件删除。
-
+  
 
 # Usage
 
