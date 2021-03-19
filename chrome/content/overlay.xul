@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://delitem/locale/overlay.dtd">
+
+<overlay
+    id="delitem"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script
+        type="application/x-javascript"
+        src="chrome://delitem/content/scripts/delitem.js"/>
+
+
+    <popup id="zotero-collectionmenu">
+        <menuitem
+            id="zotero-collectionmenu-delitem"
+            label="&zotero.delitem.delitems.label;"
+            oncommand="Zotero.DelItem.DelColl()"/>
+    </popup>
+
+    <popup
+        id="zotero-itemmenu"
+        onpopupshowing="ZoteroPane.buildItemContextMenu();">
+        <menuitem
+            id="zotero-itemmenu-delitem"
+            label="&zotero.delitem.delitem.label;"
+            oncommand="Zotero.DelItem.DelItem()"/>
+    </popup>
+</overlay>
