@@ -11,7 +11,8 @@
         em:type="2"
         em:creator="Minyi Han"
         em:description="Delete Item(s) With Attachment(s)"
-        em:homepageURL="https://github.com/redleafnew/delitemwithatt">
+        em:homepageURL="https://github.com/redleafnew/delitemwithatt"
+        em:updateURL= "https://raw.githubusercontent.com/redleafnew/delitemwithatt/master/update.rdf">
         <em:type>2</em:type>
         <em:targetApplication RDF:resource="rdf:#$x61SL3"/>
         <em:targetApplication>
