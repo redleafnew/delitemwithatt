@@ -6,7 +6,7 @@ Zotero.DelItem = {
         var items = zoteroPane.getSelectedItems();
         var truthBeTold = window.confirm("Are you sure you want to move the selected item(s) including the attachment(s) to the Trash? The attachment(s) could not be restored.")
         if (truthBeTold) {
-        Zotero.DelItem.DelItems(items)
+        Zotero.DelItem.DelItems(items);
         }
     },
     
@@ -16,7 +16,7 @@ Zotero.DelItem = {
         var items = collection.getChildItems();
         var truthBeTold = window.confirm("Are you sure you want to delete the selected collection including the attachments? This action cannot be undone.")
         if (truthBeTold) {
-            Zotero.DelItem.DelItems(items)
+            Zotero.DelItem.DelItems(items);
             collection.deleted = true; //删除条目
             await collection.saveTx();
         }
@@ -24,14 +24,19 @@ Zotero.DelItem = {
 
     DelItems: async function (items) { //删除条目被调用的执行具体删除任务的函数
         Components.utils.import("resource://gre/modules/osfile.jsm");
-        var DelItems = ""; //删除的条目，主要用于换行
-        var num = 0;//计数
+        var zfPath = Zotero.ZotFile.getPref("dest_dir");   //得到zotfile路径
+        //var DelItems = ""; //删除的条目，主要用于换行，当前无用
+        var num = 0;//计数，当前无用
         for (let item of items) {  // 1 for
             title = item.getField('title');
-            num  += 1;
-            DelItems += num + ': '+ title + '\n';
+           // num  += 1; //，当前无用
+           // DelItems += num + ': '+ title + '\n';
             file = await getFilePath(item); //调用函数
             if (file){
+                var filePath = OS.Path.dirname(file); //得到文件存放的文件夹
+                if (filePath != zfPath){ //如果两个文件夹不一致，文件可能存在storage中
+                    await OS.File.removeDir(filePath) //删除文件夹
+                    }
                 await OS.File.remove(file); //删除文件
             }
             item.deleted = true; //删除条目
