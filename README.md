@@ -11,3 +11,8 @@
 Remove attachment(s) when delete the item(s) or collection.
 
 Download xpi from [https://github.com/redleafnew/delitemwithatt/releases](https://github.com/redleafnew/delitemwithatt/releases), and click Tools-Addons-Install Add-on From File in Zotero or JurisM to install the extension. After the installation, right click the item(s) `Delete Item(s) with Attachment(s)` shows, when confirm, the item(s) with attachment(s) will be deleted; right click the collection `Delete Collections with Attachments` shows, when confirm, the collection and the item(s) with attachment(s) in the selected collection will be deleted.
+
+# License
+The source code is released under GNU General Public License, version 3.0
+
+Contributions preferably through pull requests are welcome!
