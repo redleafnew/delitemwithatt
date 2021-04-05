@@ -41,7 +41,7 @@
       <Description>
         <em:locale>en-US</em:locale>
         <em:name> delitem</em:name>
-        <em:description>Delete Item(s) With Attachment(s).</em:description>
+        <em:description>Delete Item(s) with Attachment(s).</em:description>
       </Description>
     </em:localized>
     <em:localized>

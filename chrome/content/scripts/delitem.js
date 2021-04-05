@@ -44,7 +44,7 @@ Zotero.DelItem = {
 
         }// 1 for
 
-       // alert(DelItems + "\n " + num + "个条目（包括附件）已经被删除。")
+       // alert(DelItems + "\n " + num + "个条目（包括附件）已经被删除。") // 当前无用
 
         async function getFilePath(item) { //1 函数 得到文件路径
 
