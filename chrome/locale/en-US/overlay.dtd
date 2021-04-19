@@ -1,2 +1,4 @@
-<!ENTITY zotero.delitem.delitem.label "Delete Item(s) with Attachment(s)">
+<!ENTITY zotero.delitem.delatt.label "Delete Attachment(s) only">
+<!ENTITY zotero.delitem.delitem.label "Delete Attachment(s) and Item(s)">
 <!ENTITY zotero.delitem.delitems.label "Delete Collection with Attachments">
+<!ENTITY zotero.delitem.namehandler.label "Delete Attachment(s)">

@@ -11,19 +11,21 @@
         src="chrome://delitem/content/scripts/delitem.js"/>
 
 
-    <popup id="zotero-collectionmenu">
+    <menupopup id="zotero-collectionmenu">
         <menuitem
             id="zotero-collectionmenu-delitem"
             label="&zotero.delitem.delitems.label;"
             oncommand="Zotero.DelItem.DelColl()"/>
-    </popup>
+    </menupopup>
 
-    <popup
-        id="zotero-itemmenu"
-        onpopupshowing="ZoteroPane.buildItemContextMenu();">
-        <menuitem
-            id="zotero-itemmenu-delitem"
-            label="&zotero.delitem.delitem.label;"
-            oncommand="Zotero.DelItem.DelItem()"/>
-    </popup>
+    <menupopup id="zotero-itemmenu">
+        <menuseparator id="id-delitem-separator"/>
+		<menu id="zotero-itemmenu-delitem-namehandler" 
+            label="&zotero.delitem.namehandler.label;">
+            <menupopup id="delitem">
+                <menuitem id="zotero-itemmenu-delitem" label="&zotero.delitem.delitem.label;" oncommand="Zotero.DelItem.DelItem()"/> <!-- 删除条目和附件 -->
+                <menuitem id="zotero-itemmenu-delatt" label="&zotero.delitem.delatt.label;" oncommand="Zotero.DelItem.DelAtt()"/> <!-- 仅删除附件 -->
+            </menupopup>
+        </menu>
+    </menupopup>
 </overlay>
