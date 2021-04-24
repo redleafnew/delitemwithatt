@@ -39,12 +39,16 @@ Zotero.DelItem = {
                                         await attachment.saveTx();   
                                 // }
                                     var file = await attachment.getFilePathAsync();
-                                    await OS.File.remove(file); //删除文件
+                                    if (file) { //如果文件存在，文件可能已经被删除
+                                        await OS.File.remove(file); //删除文件 
+                                        }  
                                 } //4 for
                             } // 3 if
                         if (item.isAttachment()) { //附件条目 5 if
                             var file = await item.getFilePathAsync();
-                            await OS.File.remove(file); //删除文件
+                            if (file) { //如果文件存在，文件可能已经被删除
+                                await OS.File.remove(file); //删除文件 
+                                }  
                             item.deleted = true; 
                             await item.saveTx();
                             }//5if
