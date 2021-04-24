@@ -25,6 +25,7 @@
             <menupopup id="delitem">
                 <menuitem id="zotero-itemmenu-delitem" label="&zotero.delitem.delitem.label;" oncommand="Zotero.DelItem.DelItem()"/> <!-- 删除条目和附件 -->
                 <menuitem id="zotero-itemmenu-delatt" label="&zotero.delitem.delatt.label;" oncommand="Zotero.DelItem.DelAtt()"/> <!-- 仅删除附件 -->
+                <menuitem id="zotero-itemmenu-delsnap" label="&zotero.delitem.delsnap.label;" oncommand="Zotero.DelItem.DelSnap()"/> <!-- 仅删除快照 -->
             </menupopup>
         </menu>
     </menupopup>
