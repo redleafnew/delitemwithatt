@@ -196,19 +196,19 @@ Zotero.DelItem = {
             //    showMenuAtt ||
              //   showMenuSnap);
             
-            pane.document.getElementById( //总菜单
-                "zotero-itemmenu-delitem-namehandler"
-                ).disabled = !( // 总菜单是否可用
-                    showMenuAtt ||
-                    showMenuSnap);
-            pane.document.getElementById( //删除条目和附件
+            /*pane.document.getElementById( //总菜单
+            //    "zotero-itemmenu-delitem-namehandler"
+            //    ).disabled = !( // 总菜单是否可用
+            //        showMenuAtt ||
+           //         showMenuSnap);*/
+            /*pane.document.getElementById( //删除条目和附件
                 "zotero-itemmenu-delitem"
                 ).disabled = !( // 删除条目和附件是否可用
                     showMenuAtt ||
-                    showMenuSnap);
+                    showMenuSnap);*/
             pane.document.getElementById( // 仅删除附件菜单
                  "zotero-itemmenu-delatt"
-                 ).disabled = !showMenuAtt; // 仅删除附件菜单是否可用
+                 ).disabled = (!showMenuAtt || showMenuSnap) ; // 仅删除附件菜单是否可用
                               
             pane.document.getElementById( // 仅删除快照菜单
                  "zotero-itemmenu-delsnap"
