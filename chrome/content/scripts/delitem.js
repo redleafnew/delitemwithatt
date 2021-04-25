@@ -139,5 +139,97 @@ Zotero.DelItem = {
             } //2 if
 
         } ;
-    }
-}
+    },
+
+    // 检查附件是否存在函数
+    checkItemAtt: function (item) { 
+        if (item && !item.isNote()) {
+            if (item.isRegularItem()) { // not an attachment already
+                let attachmentIDs = item.getAttachments();
+                for (let id of attachmentIDs) {
+                    let attachment = Zotero.Items.get(id);
+                    var attType = attachment.attachmentContentType;
+                }
+            }
+            if (item.isAttachment()) {
+                 var attType =  item.attachmentContentType;
+                }
+            }  
+            
+            
+            if (attType != undefined ) {
+                return true;} else {
+                    return false;}
+    },
+
+    // 检查快照是否存在函数
+    checkItemSnap: function (item) {
+        if (item && !item.isNote()) {
+            if (item.isRegularItem()) { // not an attachment already
+                let attachmentIDs = item.getAttachments();
+                for (let id of attachmentIDs) {
+                    let attachment = Zotero.Items.get(id);
+                    var attType = attachment.attachmentContentType;
+                }
+            }
+            if (item.isAttachment()) {
+                 var attType =  item.attachmentContentType;
+                }
+            }  
+            
+            
+            if (attType == 'text/html' ) {
+                return true;} else {
+                    return false;}
+    },
+
+    // 是否显示菜单函数
+    displayMenuitem: function () { // 如果无附件则不显示菜单
+            var pane = Services.wm.getMostRecentWindow("navigator:browser")
+                .ZoteroPane;
+            var items = pane.getSelectedItems();
+            //Zotero.debug("**Jasminum selected item length: " + items.length);
+            var showMenuAtt = items.some((item) => Zotero.DelItem.checkItemAtt(item));  // 检查附件
+            var showMenuSnap = items.some((item) => Zotero.DelItem.checkItemSnap(item));  // 检查快照
+
+            //pane.document.getElementById("id-delitem-separator").hidden = !( // 分隔条是否出现
+            //    showMenuAtt ||
+             //   showMenuSnap);
+            
+            pane.document.getElementById( //总菜单
+                "zotero-itemmenu-delitem-namehandler"
+                ).disabled = !( // 总菜单是否可用
+                    showMenuAtt ||
+                    showMenuSnap);
+            pane.document.getElementById( //删除条目和附件
+                "zotero-itemmenu-delitem"
+                ).disabled = !( // 删除条目和附件是否可用
+                    showMenuAtt ||
+                    showMenuSnap);
+            pane.document.getElementById( // 仅删除附件菜单
+                 "zotero-itemmenu-delatt"
+                 ).disabled = !showMenuAtt; // 仅删除附件菜单是否可用
+                              
+            pane.document.getElementById( // 仅删除快照菜单
+                 "zotero-itemmenu-delsnap"
+                 ).disabled = !showMenuSnap;// 仅删除快照是否可用
+                        
+    },
+};
+
+window.addEventListener(
+    "load",
+    function (e) {
+        if (window.ZoteroPane) {
+            var doc = window.ZoteroPane.document;
+            // add event listener for menu items
+            doc.getElementById("zotero-itemmenu").addEventListener(
+                "popupshowing",
+                Zotero.DelItem.displayMenuitem,
+                false
+            );
+        }
+    },
+    false
+);
+
