@@ -1,5 +1,5 @@
 <!ENTITY zotero.delitem.delatt.label "仅删除附件">
-<!ENTITY zotero.delitem.delitem.label "删除附件和条目">
+<!ENTITY zotero.delitem.delitem.label "删除附件(快照)和条目">
 <!ENTITY zotero.delitem.delitems.label "删除分类条目包括附件">
 <!ENTITY zotero.delitem.delsnap.label "仅删除快照">
 <!ENTITY zotero.delitem.namehandler.label "删除附件">
