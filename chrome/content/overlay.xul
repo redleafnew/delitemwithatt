@@ -12,6 +12,7 @@
 
 
     <menupopup id="zotero-collectionmenu">
+        <menuseparator id="id-delcoll-separator"/>
         <menuitem
             id="zotero-collectionmenu-delitem"
             label="&zotero.delitem.delitems.label;"
