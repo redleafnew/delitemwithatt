@@ -1,5 +1,11 @@
+<!-- 删除条目和附件 -->
 <!ENTITY zotero.delitem.delatt.label "Delete All Attachment(s) only">
 <!ENTITY zotero.delitem.delitem.label "Delete Attachment(s) and Item(s)">
 <!ENTITY zotero.delitem.delitems.label "Delete Collection with Attachments">
 <!ENTITY zotero.delitem.delsnap.label "Delete Snapshot(s) only">
 <!ENTITY zotero.delitem.namehandler.label "Delete Attachment(s)">
+<!-- 设置语言 -->
+<!ENTITY zotero.chanlan-forempty.label "If the Language of Selected Item(s) Is Empty">
+<!ENTITY zotero.chanlan-forsel.label "Set Language Field as en">
+<!ENTITY zotero.chanlan.namehandler.label "Set Language as en">
+<!ENTITY zotero.chanlan.Set.lan.to.en "Set Language Field of Selected Item(s) as en">

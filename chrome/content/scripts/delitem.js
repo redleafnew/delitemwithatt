@@ -4,7 +4,7 @@ Zotero.DelItem = {
 
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm("Are you sure you want to move the selected item(s) including the attachment(s) to the Trash? The linked attachment(s) could not be restored.")
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.item.and.attachment"))
         if (truthBeTold) {
         Zotero.DelItem.DelItems(items);
         
@@ -15,7 +15,7 @@ Zotero.DelItem = {
 
         var collection = ZoteroPane.getSelectedCollection();
         var items = collection.getChildItems();
-        var truthBeTold = window.confirm("Are you sure you want to delete the selected collection including the attachments? The linked attachment(s) could not be restored.")
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.collection.and.attachment"))
         if (truthBeTold) {
            Zotero.DelItem.DelItems(items);
            collection.deleted = true; //删除条目
@@ -27,7 +27,7 @@ Zotero.DelItem = {
       
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm("Are you sure you want to delete the attachment(s) of the item(s)? The linked attachment(s) could not be restored.")
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.attachment.only"))
         if (truthBeTold) {
             for (let item of items) { 
                     if (item && !item.isNote()) { //2 if
@@ -40,7 +40,7 @@ Zotero.DelItem = {
                                     if (file && ifLinks) { // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
                                         try { await OS.File.remove (file); // 尝试删除文件
                                         } catch (error) { // 弹出错误
-                                          alert ("The file can not be deleted. Please close the file if you have opened it and try again.");
+                                          alert (Zotero.DelItem.diwaGetString("file.is.open"));
                                           return; // 弹出错误后终止执行       
                                         }
                                         }  
@@ -57,7 +57,7 @@ Zotero.DelItem = {
                             if (file && ifLinksAtt) { // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
                                 try { await OS.File.remove (file); // 尝试删除文件
                                 } catch (error) { // 弹出错误
-                                  alert ("The file can not be deleted. Please close the file if you have opened it and try again.");
+                                  alert (Zotero.DelItem.diwaGetString("file.is.open"));
                                   return; // 弹出错误后终止执行       
                                 }   
                                 }  
@@ -74,7 +74,7 @@ Zotero.DelItem = {
 
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm("Are you sure you want to delete the snapshot(s) of the item(s)?")
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.snapshot"))
         if (truthBeTold) {
             for (let item of items) { 
                     if (item && !item.isNote()) { //2 if
@@ -125,7 +125,7 @@ Zotero.DelItem = {
                                     if (file && ifLinks) { //如果文件存在(文件可能已经被删除)且为链接模式删除文件
                                         try { await OS.File.remove (file); // 尝试删除文件
                                         } catch (error) { // 弹出错误
-                                          alert ("The file can not be deleted. Please close the file if you have opened it and try again.");
+                                          alert (Zotero.DelItem.diwaGetString("file.is.open"));
                                           return; // 弹出错误后终止执行       
                                         }
                                         }  
@@ -143,7 +143,7 @@ Zotero.DelItem = {
                             if (file && ifLinksAtt) { // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
                                 try { await OS.File.remove (file); // 尝试删除文件
                                 } catch (error) { // 弹出错误
-                                  alert ("The file can not be deleted. Please close the file if you have opened it and try again.");
+                                  alert (Zotero.DelItem.diwaGetString("file.is.open"));
                                   return; // 弹出错误后终止执行       
                                 }  
                                 }  
@@ -156,7 +156,59 @@ Zotero.DelItem = {
         
     },
 
+    // 将所有所选条目语言字段设为en
+    chanLanForSel: async function () { 
+        var zoteroPane = Zotero.getActiveZoteroPane();
+        var items = zoteroPane.getSelectedItems();
+       
+        for (item of items) {
+            var la = item.getField("language");
+            //if (la=="") { //如果为空则替换
+                item.setField("language", "en");
+                await item.saveTx();
+            //}
+        }
+    },
+
+    // 将所选条目语言字段为空时设为en
+    chanLanForEmpty: async function () { 
+        var zoteroPane = Zotero.getActiveZoteroPane();
+        var items = zoteroPane.getSelectedItems();
+       
+        for (item of items) {
+            var la = item.getField("language");
+            if (la=="") { //如果为空则替换
+                item.setField("language", "en");
+                await item.saveTx();
+            }
+        }
+    },
  
+    // Localization (borrowed from ZotFile sourcecode)
+    // 提示语言本地化函数
+    diwaGetString: function (name, params){
+        var l10n = '';
+        stringsBundle = Components.classes['@mozilla.org/intl/stringbundle;1']
+            .getService(Components.interfaces.nsIStringBundleService)
+            .createBundle('chrome://delitem/locale/diwa.properties');
+        try { 
+            if (params !== undefined){
+                if (typeof params != 'object'){
+                    params = [params];
+                }
+                l10n = tringsBundle.formatStringFromName(name, params, params.length);
+            }
+            else {
+                l10n = stringsBundle.GetStringFromName(name);
+            }
+        }
+        catch (e){
+            throw ('Localized string not available for ' + name);
+        }
+        return l10n;
+    },
+
+    
     // 检查附件是否存在函数
     checkItemAtt: function (item) { 
         if (item && !item.isNote()) {

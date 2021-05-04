@@ -21,6 +21,7 @@
 
     <menupopup id="zotero-itemmenu">
         <menuseparator id="id-delitem-separator"/>
+        <!-- 删除条目和附件 -->
 		<menu id="zotero-itemmenu-delitem-namehandler" 
             label="&zotero.delitem.namehandler.label;">
             <menupopup id="delitem">
@@ -29,5 +30,18 @@
                 <menuitem id="zotero-itemmenu-delsnap" label="&zotero.delitem.delsnap.label;" oncommand="Zotero.DelItem.DelSnap()"/> <!-- 仅删除快照 -->
             </menupopup>
         </menu>
+        <!-- 设置语言 -->
+       <!-- <menu id="zotero-itemmenu-chanlan-namehandler" -->
+        <!--    label="&zotero.chanlan.namehandler.label;" -->
+       <!--     oncommand="Zotero.DelItem.chanLanForSel()" -->
+         <!--   toolkeytip="Set the language field of the selcted item(s) to en">-->
+          <!--    <menupopup id="chanlan">-->
+                <menuitem id="zotero-chanlan-forsel" label="&zotero.chanlan-forsel.label;" 
+                tooltiptext="&zotero.chanlan.Set.lan.to.en;"
+                oncommand="Zotero.DelItem.chanLanForSel()"/> <!-- 所选条目设为en -->
+           <!--      <menuitem id="zotero-chanlan-forempty" label="&zotero.chanlan-forempty.label;" oncommand="Zotero.DelItem.chanLanForEmpty()"/>   语言字段为空时设置 --> 
+          <!--   </menupopup> -->
+        <!-- </menu>-->
+
     </menupopup>
 </overlay>

@@ -3,3 +3,8 @@
 <!ENTITY zotero.delitem.delitems.label "删除分类条目包括附件">
 <!ENTITY zotero.delitem.delsnap.label "仅删除快照">
 <!ENTITY zotero.delitem.namehandler.label "删除附件">
+<!-- 设置语言 -->
+<!ENTITY zotero.chanlan-forempty.label "所选条目语言为空时设为en">
+<!ENTITY zotero.chanlan-forsel.label "将语言字段设为en">
+<!ENTITY zotero.chanlan.namehandler.label "将语言设为en">
+<!ENTITY zotero.chanlan.Set.lan.to.en "将所选条目语言字段设为en">
