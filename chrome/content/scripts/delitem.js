@@ -156,6 +156,28 @@ Zotero.DelItem = {
         
     },
 
+    DelNote: async function () { // 仅删除笔记调用的函数
+      
+        var zoteroPane = Zotero.getActiveZoteroPane();
+        var items = zoteroPane.getSelectedItems();
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.note"))
+        if (truthBeTold) {
+            for (let item of items) { 
+                    if (item && !item.isNote()) { //2 if
+                        if (item.isRegularItem()) { // Regular Item 一般条目//3 if 
+                            Zotero.Items.erase(item.getNotes());
+                            await item.saveTx();
+                            } // 3 if
+                        
+                    } //2 if
+                    if (item.isNote()) { //如果条目是笔记则直接删除
+                        item.deleted = true; 
+                        await item.saveTx();
+                    }//5if
+            }
+        } 
+    },
+
     // 将所有所选条目语言字段设为en
     chanLanForSel: async function () { 
         var zoteroPane = Zotero.getActiveZoteroPane();
@@ -256,6 +278,22 @@ Zotero.DelItem = {
                     return false;}
     },
 
+    // 检查笔记是否存在函数
+        checkItemNote: function (item) { 
+            if (item && !item.isNote()) {
+                if (item.isRegularItem()) { // not an attachment already
+                    var noteIDs = item.getNotes();
+                    var withNote = JSON.stringify(noteIDs) === '[]';
+                    if (withNote ) {
+                    return false;} else { //为假时含笔记
+                        return true;}
+                }
+            }
+                
+            if (item && item.isNote()) {
+                    return true;} 
+        },
+
     // 是否显示菜单函数
     displayMenuitem: function () { // 如果无附件则不显示菜单
             var pane = Services.wm.getMostRecentWindow("navigator:browser")
@@ -265,6 +303,7 @@ Zotero.DelItem = {
             //Zotero.debug("**Jasminum selected item length: " + items.length);
             var showMenuAtt = items.some((item) => Zotero.DelItem.checkItemAtt(item));  // 检查附件
             var showMenuSnap = items.some((item) => Zotero.DelItem.checkItemSnap(item));  // 检查快照
+            var showMenuNote = items.some((item) => Zotero.DelItem.checkItemNote(item));  // 检查快照
             var showMenuColl = (collection == false); // 非正常文件夹，如我的出版物、重复条目、未分类条目、回收站，为false，此时返回值为true，隐藏菜单
             //pane.document.getElementById("id-delitem-separator").hidden = !( // 分隔条是否出现
             //    showMenuAtt ||
@@ -295,6 +334,10 @@ Zotero.DelItem = {
             pane.document.getElementById( // 仅删除快照菜单
                  "zotero-itemmenu-delsnap"
                  ).disabled = !showMenuSnap;// 仅删除快照是否可用
+
+            pane.document.getElementById( // 仅删除笔记菜单
+                    "zotero-itemmenu-delnote"
+                    ).disabled = !showMenuNote;// 仅删除笔记是否可用
                         
     },
 };

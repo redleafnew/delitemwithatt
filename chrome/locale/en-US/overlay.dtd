@@ -3,6 +3,7 @@
 <!ENTITY zotero.delitem.delitem.label "Delete Attachment(s) and Item(s)">
 <!ENTITY zotero.delitem.delitems.label "Delete Collection with Attachments">
 <!ENTITY zotero.delitem.delsnap.label "Delete Snapshot(s) only">
+<!ENTITY zotero.delitem.delnote.label "Delete Note(s) only">
 <!ENTITY zotero.delitem.namehandler.label "Delete Attachment(s)">
 <!-- 设置语言 -->
 <!ENTITY zotero.chanlan-forempty.label "If the Language of Selected Item(s) Is Empty">
