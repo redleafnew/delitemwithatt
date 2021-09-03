@@ -165,7 +165,11 @@ Zotero.DelItem = {
             for (let item of items) { 
                     if (item && !item.isNote()) { //2 if
                         if (item.isRegularItem()) { // Regular Item 一般条目//3 if 
-                            Zotero.Items.erase(item.getNotes());
+                            var noteIDs = item.getNotes();
+                            for (let id of noteIDs) {
+                                await Zotero.Items.trashTx(id);
+                                } 
+                            //Zotero.Items.erase(item.getNotes()); //原用函数，删除笔记不可恢复
                             await item.saveTx();
                             } // 3 if
                         
