@@ -17,6 +17,10 @@
             id="zotero-collectionmenu-delitem"
             label="&zotero.delitem.delitems.label;"
             oncommand="Zotero.DelItem.DelColl()"/>
+        <menuitem
+            id="zotero-collectionmenu-exp-att"
+            label="&zotero.delitem.exp.coll.atts.label;"
+            oncommand="Zotero.DelItem.ExpColl()"/>
     </menupopup>
 
     <menupopup id="zotero-itemmenu">
@@ -31,18 +35,15 @@
                 <menuitem id="zotero-itemmenu-delnote" label="&zotero.delitem.delnote.label;" oncommand="Zotero.DelItem.DelNote()"/> <!-- 仅删除笔记 -->
             </menupopup>
         </menu>
+
+       <!-- 导出附件 -->
+            <menuitem id="zotero-itemmenu-exp-att" label="&zotero.itemmenu.exp.att.label;" 
+                tooltiptext="&zotero.exp.att.tip;"
+                oncommand="Zotero.DelItem.ExpAtts()"/> <!-- 导出附件 -->
+       
         <!-- 设置语言 -->
-       <!-- <menu id="zotero-itemmenu-chanlan-namehandler" -->
-        <!--    label="&zotero.chanlan.namehandler.label;" -->
-       <!--     oncommand="Zotero.DelItem.chanLanForSel()" -->
-         <!--   toolkeytip="Set the language field of the selcted item(s) to en">-->
-          <!--    <menupopup id="chanlan">-->
-                <menuitem id="zotero-chanlan-forsel" label="&zotero.chanlan-forsel.label;" 
+           <menuitem id="zotero-chanlan-forsel" label="&zotero.chanlan-forsel.label;" 
                 tooltiptext="&zotero.chanlan.Set.lan.to.en;"
                 oncommand="Zotero.DelItem.chanLanForSel()"/> <!-- 所选条目设为en -->
-           <!--      <menuitem id="zotero-chanlan-forempty" label="&zotero.chanlan-forempty.label;" oncommand="Zotero.DelItem.chanLanForEmpty()"/>   语言字段为空时设置 --> 
-          <!--   </menupopup> -->
-        <!-- </menu>-->
-
     </menupopup>
 </overlay>

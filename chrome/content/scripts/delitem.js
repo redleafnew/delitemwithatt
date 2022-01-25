@@ -1,5 +1,5 @@
 Zotero.DelItem = {
-
+    
     DelItem: async function () {//右击时删除条目调用的函数
 
         var zoteroPane = Zotero.getActiveZoteroPane();
@@ -182,6 +182,112 @@ Zotero.DelItem = {
         } 
     },
 
+    // 导出附件
+        // 右击导出分类调用的函数
+        ExpColl: async function () {
+            var collection = ZoteroPane.getSelectedCollection();
+            var items = collection.getChildItems();
+            Zotero.DelItem.ExpAtt(items);
+        },
+
+        // 右击分类导出附件
+        ExpAtts: async function () { 
+            var zoteroPane = Zotero.getActiveZoteroPane();
+            var items = zoteroPane.getSelectedItems();
+            Zotero.DelItem.ExpAtt(items);
+        },
+        // 导出附件实际调用的函数
+        ExpAtt: async function (items) { 
+            var expDir = await this.chooseDirectory(); //得到导出的目录
+            var nItems = 0; //导出个数计数器
+            var lanUI = Zotero.Prefs.get('intl.locale.requested', true); // 得到当前Zotero界面语言
+            var whiteSpace = ' ';
+            if (lanUI == 'zh-CN') {whiteSpace = ''};
+            for (let item of items) { 
+                        if (item && !item.isNote()) { //2 if
+                            if (item.isRegularItem()) { // Regular Item 一般条目//3 if 
+                                let attachmentIDs = item.getAttachments();
+                                    for (let id of attachmentIDs) { //4 for
+                                        let attachment = Zotero.Items.get(id);
+                                        var file = await attachment.getFilePathAsync();
+                                        if (file) { // 如果文件存在(文件可能已经被删除)
+                                            try { 
+                                                // await exportAtts(file, expDir);
+                                                var baseName = OS.Path.basename(file); //得到文件名
+                                                var destName = OS.Path.join(expDir, baseName);
+                                                OS.File.copy(file, destName); // 尝试导出文件    
+                                                nItems = nItems + 1;
+                                                } catch (error) { // 弹出错误
+                                                    alert (Zotero.DelItem.diwaGetString("file.export.error"));
+                                                    return; // 弹出错误后终止执行       
+                                            }
+                                       
+                                         }  
+                                                    
+                                    } //4 for
+                                } // 3 if
+                            if (item.isAttachment()) { //附件条目 5 if
+                                var file = await item.getFilePathAsync();
+                                if (file) { // 如果文件存在(文件可能已经被删除)
+                                    try {  
+                                            // await exportAtts(file, expDir);
+                                            var baseName = OS.Path.basename(file); //得到文件名
+                                            var destName = OS.Path.join(expDir, baseName);
+                                            OS.File.copy(file, destName); // 尝试导出文件  
+                                            nItems = nItems + 1;
+                                        } catch (error) { // 弹出错误
+                                            alert (Zotero.DelItem.diwaGetString("file.export.error"));
+                                            return; // 弹出错误后终止执行       
+                                        }   
+                                    }  
+                                
+                                }//5if
+                    } //2 if
+                    
+                }
+                alert (nItems + whiteSpace + Zotero.DelItem.diwaGetString("file.exported") + whiteSpace + expDir + Zotero.DelItem.diwaGetString("full.stop")); 
+            },
+
+        // 导出附件函数
+        exportAtts: async function (file, expDir) { 
+            var baseName = OS.Path.basename(file); //得到文件名
+            var destName = OS.Path.join(expDir, baseName);
+            OS.File.copy(file, destName); // 尝试导出文件
+        },
+
+        //对话框 Form ZotFile
+        /**
+         * Choose directory from file picker
+         * @return {string} Path to file
+         */
+        chooseDirectory: async function  () {
+            if (Zotero.platformMajorVersion >= 60) {
+                var FilePicker = require('zotero/filePicker').default;
+            }
+            else {
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+            }
+            var wm = Services.wm;
+            var win = wm.getMostRecentWindow('navigator:browser');
+            var ps = Services.prompt;
+            if (Zotero.platformMajorVersion >= 60) {
+                var fp = new FilePicker();
+                fp.init(win, Zotero.DelItem.diwaGetString("file.exp.path"), fp.modeGetFolder);
+                fp.appendFilters(fp.filterAll);
+                if (await fp.show() != fp.returnOK) return '';
+                return fp.file;
+            }
+            else {
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                    .createInstance(nsIFilePicker);
+                fp.init(win, Zotero.DelItem.diwaGetString("file.exp.path"), nsIFilePicker.modeGetFolder);
+                fp.appendFilters(nsIFilePicker.filterAll);
+                if (fp.show() != nsIFilePicker.returnOK) return '';
+                var file = fp.file;
+                return file.path;
+            }
+        },
+
     // 将所有所选条目语言字段设为en
     chanLanForSel: async function () { 
         var zoteroPane = Zotero.getActiveZoteroPane();
@@ -298,39 +404,62 @@ Zotero.DelItem = {
                     return true;} 
         },
 
+     // 检查是否为链接   
+     // true为链接或没有附件
+     checkItemExp: function (item){        
+        var num = 0;
+        if (item && !item.isNote()) {
+                    if (item.isRegularItem()) { // not an attachment already
+                        let attachmentIDs = item.getAttachments();
+                         //return attachmentIDs.length;  // 返回数据中元素个数
+                        for (let id of attachmentIDs) {
+                            let attachment = Zotero.Items.get(id);
+                            num = num + attachment.attachmentLinkMode; // attachmentLinkMode 链接类型 3为链接 2为文件
+                            
+                        }
+                        var linkURL = attachmentIDs.length == 1 && num == 3
+                        if (linkURL || attachmentIDs.length == 0) {return true;}
+                    }
+                    
+        if (item.isAttachment()) {
+                         //var attType =  item.attachmentContentType;
+                         if (item.attachmentLinkMode == 3) {return true;}
+                        }
+                    }  
+                    
+        }, 
     // 是否显示菜单函数
     displayMenuitem: function () { // 如果无附件则不显示菜单
             var pane = Services.wm.getMostRecentWindow("navigator:browser")
                 .ZoteroPane;
             var collection = ZoteroPane.getSelectedCollection();
             var items = pane.getSelectedItems();
+            if (collection) {var items_coll = collection.getChildItems();}
             //Zotero.debug("**Jasminum selected item length: " + items.length);
             var showMenuAtt = items.some((item) => Zotero.DelItem.checkItemAtt(item));  // 检查附件
             var showMenuSnap = items.some((item) => Zotero.DelItem.checkItemSnap(item));  // 检查快照
-            var showMenuNote = items.some((item) => Zotero.DelItem.checkItemNote(item));  // 检查快照
+            var showMenuNote = items.some((item) => Zotero.DelItem.checkItemNote(item));  // 检查笔记
             var showMenuColl = (collection == false); // 非正常文件夹，如我的出版物、重复条目、未分类条目、回收站，为false，此时返回值为true，隐藏菜单
-            //pane.document.getElementById("id-delitem-separator").hidden = !( // 分隔条是否出现
-            //    showMenuAtt ||
-             //   showMenuSnap);
-            
-            /*pane.document.getElementById( //总菜单
-            //    "zotero-itemmenu-delitem-namehandler"
-            //    ).disabled = !( // 总菜单是否可用
-            //        showMenuAtt ||
-           //         showMenuSnap);*/
-            /*pane.document.getElementById( //删除条目和附件
-                "zotero-itemmenu-delitem"
-                ).disabled = !( // 删除条目和附件是否可用
-                    showMenuAtt ||
-                    showMenuSnap);*/
+            if (collection) { // 如果是正常分类才显示
+                var showMenuCollExp = items_coll.some((item) => Zotero.DelItem.checkItemAtt(item));} else {
+                    var showMenuCollExp = false;} // 检查分类是否有附件及是否为正常分类
+            var showMenuExpAtt = items.every((item) => Zotero.DelItem.checkItemExp(item));   //检查是否为链接   true为链接或没有附件     
+            // pane.document.getElementById( // 其他分类菜单是否可见 总的id：zotero-collectionmenu
+            //     "zotero-collectionmenu"
+            //     ).hidden =  showMenuColl; //   
 
-                    
-            pane.document.getElementById( // 删除分类/文件夹菜单是否可见
+            pane.document.getElementById( // 删除分类/文件夹菜单是否可见 
                 "zotero-collectionmenu-delitem"
-                ).hidden = showMenuColl; // 仅删除附件菜单是否可用
-            pane.document.getElementById( // 删除分类/文件夹分隔条是否可见
+                ).hidden = showMenuColl; // 仅删除附件菜单是否可用 zotero-collectionmenu-delitem
+
+            pane.document.getElementById( // 删除分类/文件夹分隔条是否可见 id-delcoll-separator
                 "id-delcoll-separator"
-                ).hidden = showMenuColl; // 仅删除附件菜单是否可用           
+                ).hidden = showMenuColl; //      
+               
+            pane.document.getElementById( // 导出分类附件是否可见 zotero-collectionmenu-exp-att
+                    "zotero-collectionmenu-exp-att"
+                    ).hidden = showMenuColl; //   
+
             pane.document.getElementById( // 仅删除附件菜单
                  "zotero-itemmenu-delatt"
                  ).disabled = !showMenuAtt; // 仅删除附件菜单是否可用
@@ -342,6 +471,15 @@ Zotero.DelItem = {
             pane.document.getElementById( // 仅删除笔记菜单
                     "zotero-itemmenu-delnote"
                     ).disabled = !showMenuNote;// 仅删除笔记是否可用
+
+            pane.document.getElementById( // 分类导出附件
+                        "zotero-collectionmenu-exp-att"
+                        ).disabled = !showMenuCollExp ; // 分类导出附件菜单是否可用
+
+            pane.document.getElementById( // 条目导出附件
+                            "zotero-itemmenu-exp-att"
+                            ).disabled = !showMenuAtt || showMenuExpAtt; // 条目导出附件菜单是否可用
+
                         
     },
 };

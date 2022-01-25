@@ -5,6 +5,10 @@
 <!ENTITY zotero.delitem.delsnap.label "仅删除快照">
 <!ENTITY zotero.delitem.delnote.label "仅删除笔记">
 <!ENTITY zotero.delitem.namehandler.label "删除附件">
+<!-- 导出附件 -->
+<!ENTITY zotero.delitem.exp.coll.atts.label "导出附件">
+<!ENTITY zotero.itemmenu.exp.att.label "导出附件">
+<!ENTITY zotero.exp.att.tip "导出附件">
 <!-- 设置语言 -->
 <!ENTITY zotero.chanlan-forempty.label "所选条目语言为空时设为en">
 <!ENTITY zotero.chanlan-forsel.label "将语言字段设为en">

@@ -5,6 +5,10 @@
 <!ENTITY zotero.delitem.delsnap.label "Delete Snapshot(s) only">
 <!ENTITY zotero.delitem.delnote.label "Delete Note(s) only">
 <!ENTITY zotero.delitem.namehandler.label "Delete Attachment(s)">
+<!-- 导出附件 -->
+<!ENTITY zotero.delitem.exp.coll.atts.label "Export Attachment(s)">
+<!ENTITY zotero.itemmenu.exp.att.label "Export Attachment(s)">
+<!ENTITY zotero.exp.att.tip "Export Attachment(s)">
 <!-- 设置语言 -->
 <!ENTITY zotero.chanlan-forempty.label "If the Language of Selected Item(s) Is Empty">
 <!ENTITY zotero.chanlan-forsel.label "Set Language Field as en">
