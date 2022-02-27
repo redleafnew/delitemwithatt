@@ -7,7 +7,7 @@
         RDF:about="urn:mozilla:install-manifest"
         em:id="delitemwithatt@redleaf.me"
         em:name="Del Item With Att"
-        em:version="0.0.13"
+        em:version="0.0.14"
         em:type="2"
         em:creator="Minyi Han"
         em:description="Delete Item(s) With Attachment(s)"
@@ -40,14 +40,14 @@
         <em:localized>
       <Description>
         <em:locale>en-US</em:locale>
-        <em:name> delitem</em:name>
+        <em:name> Delitem</em:name>
         <em:description>Delete Item(s) with Attachment(s).</em:description>
       </Description>
     </em:localized>
     <em:localized>
       <Description>
         <em:locale>zh-CN</em:locale>
-        <em:name> delitem</em:name>
+        <em:name> Delitem</em:name>
         <em:creator>Minyi Han</em:creator>
         <em:description>删除条目的同时删除附件</em:description>
         <em:homepageURL>https://github.com/redleafnew/delitemwithatt</em:homepageURL>

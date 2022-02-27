@@ -4,11 +4,12 @@ Zotero.DelItem = {
 
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.item.and.attachment"))
+        var iaInfo = items.length > 1 ? 'delete.item.and.attachment.mul' : 'delete.item.and.attachment.sig'; 
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString(iaInfo))
         if (truthBeTold) {
-        Zotero.DelItem.DelItems(items);
-        
-        }
+            Zotero.DelItem.DelItems(items);
+
+           }
     },
     
     DelColl: async function () {//右击时删除分类调用的函数
@@ -27,7 +28,8 @@ Zotero.DelItem = {
       
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.attachment.only"))
+        var daoInfo = items.length > 1 ? 'delete.attachment.only.mul' : 'delete.attachment.only.sig';
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString(daoInfo))
         if (truthBeTold) {
             for (let item of items) { 
                     if (item && !item.isNote()) { //2 if
@@ -65,7 +67,9 @@ Zotero.DelItem = {
                             await item.saveTx();
                             }//5if
                  } //2 if
+             
             }
+           this.opterationComplete();
         } 
     },
 
@@ -74,7 +78,8 @@ Zotero.DelItem = {
 
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.snapshot"))
+        var dsInfo = items.length > 1 ? 'delete.snapshot.mul' : 'delete.snapshot.sig'
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString(dsInfo))
         if (truthBeTold) {
             for (let item of items) { 
                     if (item && !item.isNote()) { //2 if
@@ -106,7 +111,9 @@ Zotero.DelItem = {
                                 }
                             }//5if
                  } //2 if
-            }
+           
+        }
+         this.opterationComplete();    
         } 
     },
 
@@ -152,7 +159,9 @@ Zotero.DelItem = {
             } //2 if
             item.deleted = true; 
             await item.saveTx(); 
+       
         }
+         this.opterationComplete();
         
     },
 
@@ -160,7 +169,8 @@ Zotero.DelItem = {
       
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.note"))
+        var dnInfo = items.length > 1 ? 'delete.note.mul'  : 'delete.note.sig';
+        var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString(dnInfo))
         if (truthBeTold) {
             for (let item of items) { 
                     if (item && !item.isNote()) { //2 if
@@ -178,7 +188,9 @@ Zotero.DelItem = {
                         item.deleted = true; 
                         await item.saveTx();
                     }//5if
-            }
+           
+                }
+             this.opterationComplete();
         } 
     },
 
@@ -245,7 +257,10 @@ Zotero.DelItem = {
                     } //2 if
                     
                 }
-                alert (nItems + whiteSpace + Zotero.DelItem.diwaGetString("file.exported") + whiteSpace + expDir + Zotero.DelItem.diwaGetString("full.stop")); 
+                var fileInfo = nItems >1 ? 'file.exported.mul' : 'file.exported.sig';
+                var alertInfo = nItems + whiteSpace + Zotero.DelItem.diwaGetString(fileInfo) + whiteSpace + expDir + Zotero.DelItem.diwaGetString("full.stop");
+                this.showPopUP(alertInfo, 'finished')
+                // alert (nItems + whiteSpace + Zotero.DelItem.diwaGetString(fileInfo) + whiteSpace + expDir + Zotero.DelItem.diwaGetString("full.stop")); 
             },
 
         // 导出附件函数
@@ -300,6 +315,7 @@ Zotero.DelItem = {
                 await item.saveTx();
             //}
         }
+        this.opterationComplete();
     },
 
     // 将所选条目语言字段为空时设为en
@@ -314,6 +330,9 @@ Zotero.DelItem = {
                 await item.saveTx();
             }
         }
+        
+        this.opterationComplete();
+
     },
  
     // Localization (borrowed from ZotFile sourcecode)
@@ -482,7 +501,24 @@ Zotero.DelItem = {
 
                         
     },
-};
+
+    opterationComplete : function () {
+        var prompInfo = this.diwaGetString('operation.completed');
+        var prompStatus = 'finished';
+        this.showPopUP(prompInfo, prompStatus);
+    },
+
+   // 右下角弹出函数 displayMenuitem: function () 
+    showPopUP : function (alertInfo, status) {
+        var progressWindow = new Zotero.ProgressWindow({closeOnClick:true});
+        progressWindow.changeHeadline(Zotero.DelItem.diwaGetString(status));
+        progressWindow.addDescription(alertInfo);
+        progressWindow.show();
+        progressWindow.startCloseTimer(4000);
+    },
+}
+
+
 
 window.addEventListener(
     "load",
