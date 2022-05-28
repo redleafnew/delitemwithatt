@@ -33,6 +33,9 @@
                 <menuitem id="zotero-itemmenu-delatt"  label="&zotero.delitem.delatt.label;" oncommand="Zotero.DelItem.DelAtt()"/> <!-- 仅删除附件 -->
                 <menuitem id="zotero-itemmenu-delsnap" label="&zotero.delitem.delsnap.label;" oncommand="Zotero.DelItem.DelSnap()"/> <!-- 仅删除快照 -->
                 <menuitem id="zotero-itemmenu-delnote" label="&zotero.delitem.delnote.label;" oncommand="Zotero.DelItem.DelNote()"/> <!-- 仅删除笔记 -->
+                <menuitem id="zotero-itemmenu-delextra" label="&zotero.delitem.delextra.label;" oncommand="Zotero.DelItem.DelExtra()"/> <!-- 仅删除其它 -->
+                <menuitem id="zotero-itemmenu-delabstract" label="&zotero.delitem.delabstract.label;" oncommand="Zotero.DelItem.DelAbstract()"/> <!-- 仅删除摘要 -->
+            
             </menupopup>
         </menu>
 

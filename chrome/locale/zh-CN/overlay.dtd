@@ -5,6 +5,9 @@
 <!ENTITY zotero.delitem.delsnap.label "仅删除快照">
 <!ENTITY zotero.delitem.delnote.label "仅删除笔记">
 <!ENTITY zotero.delitem.namehandler.label "删除附件">
+<!ENTITY zotero.delitem.delextra.label "仅删除其它">
+<!ENTITY zotero.delitem.delabstract.label "仅删除摘要">
+
 <!-- 导出附件 -->
 <!ENTITY zotero.delitem.exp.coll.atts.label "导出附件">
 <!ENTITY zotero.itemmenu.exp.att.label "导出附件">

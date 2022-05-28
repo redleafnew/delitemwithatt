@@ -5,6 +5,10 @@
 <!ENTITY zotero.delitem.delsnap.label "Delete Snapshot(s) only">
 <!ENTITY zotero.delitem.delnote.label "Delete Note(s) only">
 <!ENTITY zotero.delitem.namehandler.label "Delete Attachment(s)">
+<!ENTITY zotero.delitem.delextra.label "Delete Extra(s) only">
+<!ENTITY zotero.delitem.delabstract.label "Delete Abstract(s) only">
+
+
 <!-- 导出附件 -->
 <!ENTITY zotero.delitem.exp.coll.atts.label "Export Attachment(s)">
 <!ENTITY zotero.itemmenu.exp.att.label "Export Attachment(s)">
