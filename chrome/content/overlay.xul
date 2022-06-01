@@ -2,51 +2,38 @@
 
 <!DOCTYPE overlay SYSTEM "chrome://delitem/locale/overlay.dtd">
 
-<overlay
-    id="delitem"
-    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="delitem" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-    <script
-        type="application/x-javascript"
-        src="chrome://delitem/content/scripts/delitem.js"/>
+    <script type="application/x-javascript" src="chrome://delitem/content/scripts/delitem.js" />
 
 
     <menupopup id="zotero-collectionmenu">
-        <menuseparator id="id-delcoll-separator"/>
-        <menuitem
-            id="zotero-collectionmenu-delitem"
-            label="&zotero.delitem.delitems.label;"
-            oncommand="Zotero.DelItem.DelColl()"/>
-        <menuitem
-            id="zotero-collectionmenu-exp-att"
-            label="&zotero.delitem.exp.coll.atts.label;"
-            oncommand="Zotero.DelItem.ExpColl()"/>
+        <menuseparator id="id-delcoll-separator" />
+        <menuitem id="zotero-collectionmenu-delitem" label="&zotero.delitem.delitems.label;" oncommand="Zotero.DelItem.DelColl()" />
+        <menuitem id="zotero-collectionmenu-exp-att" label="&zotero.delitem.exp.coll.atts.label;" oncommand="Zotero.DelItem.ExpColl()" />
     </menupopup>
 
     <menupopup id="zotero-itemmenu">
-        <menuseparator id="id-delitem-separator"/>
+        <menuseparator id="id-delitem-separator" />
         <!-- 删除条目和附件 -->
-		<menu id="zotero-itemmenu-delitem-namehandler" 
-            label="&zotero.delitem.namehandler.label;">
+        <menu id="zotero-itemmenu-delitem-namehandler" label="&zotero.delitem.namehandler.label;">
             <menupopup id="delitem">
-                <menuitem id="zotero-itemmenu-delitem" label="&zotero.delitem.delitem.label;" oncommand="Zotero.DelItem.DelItem()"/> <!-- 删除条目和附件 -->
-                <menuitem id="zotero-itemmenu-delatt"  label="&zotero.delitem.delatt.label;" oncommand="Zotero.DelItem.DelAtt()"/> <!-- 仅删除附件 -->
-                <menuitem id="zotero-itemmenu-delsnap" label="&zotero.delitem.delsnap.label;" oncommand="Zotero.DelItem.DelSnap()"/> <!-- 仅删除快照 -->
-                <menuitem id="zotero-itemmenu-delnote" label="&zotero.delitem.delnote.label;" oncommand="Zotero.DelItem.DelNote()"/> <!-- 仅删除笔记 -->
-                <menuitem id="zotero-itemmenu-delextra" label="&zotero.delitem.delextra.label;" oncommand="Zotero.DelItem.DelExtra()"/> <!-- 仅删除其它 -->
-                <menuitem id="zotero-itemmenu-delabstract" label="&zotero.delitem.delabstract.label;" oncommand="Zotero.DelItem.DelAbstract()"/> <!-- 仅删除摘要 -->
-            
+                <menuitem id="zotero-itemmenu-delitem" label="&zotero.delitem.delitem.label;" oncommand="Zotero.DelItem.DelItem()" /> <!-- 删除条目和附件 -->
+                <menuitem id="zotero-itemmenu-delatt" label="&zotero.delitem.delatt.label;" oncommand="Zotero.DelItem.DelAtt()" /> <!-- 仅删除附件 -->
+                <menuitem id="zotero-itemmenu-delsnap" label="&zotero.delitem.delsnap.label;" oncommand="Zotero.DelItem.DelSnap()" /> <!-- 仅删除快照 -->
+                <menuitem id="zotero-itemmenu-delnote" label="&zotero.delitem.delnote.label;" oncommand="Zotero.DelItem.DelNote()" /> <!-- 仅删除笔记 -->
+                <menuitem id="zotero-itemmenu-delextra" label="&zotero.delitem.delextra.label;" oncommand="Zotero.DelItem.DelExtra()" /> <!-- 仅删除其它 -->
+                <menuitem id="zotero-itemmenu-delabstract" label="&zotero.delitem.delabstract.label;" oncommand="Zotero.DelItem.DelAbstract()" /> <!-- 仅删除摘要 -->
+
             </menupopup>
         </menu>
 
-       <!-- 导出附件 -->
-            <menuitem id="zotero-itemmenu-exp-att" label="&zotero.itemmenu.exp.att.label;" 
-                tooltiptext="&zotero.exp.att.tip;"
-                oncommand="Zotero.DelItem.ExpAtts()"/> <!-- 导出附件 -->
-       
+        <!-- 导出附件 -->
+        <menuitem id="zotero-itemmenu-exp-att" label="&zotero.itemmenu.exp.att.label;" tooltiptext="&zotero.exp.att.tip;" oncommand="Zotero.DelItem.ExpAtts()" /> <!-- 导出附件 -->
+
         <!-- 设置语言 -->
-           <menuitem id="zotero-chanlan-forsel" label="&zotero.chanlan-forsel.label;" 
-                tooltiptext="&zotero.chanlan.Set.lan.to.en;"
-                oncommand="Zotero.DelItem.chanLanForSel()"/> <!-- 所选条目设为en -->
+        <menuitem id="zotero-chanlan-forsel" label="&zotero.chanlan-forsel.label;" tooltiptext="&zotero.chanlan.Set.lan.to.en;" oncommand="Zotero.DelItem.chanLanForSel()" /> <!-- 所选条目设为en -->
+        <!-- 更新缩写 -->
+        <menuitem id="zotero-itemmenu-update-abb" label="&zotero.update.item.abb.label;" tooltiptext="&zotero.update.item.abb.tip;" oncommand="Zotero.DelItem.upAbb()" /> <!--所选条目更新缩写 -->
     </menupopup>
 </overlay>

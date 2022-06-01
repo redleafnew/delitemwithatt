@@ -15,6 +15,9 @@
 <!ENTITY zotero.exp.att.tip "Export Attachment(s)">
 <!-- 设置语言 -->
 <!ENTITY zotero.chanlan-forempty.label "If the Language of Selected Item(s) Is Empty">
-<!ENTITY zotero.chanlan-forsel.label "Set Language Field as en">
-<!ENTITY zotero.chanlan.namehandler.label "Set Language as en">
-<!ENTITY zotero.chanlan.Set.lan.to.en "Set Language Field of Selected Item(s) as en">
+<!ENTITY zotero.chanlan-forsel.label "Set Language Field as en-US">
+<!ENTITY zotero.chanlan.namehandler.label "Set Language as en-US">
+<!ENTITY zotero.chanlan.Set.lan.to.en "Set Language Field of Selected Item(s) as en-US">
+<!-- 更新缩写 -->
+<!ENTITY zotero.update.item.abb.label "Update Abbreviation">
+<!ENTITY zotero.update.item.abb.tip "Update Journal Abbreviation">
