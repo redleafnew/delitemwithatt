@@ -6,12 +6,12 @@
 
     <script type="application/x-javascript" src="chrome://delitem/content/scripts/delitem.js" />
     <keyset>
-        <key id="key-delitem-del-item" modifiers="alt" key="I" oncommand="Zotero.DelItem.DelItem()"/> <!-- 删除条目和附件 快捷键 Alt + I-->
-        <key id="key-delitem-del-att" modifiers="alt" key="A" oncommand="Zotero.DelItem.DelAtt()"/> <!--仅删除附件快捷键 Alt + A-->
-        <key id="key-delitem-del-snap" modifiers="alt" key="S" oncommand="Zotero.DelItem.DelSnap()"/> <!--仅删除快照快捷键 Alt + S-->
-        <key id="key-delitem-del-note" modifiers="alt" key="N" oncommand="Zotero.DelItem.DelNote()"/> <!--仅删除笔记快捷键 Alt + N-->
-        <key id="key-delitem-del-extra" modifiers="alt" key="E" oncommand="Zotero.DelItem.DelExtra()"/> <!--仅删除摘要快捷键 Alt + E-->
-        <key id="key-delitem-del-abstract" modifiers="alt" key="Z" oncommand="Zotero.DelItem.DelAbstract()"/> <!--仅删除摘要快捷键 Alt + Z-->
+        <key id="key-delitem-del-item" modifiers="accel, alt" key="I" oncommand="Zotero.DelItem.DelItem()"/> <!-- 删除条目和附件 快捷键 Alt + I-->
+        <key id="key-delitem-del-att" modifiers="accel, alt" key="A" oncommand="Zotero.DelItem.DelAtt()"/> <!--仅删除附件快捷键 Alt + A-->
+        <key id="key-delitem-del-snap" modifiers="accel, alt" key="S" oncommand="Zotero.DelItem.DelSnap()"/> <!--仅删除快照快捷键 Alt + S-->
+        <key id="key-delitem-del-note" modifiers="accel, alt" key="N" oncommand="Zotero.DelItem.DelNote()"/> <!--仅删除笔记快捷键 Alt + N-->
+        <key id="key-delitem-del-extra" modifiers="accel, alt" key="E" oncommand="Zotero.DelItem.DelExtra()"/> <!--仅删其它要快捷键 Alt + E-->
+        <key id="key-delitem-del-abstract" modifiers="accel, alt" key="Z" oncommand="Zotero.DelItem.DelAbstract()"/> <!--仅删除摘要快捷键 Alt + Z-->
     </keyset>   
 
     <menupopup id="zotero-collectionmenu">
