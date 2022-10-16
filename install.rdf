@@ -7,7 +7,7 @@
         RDF:about="urn:mozilla:install-manifest"
         em:id="delitemwithatt@redleaf.me"
         em:name="Del Item With Att"
-        em:version="0.0.17"
+        em:version="0.0.18"
         em:type="2"
         em:creator="Minyi Han"
         em:description="Delete Item(s) With Attachment(s)"

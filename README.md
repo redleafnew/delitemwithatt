@@ -9,7 +9,7 @@
 
 3. 将附件导出。
 
-4. 更新期刊缩写。
+&ensp;&ensp;&ensp;~~4. 更新期刊缩写。~~
 
 如果需要在搜索不到期刊名称时用全称代替，需要修改高级配置（在`Zotero`中依次点击`Edit`-`Preference`-`Advanced`-`Config Editor`），英文期刊：`extensions.delitemwithatt.en-abbr` 选项为`true`，中文期刊：`extensions.delitemwithatt.ch-abbr`选项为`true`。英文期刊判断方式为`Language`字段为`en-US`，中文为`zh-CN`。
 
@@ -23,7 +23,7 @@
 
 3. Export attachment(s).
 
-4. Update Journal Abbreviation.
+&ensp;&ensp;&ensp;&ensp;~~4. Update Journal Abbreviation.~~
 
 # License
     The source code is released under GNU General Public License, version 3.0
