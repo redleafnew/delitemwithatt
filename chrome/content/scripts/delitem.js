@@ -355,11 +355,13 @@ Zotero.DelItem = {
     chanLanForSel: async function () {
         var zoteroPane = Zotero.getActiveZoteroPane();
         var items = zoteroPane.getSelectedItems();
-
+        var pattern = new RegExp("[\u4E00-\u9FA5]+");
         for (item of items) {
+            var title = item.getField("title");
             var la = item.getField("language");
             //if (la=="") { //如果为空则替换
-            item.setField("language", "en-US");
+            var lan = pattern.test(title)? 'zh-CN' : 'en-US';
+            item.setField("language", lan);
             await item.saveTx();
             //}
         }
