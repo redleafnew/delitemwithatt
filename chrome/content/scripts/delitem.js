@@ -19,8 +19,9 @@ Zotero.DelItem = {
         var truthBeTold = window.confirm(Zotero.DelItem.diwaGetString("delete.collection.and.attachment"))
         if (truthBeTold) {
             Zotero.DelItem.DelItems(items);
-            collection.deleted = true; //删除条目
-            await collection.saveTx();
+            // collection.deleted = true; //删除条目
+            // await collection.saveTx();
+            await collection.eraseTx()
         }
     },
 
