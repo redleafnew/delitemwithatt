@@ -1,6 +1,6 @@
 {
   "name": "delitemwithatt",
-  "version": "0.0.20",
+  "version": "0.1.00",
   "description": "Delete Item(s) With Attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
