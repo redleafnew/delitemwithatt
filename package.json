@@ -1,0 +1,51 @@
+{
+  "name": "delitemwithatt",
+  "version": "0.0.20",
+  "description": "Delete Item(s) With Attachment(s)",
+  "config": {
+    "addonName": "Del Item With Attachment",
+    "addonID": "delitemwithatt@redleaf.me",
+    "addonRef": "delitemwithatt",
+    "releasepage": "https://github.com/redleafnew/delitemwithatt/releases/latest/download/delitemwithatt.xpi",
+    "updaterdf": "https://raw.githubusercontent.com/redleafnew/delitemwithatt/bootstrap/update.json"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "build-dev": "cross-env NODE_ENV=development node scripts/build.js",
+    "build-prod": "cross-env NODE_ENV=production node scripts/build.js",
+    "build": "npm run build-prod",
+    "start-z6": "node scripts/start.js --z 6",
+    "start-z7": "node scripts/start.js --z 7",
+    "start": "node scripts/start.js",
+    "stop": "node scripts/stop.js",
+    "restart-dev": "npm run build-dev && npm run stop && npm run start",
+    "restart-prod": "npm run build-prod && npm run stop && npm run start",
+    "restart": "npm run restart-dev",
+    "release": "release-it",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/windingwind/zotero-addon-template.git"
+  },
+  "author": "Minyi Han",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/windingwind/zotero-addon-template/issues"
+  },
+  "homepage": "https://github.com/redleafnew/delitemwithatt",
+  "dependencies": {
+    "trash": "^8.1.0",
+    "zotero-plugin-toolkit": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.17",
+    "compressing": "^1.6.3",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.16.10",
+    "minimist": "^1.2.7",
+    "release-it": "^15.6.0",
+    "replace-in-file": "^6.3.5",
+    "zotero-types": "^1.0.0"
+  }
+}
