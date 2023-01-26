@@ -59,7 +59,7 @@ async function waitForZotero() {
   await Zotero.initializationPromise;
 }
 
-function install(data, reason) {}
+function install(data, reason) { }
 
 async function startup({ id, version, resourceURI, rootURI }, reason) {
   await waitForZotero();
@@ -102,7 +102,7 @@ function shutdown({ id, version, resourceURI, rootURI }, reason) {
       Components.interfaces.nsISupports
     ).wrappedJSObject;
   }
-  Zotero.AddonTemplate.hooks.onShutdown();
+  Zotero.delitemwithatt.hooks.onShutdown();
 
   Cc["@mozilla.org/intl/stringbundle;1"]
     .getService(Components.interfaces.nsIStringBundleService)
@@ -116,4 +116,4 @@ function shutdown({ id, version, resourceURI, rootURI }, reason) {
   }
 }
 
-function uninstall(data, reason) {}
+function uninstall(data, reason) { }
