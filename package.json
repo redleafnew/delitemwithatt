@@ -1,13 +1,13 @@
 {
   "name": "delitemwithatt",
-  "version": "0.1.00",
+  "version": "0.1.01",
   "description": "Delete Item(s) With Attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
     "addonID": "delitemwithatt@redleaf.me",
     "addonRef": "delitemwithatt",
     "releasepage": "https://github.com/redleafnew/delitemwithatt/releases/latest/download/delitemwithatt.xpi",
-    "updaterdf": "https://raw.githubusercontent.com/redleafnew/delitemwithatt/bootstrap/update.json"
+    "updaterdf": "https://raw.githubusercontent.com/redleafnew/delitemwithatt/main/update.json"
   },
   "main": "src/index.ts",
   "scripts": {
