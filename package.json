@@ -1,7 +1,7 @@
 {
   "name": "delitemwithatt",
   "version": "0.1.01",
-  "description": "Delete Item(s) With Attachment(s)",
+  "description": "Delete item(s) with attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
     "addonID": "delitemwithatt@redleaf.me",
