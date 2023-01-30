@@ -1,6 +1,6 @@
 {
   "name": "delitemwithatt",
-  "version": "0.1.02",
+  "version": "0.1.03",
   "description": "Delete item(s) with attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
@@ -36,7 +36,7 @@
   "homepage": "https://github.com/redleafnew/delitemwithatt",
   "dependencies": {
     "trash": "^8.1.0",
-    "zotero-plugin-toolkit": "^1.0.6"
+    "zotero-plugin-toolkit": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.17",
