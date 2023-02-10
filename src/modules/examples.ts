@@ -67,6 +67,16 @@ export class BasicExampleFactory {
       .show();
   }
 
+  static softLanFail() {
+    new ztoolkit.ProgressWindow(config.addonName)
+      .createLine({
+        text: getString("softLanFail"),
+        type: "fail",
+        progress: 100,
+      })
+      .show();
+  }
+
   // 条目附件删除完成提示
   @example
   static delItemAttSucess() {
@@ -162,6 +172,7 @@ export class KeyExampleFactory {
       key: "A",
       modifiers: "alt",
       callback: (keyOptions) => {
+
         HelperExampleFactory.delAtt();
       },
     });
@@ -206,6 +217,15 @@ export class KeyExampleFactory {
       },
     });
 
+    //删除摘要快捷键Alt+Z
+    ztoolkit.Shortcut.register("event", {
+      id: `${config.addonRef}-key-del-abs`,
+      key: "U",
+      modifiers: "alt",
+      callback: (keyOptions) => {
+        // HelperExampleFactory.OSnow();
+      },
+    });
   }
 
 }
@@ -383,8 +403,6 @@ export class UIExampleFactory {
       ) as XUL.MenuItem
     );
   }
-
-
 }
 
 export class HelperExampleFactory {
@@ -555,11 +573,11 @@ export class HelperExampleFactory {
   static async delColItemAtt() {
 
     var collection = ZoteroPane.getSelectedCollection();
-    var items = collection.getChildItems();
+    var items = collection!.getChildItems();
     var truthBeTold = window.confirm(getString("delete.collection.and.attachment"))
     if (truthBeTold) {
       HelperExampleFactory.delAttDo(items);//删除条目
-      await collection.eraseTx()
+      await collection!.eraseTx()
     }
     BasicExampleFactory.delColItemAttSucess();
   }
@@ -567,7 +585,7 @@ export class HelperExampleFactory {
   //导出分类附件
   static async colExpAtt() {
     var collection = ZoteroPane.getSelectedCollection();
-    var items = collection.getChildItems();
+    var items = collection!.getChildItems();
     await HelperExampleFactory.expAttDo(items)
     // BasicExampleFactory.exortSucess(); // 导出成功提示
 
@@ -576,6 +594,7 @@ export class HelperExampleFactory {
   // 删除附件
   static async delAtt() {
     var zoteroPane = Zotero.getActiveZoteroPane();
+
     var items = zoteroPane.getSelectedItems();
     var daoInfo = items.length > 1 ? 'delete.attachment.only.mul' : 'delete.attachment.only.sig';
     var truthBeTold = ztoolkit.getGlobal("confirm")(getString(daoInfo));
@@ -836,12 +855,28 @@ export class HelperExampleFactory {
     var pattern = new RegExp("[\u4E00-\u9FA5]+");
     for (let item of items) {
       var title = String(item.getField("title"));
-      var lan = pattern.test(title) ? 'zh-CN' : 'en-US';
-      if (item && !item.isNote() && item.isRegularItem()) { //正常条目，非笔记设置语言
-        item.setField("language", lan);
-        await item.saveTx();
+      if (Zotero.ItemTypes.getName(item.itemTypeID) == 'computerProgram' // 文献类型为软件时返回
+      ) {
+        continue;
       }
+      var lan = pattern.test(title) ? 'zh-CN' : 'en-US';
+      try {
+        if (item && !item.isNote() && item.isRegularItem() &&
+          Zotero.ItemTypes.getName(item.itemTypeID) != 'computerProgram') { //正常条目，非笔记设置语言
+          item.setField("language", lan);
+          await item.saveTx();
+        }
+
+      } catch (error) {
+        Zotero.debug(`语言设置失败，可能条目类型${Zotero.ItemTypes.getName(item.itemTypeID)}不能设置语言。`)
+      }
+
     }
-    BasicExampleFactory.lanSetSucess(); // 语言设置成功提示;
+    if (items.length == 1 && //如果仅有一个条目，且是软件，显示失败
+      Zotero.ItemTypes.getName(items[0].itemTypeID) == 'computerProgram') {
+      BasicExampleFactory.softLanFail();
+    } else {
+      BasicExampleFactory.lanSetSucess(); // 语言设置成功提示;
+    }
   }
 }
