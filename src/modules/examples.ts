@@ -872,8 +872,8 @@ export class HelperExampleFactory {
       }
 
     }
-    if (items.length == 1 && //如果仅有一个条目，且是软件，显示失败
-      Zotero.ItemTypes.getName(items[0].itemTypeID) == 'computerProgram') {
+    if (items.every((item) => // 如果都是软件提示错误
+      Zotero.ItemTypes.getName(item.itemTypeID) == 'computerProgram')) {
       BasicExampleFactory.softLanFail();
     } else {
       BasicExampleFactory.lanSetSucess(); // 语言设置成功提示;
