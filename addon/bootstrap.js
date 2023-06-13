@@ -94,6 +94,9 @@ async function startup({ id, version, resourceURI, rootURI }, reason) {
 }
 
 function shutdown({ id, version, resourceURI, rootURI }, reason) {
+  if (reason == ADDON_DISABLE) {
+    Services.obs.notifyObservers(null, "startupcache-invalidate", null);
+  }
   if (reason === APP_SHUTDOWN) {
     return;
   }

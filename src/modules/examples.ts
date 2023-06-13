@@ -207,7 +207,7 @@ export class KeyExampleFactory {
       },
     });
 
-    //删除摘要快捷键Alt+Z
+    // 删除摘要快捷键Alt+Z
     ztoolkit.Shortcut.register("event", {
       id: `${config.addonRef}-key-del-abs`,
       key: "Z",

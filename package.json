@@ -17,7 +17,10 @@
     "start-z6": "node scripts/start.js --z 6",
     "start-z7": "node scripts/start.js --z 7",
     "start": "node scripts/start.js",
+    "start-watch": "concurrently -c auto npm:start npm:watch",
     "stop": "node scripts/stop.js",
+    "reload": "npm run build-dev && node scripts/reload.mjs",
+    "watch": "chokidar \"src/**\" \"addon/**\" -c \"npm run reload\"",
     "restart-dev": "npm run build-dev && npm run stop && npm run start",
     "restart-prod": "npm run build-prod && npm run stop && npm run start",
     "restart": "npm run restart-dev",
@@ -40,6 +43,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.17",
+    "chokidar-cli": "^3.0.0",
     "compressing": "^1.6.3",
     "cross-env": "^7.0.3",
     "esbuild": "^0.17.4",
