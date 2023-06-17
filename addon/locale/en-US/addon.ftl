@@ -35,8 +35,11 @@ delete-snapshot-sig                 =	Are you sure you want to delete the snapsh
 delete-snapshot-mul                 =	Are you sure you want to delete the snapshots of the items?
 delete-note-sig                     =	Are you sure you want to delete the note of the item?
 delete-note-mul                     =	Are you sure you want to delete the notes of the items?
-delete-extra-sig                    =	Are you sure you want to empty the extra of the item?
-delete-extra-mul                    =	Are you sure you want to empty the extras of the items?
+delete-extra =
+ {$count ->
+   [one] Are you sure you want to empty the extra of the item?
+  *[other] Are you sure you want to empty the extras of { $count } items?
+  }
 delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
 delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
 

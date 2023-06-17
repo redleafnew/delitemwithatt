@@ -728,8 +728,10 @@ export class HelperExampleFactory {
   static async delExtra() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dnInfo = items.length > 1 ? 'delete-extra-mul' : 'delete-extra-sig';
-    var truthBeTold = window.confirm(getString(dnInfo))
+    // var dnInfo = items.length > 1 ? 'delete-extra-mul' : 'delete-extra-sig';
+    // var truthBeTold = window.confirm(getString(dnInfo));
+    var truthBeTold = window.confirm(getString('delete-extra', { args: { count: items.length } }));
+
     if (truthBeTold) {
       for (let item of items) {
         if (item.isRegularItem() && !item.isCollection()) {
