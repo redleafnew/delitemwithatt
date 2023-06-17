@@ -519,7 +519,7 @@ export class HelperExampleFactory {
   static async delItemAtt() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var iaInfo = items.length > 1 ? 'delete.item.and.attachment.mul' : 'delete.item.and.attachment.sig';
+    var iaInfo = items.length > 1 ? 'delete-item-and-attachment-mul' : 'delete-item-and-attachment-sig';
     var truthBeTold = ztoolkit.getGlobal("confirm")(getString(iaInfo))
     if (truthBeTold) {
       for (let item of items) {
@@ -596,7 +596,7 @@ export class HelperExampleFactory {
     var zoteroPane = Zotero.getActiveZoteroPane();
 
     var items = zoteroPane.getSelectedItems();
-    var daoInfo = items.length > 1 ? 'delete.attachment.only.mul' : 'delete.attachment.only.sig';
+    var daoInfo = items.length > 1 ? 'delete-attachment-only-mul' : 'delete-attachment-only-sig';
     var truthBeTold = ztoolkit.getGlobal("confirm")(getString(daoInfo));
     if (truthBeTold) {
       HelperExampleFactory.delAttDo(items); // 调用删除条目及附件的函数
@@ -655,7 +655,7 @@ export class HelperExampleFactory {
   static async delSnap() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dsInfo = items.length > 1 ? 'delete.snapshot.mul' : 'delete.snapshot.sig'
+    var dsInfo = items.length > 1 ? 'delete-snapshot-mul' : 'delete-snapshot-sig'
     var truthBeTold = ztoolkit.getGlobal("confirm")(getString(dsInfo))
     if (truthBeTold) {
       for (let item of items) {
@@ -697,7 +697,7 @@ export class HelperExampleFactory {
   static async delNote() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dnInfo = items.length > 1 ? 'delete.note.mul' : 'delete.note.sig';
+    var dnInfo = items.length > 1 ? 'delete-note-mul' : 'delete-note-sig';
     var truthBeTold = window.confirm(getString(dnInfo))
     if (truthBeTold) {
       for (let item of items) {
@@ -727,7 +727,7 @@ export class HelperExampleFactory {
   static async delExtra() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dnInfo = items.length > 1 ? 'delete.extra.mul' : 'delete.extra.sig';
+    var dnInfo = items.length > 1 ? 'delete-extra-mul' : 'delete-extra-sig';
     var truthBeTold = window.confirm(getString(dnInfo))
     if (truthBeTold) {
       for (let item of items) {
@@ -751,7 +751,7 @@ export class HelperExampleFactory {
   static async delAbstract() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dnInfo = items.length > 1 ? 'delete.abstract.mul' : 'delete.abstract.sig';
+    var dnInfo = items.length > 1 ? 'delete-abstract-mul' : 'delete-abstract-sig';
     var truthBeTold = window.confirm(getString(dnInfo))
     if (truthBeTold) {
       for (let item of items) {
