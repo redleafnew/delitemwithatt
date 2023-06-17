@@ -349,6 +349,7 @@ export class UIExampleFactory {
   // 删除附件右键菜单
   @example
   static registerRightClickMenuPopup() {
+    // 菜单组无法使用图标
     // const delIcon = `chrome://${config.addonRef}/content/icons/del.png`;
     ztoolkit.Menu.register(
       "item",
