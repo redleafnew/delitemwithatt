@@ -112,6 +112,21 @@ async function main() {
 
   console.log("[Build] Run esbuild OK");
 
+  const replaceFrom = [
+    /__author__/g,
+    /__description__/g,
+    /__homepage__/g,
+    /__buildVersion__/g,
+    /__buildTime__/g,
+  ];
+
+  const replaceTo = [author, description, homepage, version, buildTime];
+
+  replaceFrom.push(
+    ...Object.keys(config).map((k) => new RegExp(`__${k}__`, "g"))
+  );
+  replaceTo.push(...Object.values(config));
+
   const optionsAddon = {
     files: [
       path.join(buildDir, "**/*.rdf"),
@@ -119,37 +134,15 @@ async function main() {
       path.join(buildDir, "**/*.xul"),
       path.join(buildDir, "**/*.xhtml"),
       path.join(buildDir, "**/*.json"),
-      path.join(buildDir, "addon/defaults", "**/*.js"),
+      path.join(buildDir, "addon/prefs.js"),
       path.join(buildDir, "addon/chrome.manifest"),
       path.join(buildDir, "addon/manifest.json"),
       path.join(buildDir, "addon/bootstrap.js"),
       "update.json",
       "update.rdf",
     ],
-    from: [
-      /__author__/g,
-      /__description__/g,
-      /__homepage__/g,
-      /__releasepage__/g,
-      /__updaterdf__/g,
-      /__addonName__/g,
-      /__addonID__/g,
-      /__addonRef__/g,
-      /__buildVersion__/g,
-      /__buildTime__/g,
-    ],
-    to: [
-      author,
-      description,
-      homepage,
-      config.releasepage,
-      config.updaterdf,
-      config.addonName,
-      config.addonID,
-      config.addonRef,
-      version,
-      buildTime,
-    ],
+    from: replaceFrom,
+    to: replaceTo,
     countMatches: true,
   };
 
@@ -179,4 +172,7 @@ async function main() {
   );
 }
 
-main();
+main().catch((err) => {
+  console.log(err);
+  process.exit(1);
+});

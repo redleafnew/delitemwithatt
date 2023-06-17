@@ -1,6 +1,6 @@
 {
   "name": "delitemwithatt",
-  "version": "0.1.06",
+  "version": "0.2.0",
   "description": "Delete item(s) with attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
@@ -11,19 +11,18 @@
   },
   "main": "src/index.ts",
   "scripts": {
-    "build-dev": "cross-env NODE_ENV=development node scripts/build.js",
-    "build-prod": "cross-env NODE_ENV=production node scripts/build.js",
-    "build": "npm run build-prod",
-    "start-z6": "node scripts/start.js --z 6",
-    "start-z7": "node scripts/start.js --z 7",
-    "start": "node scripts/start.js",
+    "build-dev": "cross-env NODE_ENV=development node scripts/build.mjs",
+    "build-prod": "cross-env NODE_ENV=production node scripts/build.mjs",
+    "build": "concurrently -c auto npm:build-prod npm:tsc",
+    "tsc": "tsc --noEmit",
+    "start": "node scripts/start.mjs",
     "start-watch": "concurrently -c auto npm:start npm:watch",
-    "stop": "node scripts/stop.js",
-    "reload": "npm run build-dev && node scripts/reload.mjs",
-    "watch": "chokidar \"src/**\" \"addon/**\" -c \"npm run reload\"",
+    "stop": "node scripts/stop.mjs",
     "restart-dev": "npm run build-dev && npm run stop && npm run start",
     "restart-prod": "npm run build-prod && npm run stop && npm run start",
     "restart": "npm run restart-dev",
+    "reload": "npm run build-dev && node scripts/reload.mjs",
+    "watch": "chokidar \"src/**\" \"addon/**\" -c \"npm run reload\"",
     "release": "release-it",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,18 +37,19 @@
   },
   "homepage": "https://github.com/redleafnew/delitemwithatt",
   "dependencies": {
+    "concurrently": "8.01",
     "trash": "^8.1.0",
-    "zotero-plugin-toolkit": "^2.0.3"
+    "zotero-plugin-toolkit": "^2.1.4"
   },
   "devDependencies": {
-    "@types/node": "^18.11.17",
+    "@types/node": "^20.2.5",
     "chokidar-cli": "^3.0.0",
-    "compressing": "^1.6.3",
+    "compressing": "^1.9.0",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.17.4",
-    "minimist": "^1.2.7",
-    "release-it": "^15.6.0",
+    "esbuild": "^0.17.18",
+    "minimist": "^1.2.8",
+    "release-it": "^15.10.1",
     "replace-in-file": "^6.3.5",
-    "zotero-types": "^1.0.0"
+    "zotero-types": "^1.0.13"
   }
 }

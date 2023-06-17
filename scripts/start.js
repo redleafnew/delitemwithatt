@@ -16,9 +16,10 @@ if (args.help || args.h) {
 
 const zoteroPath = exec[args.zotero || args.z || Object.keys(exec)[0]];
 const profile = args.profile || args.p;
-// const profile = "E:/ex";
-const startZotero = `${zoteroPath} --debugger --purgecaches ${profile ? `-p ${profile}` : ""
-  }`;
+
+const startZotero = `${zoteroPath} --debugger --purgecaches ${
+  profile ? `-p ${profile}` : ""
+}`;
 
 execSync(startZotero);
 exit(0);

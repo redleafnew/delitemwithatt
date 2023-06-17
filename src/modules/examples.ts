@@ -1,5 +1,5 @@
 import { config } from "../../package.json";
-import { getString } from "./locale";
+import { getString } from "../utils/locale";
 
 function example(
   target: any,
@@ -26,7 +26,7 @@ export class BasicExampleFactory {
   static delColItemAttSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del.col.item.att.sucess"),
+        text: getString("del-col-item-att-sucess"),
         type: "success",
         progress: 100,
       })
@@ -37,7 +37,7 @@ export class BasicExampleFactory {
   static exortSucess(nSucess: number) {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: nSucess + ' ' + getString("exp.sucess"),
+        text: nSucess + ' ' + getString("exp-sucess"),
         type: "success",
         progress: 100,
       })
@@ -48,7 +48,7 @@ export class BasicExampleFactory {
   static exortFail(nFail: number) {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: nFail + ' ' + getString("exp.fail"),
+        text: nFail + ' ' + getString("exp-fail"),
         type: "fail",
         progress: 100,
       })
@@ -60,7 +60,7 @@ export class BasicExampleFactory {
   static lanSetSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("chan.lan.sucess"),
+        text: getString("chan-lan-sucess"),
         type: "success",
         progress: 100,
       })
@@ -82,7 +82,7 @@ export class BasicExampleFactory {
   static delItemAttSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del.item.att.sucess"),
+        text: getString("del-item-att-sucess"),
         type: "success",
         progress: 100,
       })
@@ -94,7 +94,7 @@ export class BasicExampleFactory {
   static delAttSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del.att.sucess"),
+        text: getString("del-att-sucess"),
         type: "success",
         progress: 100,
       })
@@ -106,7 +106,7 @@ export class BasicExampleFactory {
   static delSnapSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del.snap.sucess"),
+        text: getString("del-snap-sucess"),
         type: "success",
         progress: 100,
       })
@@ -118,7 +118,7 @@ export class BasicExampleFactory {
   static delNoteSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del.note.sucess"),
+        text: getString("del-note-sucess"),
         type: "success",
         progress: 100,
       })
@@ -130,19 +130,19 @@ export class BasicExampleFactory {
   static delExtraSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del.extra.sucess"),
+        text: getString("del-extra-sucess"),
         type: "success",
         progress: 100,
       })
       .show();
   }
 
-  // 摘要删除完成提示
+  //  摘要删除完成提示
   @example
   static delAbstractSucess() {
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del.abs.sucess"),
+        text: getString("del-abs-sucess"),
         type: "success",
         progress: 100,
       })
@@ -197,7 +197,7 @@ export class KeyExampleFactory {
       },
     });
 
-    //删除其它要快捷键Alt+X
+    // 删除其它要快捷键Alt+X
     ztoolkit.Shortcut.register("event", {
       id: `${config.addonRef}-key-del-snap`,
       key: "X",
@@ -300,7 +300,7 @@ export class UIExampleFactory {
     ztoolkit.Menu.register("collection", {
       tag: "menuitem",
       id: "zotero-collectionmenu-delitemwithatt-del-item-att",
-      label: getString("del.col.item.att"),
+      label: getString("del-col-item-att"),
       commandListener: (ev) => HelperExampleFactory.delColItemAtt(),
       icon: delColIcon,
       // oncommand: "await HelperExampleFactory.filePickerExample()",
@@ -310,7 +310,7 @@ export class UIExampleFactory {
     ztoolkit.Menu.register("collection", {
       tag: "menuitem",
       id: "zotero-collectionmenu-delitemwithatt-export-att",
-      label: getString("eport.att"),
+      label: getString("eport-att"),
       commandListener: (ev) => HelperExampleFactory.colExpAtt(),
       icon: exportIcon,
       // oncommand: "await HelperExampleFactory.filePickerExample()",
@@ -325,7 +325,7 @@ export class UIExampleFactory {
     ztoolkit.Menu.register("item", {
       tag: "menuitem",
       id: "zotero-itemmenu-delitemwithatt-export-att",
-      label: getString("eport.att"),
+      label: getString("eport-att"),
       commandListener: (ev) => HelperExampleFactory.expAtt(),
       icon: exportIcon,
       // oncommand: "await HelperExampleFactory.filePickerExample()",
@@ -340,7 +340,7 @@ export class UIExampleFactory {
     ztoolkit.Menu.register("item", {
       tag: "menuitem",
       id: "zotero-itemmenu-delitemwithatt-chan-lan",
-      label: getString("chan.lan"),
+      label: getString("chan-lan"),
       commandListener: (ev) => HelperExampleFactory.chanLan(),
       icon: chanLanIcon,
       // oncommand: "await HelperExampleFactory.filePickerExample()",
@@ -354,44 +354,44 @@ export class UIExampleFactory {
       "item",
       {
         tag: "menu",
-        label: getString("del.att"),
+        label: getString("del-att"),
 
         children: [
           { // 删除附件和条目菜单
             tag: "menuitem",
-            label: getString("delitem.label"),
+            label: getString("delitem-label"),
             id: "zotero-itemmenu-delitemwithatt-del-item-att",
             commandListener: (ev) => HelperExampleFactory.delItemAtt(),
           },
           {// 删除附件
             tag: "menuitem",
-            label: getString("delatt.label"),
+            label: getString("delatt-label"),
             id: "zotero-itemmenu-delitemwithatt-del-att",
             commandListener: (ev) => HelperExampleFactory.delAtt(),
           },
           {// 删除快照
             tag: "menuitem",
-            label: getString("delsnap.label"),
+            label: getString("delsnap-label"),
             id: "zotero-itemmenu-delitemwithatt-del-snap",
             commandListener: (ev) => HelperExampleFactory.delSnap(),
           },
           {// 删除笔记
             tag: "menuitem",
-            label: getString("delnote.label"),
+            label: getString("delnote-label"),
             id: "zotero-itemmenu-delitemwithatt-del-note",
             commandListener: (ev) => HelperExampleFactory.delNote(),
           },
 
           {// 删除摘要
             tag: "menuitem",
-            label: getString("delabstract.label"),
+            label: getString("delabstract-label"),
             id: "zotero-itemmenu-delitemwithatt-del-abs",
             commandListener: (ev) => HelperExampleFactory.delAbstract(),
           },
 
           {// 删除其它
             tag: "menuitem",
-            label: getString("delextra.label"),
+            label: getString("delextra-label"),
             commandListener: (ev) => HelperExampleFactory.delExtra(),
             id: "zotero-itemmenu-delitemwithatt-del-extra",
           },
@@ -534,7 +534,7 @@ export class HelperExampleFactory {
                 try {
                   await OS.File.remove(file); // 尝试删除文件
                 } catch (error) { // 弹出错误
-                  alert(getString("file.is.open"));
+                  alert(getString("file-is-open"));
                   return; // 弹出错误后终止执行
                 }
               }
@@ -553,7 +553,7 @@ export class HelperExampleFactory {
               try {
                 await OS.File.remove(file); // 尝试删除文件
               } catch (error) { // 弹出错误
-                alert(getString("file.is.open"));
+                alert(getString("file-is-open"));
                 return; // 弹出错误后终止执行
               }
             }
@@ -574,7 +574,7 @@ export class HelperExampleFactory {
 
     var collection = ZoteroPane.getSelectedCollection();
     var items = collection!.getChildItems();
-    var truthBeTold = window.confirm(getString("delete.collection.and.attachment"))
+    var truthBeTold = window.confirm(getString("delete-collection-and-attachment"))
     if (truthBeTold) {
       HelperExampleFactory.delAttDo(items);//删除条目
       await collection!.eraseTx()
@@ -620,7 +620,7 @@ export class HelperExampleFactory {
                 await OS.File.remove(file); // 尝试删除文件
                 //await trash.remove(file);
               } catch (error) { // 弹出错误
-                alert(getString("file.is.open"));
+                alert(getString("file-is-open"));
                 return; // 弹出错误后终止执行
               }
             }
@@ -638,7 +638,7 @@ export class HelperExampleFactory {
             try {
               await OS.File.remove(file); // 尝试删除文件
             } catch (error) { // 弹出错误
-              alert(getString("file.is.open"));
+              alert(getString("file-is-open"));
               return; // 弹出错误后终止执行
             }
           }
@@ -839,7 +839,7 @@ export class HelperExampleFactory {
   @example
   static async dirExp() {
     const path = await new ztoolkit.FilePicker(
-      getString("exort.dir"),
+      getString("exort-dir"),
       "folder"
 
     ).open();

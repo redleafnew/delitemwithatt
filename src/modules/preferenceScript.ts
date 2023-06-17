@@ -1,7 +1,7 @@
 import { config } from "../../package.json";
-import { getString } from "./locale";
+import { getString } from "../utils/locale";
 
-export function registerPrefsScripts(_window: Window) {
+export async function registerPrefsScripts(_window: Window) {
   // This function is called when the prefs window is opened
   // See addon/chrome/content/preferences.xul onpaneload
   if (!addon.data.prefs) {
@@ -10,13 +10,13 @@ export function registerPrefsScripts(_window: Window) {
       columns: [
         {
           dataKey: "title",
-          label: "prefs.table.title",
+          label: getString("prefs-table-title"),
           fixedWidth: true,
           width: 100,
         },
         {
           dataKey: "detail",
-          label: "prefs.table.detail",
+          label: getString("prefs-table-detail"),
         },
       ],
       rows: [
@@ -46,17 +46,13 @@ async function updatePrefsUI() {
   // with addon.data.prefs.window.document
   // Or bind some events to the elements
   const renderLock = ztoolkit.getGlobal("Zotero").Promise.defer();
-  const tableHelper = new ztoolkit.VirtualizedTabel(addon.data.prefs?.window!)
+  const tableHelper = new ztoolkit.VirtualizedTable(addon.data.prefs?.window!)
     .setContainerId(`${config.addonRef}-table-container`)
     .setProp({
       id: `${config.addonRef}-prefs-table`,
       // Do not use setLocale, as it modifies the Zotero.Intl.strings
       // Set locales directly to columns
-      columns: addon.data.prefs?.columns.map((column) =>
-        Object.assign(column, {
-          label: getString(column.label) || column.label,
-        })
-      ),
+      columns: addon.data.prefs?.columns,
       showHeader: true,
       multiSelect: true,
       staticColumns: true,
