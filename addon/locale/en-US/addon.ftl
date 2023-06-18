@@ -8,8 +8,6 @@ menuitem-filemenulabel = Addon Template: File Menuitem
 prefs-title = Green Frog
 prefs-table-title = Title
 prefs-table-detail = Detail
-tabpanel-lib-tab-label = Lib Tab
-tabpanel-reader-tab-label = Reader Tab
 
 chan-lan=Set Language Field Automatically
 chan-lan-sucess=Language field set automatically.
