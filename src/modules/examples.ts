@@ -79,10 +79,12 @@ export class BasicExampleFactory {
 
   // 条目附件删除完成提示
   @example
-  static delItemAttSucess() {
+  static delItemAttSucess(items: any) {
+    // var zoteroPane = Zotero.getActiveZoteroPane();
+    // var items = Zotero.getActiveZoteroPane().getSelectedItems();
     new ztoolkit.ProgressWindow(config.addonName)
       .createLine({
-        text: getString("del-item-att-sucess"),
+        text: getString("del-item-att-sucess", { args: { count: items.length } }),
         type: "success",
         progress: 100,
       })
@@ -520,8 +522,10 @@ export class HelperExampleFactory {
   static async delItemAtt() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var iaInfo = items.length > 1 ? 'delete-item-and-attachment-mul' : 'delete-item-and-attachment-sig';
-    var truthBeTold = ztoolkit.getGlobal("confirm")(getString(iaInfo))
+    // var iaInfo = items.length > 1 ? 'delete-item-and-attachment-mul' : 'delete-item-and-attachment-sig';
+    // var truthBeTold = ztoolkit.getGlobal("confirm")(getString(iaInfo))
+    var truthBeTold = ztoolkit.getGlobal("confirm")(getString("delete-item-and-attachment", { args: { count: items.length } }));
+
     if (truthBeTold) {
       for (let item of items) {
         if (item && !item.isNote()) { //2 if
@@ -565,7 +569,7 @@ export class HelperExampleFactory {
         await item.saveTx();
 
       }
-      BasicExampleFactory.delItemAttSucess(); // 附件条目删除成功提示;
+      BasicExampleFactory.delItemAttSucess(items); // 附件条目删除成功提示;
 
     }
   }
@@ -597,8 +601,10 @@ export class HelperExampleFactory {
     var zoteroPane = Zotero.getActiveZoteroPane();
 
     var items = zoteroPane.getSelectedItems();
-    var daoInfo = items.length > 1 ? 'delete-attachment-only-mul' : 'delete-attachment-only-sig';
-    var truthBeTold = ztoolkit.getGlobal("confirm")(getString(daoInfo));
+    // var daoInfo = items.length > 1 ? 'delete-attachment-only-mul' : 'delete-attachment-only-sig';
+    // var truthBeTold = ztoolkit.getGlobal("confirm")(getString(daoInfo));
+    var truthBeTold = ztoolkit.getGlobal("confirm")(getString("delete-attachment-only", { args: { count: items.length } }));
+
     if (truthBeTold) {
       HelperExampleFactory.delAttDo(items); // 调用删除条目及附件的函数
       BasicExampleFactory.delAttSucess(); // 附件删除成功提示;
@@ -656,8 +662,10 @@ export class HelperExampleFactory {
   static async delSnap() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dsInfo = items.length > 1 ? 'delete-snapshot-mul' : 'delete-snapshot-sig'
-    var truthBeTold = ztoolkit.getGlobal("confirm")(getString(dsInfo))
+    // var dsInfo = items.length > 1 ? 'delete-snapshot-mul' : 'delete-snapshot-sig'
+    // var truthBeTold = ztoolkit.getGlobal("confirm")(getString(dsInfo))
+    var truthBeTold = ztoolkit.getGlobal("confirm")(getString("delete-snapshot", { args: { count: items.length } }))
+
     if (truthBeTold) {
       for (let item of items) {
         if (item && !item.isNote()) { //2 if
@@ -698,8 +706,8 @@ export class HelperExampleFactory {
   static async delNote() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dnInfo = items.length > 1 ? 'delete-note-mul' : 'delete-note-sig';
-    var truthBeTold = window.confirm(getString(dnInfo))
+    // var dnInfo = items.length > 1 ? 'delete-note-mul' : 'delete-note-sig';
+    var truthBeTold = window.confirm(getString("delete-note", { args: { count: items.length } }))
     if (truthBeTold) {
       for (let item of items) {
         if (item && !item.isNote()) { //2 if
@@ -754,8 +762,8 @@ export class HelperExampleFactory {
   static async delAbstract() {
     var zoteroPane = Zotero.getActiveZoteroPane();
     var items = zoteroPane.getSelectedItems();
-    var dnInfo = items.length > 1 ? 'delete-abstract-mul' : 'delete-abstract-sig';
-    var truthBeTold = window.confirm(getString(dnInfo))
+    // var dnInfo = items.length > 1 ? 'delete-abstract-mul' : 'delete-abstract-sig';
+    var truthBeTold = window.confirm(getString("delete-abstract", { args: { count: items.length } }))
     if (truthBeTold) {
       for (let item of items) {
         if (item.isRegularItem() && !item.isCollection()) {

@@ -20,27 +20,49 @@ delsnap-label=仅删除快照
 delnote-label=仅删除笔记
 delextra-label=清空其它字段
 delabstract-label=清空摘要字段
-
-
-delete-item-and-attachment-sig          =   您确定将所选条目包括附件移动到回收站? 链接的附件不可恢复。
-delete-item-and-attachment-mul          =   您确定将所选条目包括附件移动到回收站? 链接的附件不可恢复。
-delete-collection-and-attachment 	    =	您确定将所选分类包括附件移动到回收站? 链接的附件不可恢复。
-delete-attachment-only-sig              =	您确定将所选条目的附件移动到回收站? 链接的附件不可恢复。
-delete-attachment-only-mul              =	您确定将所选条目的附件移动到回收站? 链接的附件不可恢复。
-delete-snapshot-sig                     =	您确定将所选条目的快照移动到回收站?
-delete-snapshot-mul                     =	您确定将所选条目的快照移动到回收站?
-delete-note-sig                         =	您确定将所选条目的笔记删除?
-delete-note-mul                         =	您确定将所选条目的笔记删除?
+delete-item-and-attachment =
+  {$count ->
+   [one] 您确定将所选条目包括附件移动到回收站? 链接的附件不可恢复。
+  *[other] 您确定将所选{$count}个条目包括附件移动到回收站? 链接的附件不可恢复。
+  }
+delete-collection-and-attachment        =	您确定将所选分类包括附件移动到回收站? 链接的附件不可恢复。
+delete-attachment-only =
+  {$count ->
+   [one] 您确定将所选条目的附件移动到回收站? 链接的附件不可恢复。
+  *[other] 您确定将所选{$count}个条目的附件移动到回收站? 链接的附件不可恢复。
+  }
+delete-snapshot =
+  {$count ->
+   [one] 您确定将所选条目的快照移动到回收站?
+  *[other] 您确定将所选{$count}个条目的快照移动到回收站?
+  }
+# delete-snapshot-sig                 =	Are you sure you want to delete the snapshot of the item?
+# delete-snapshot-mul                 =	Are you sure you want to delete the snapshots of the items?
+delete-note =
+  {$count ->
+   [one] 您确定将所选条目的笔记删除?
+  *[other] 您确定将所选{$count}个条目的笔记删除?
+  }
+# delete-note-sig                     =	Are you sure you want to delete the note of the item?
+# delete-note-mul                     =	Are you sure you want to delete the notes of the items?
 delete-extra =
  {$count ->
    [one] 您确定将所选条目的其它内容清空?
   *[other] 您确定将所选{ $count }个条目的其它内容清空?
   }
-delete-extra-sig                         =	您确定将所选条目的其它内容清空?
-delete-extra-mul                         =	您确定将所选条目的其它内容清空?
-delete-abstract-sig                      =	您确定将所选条目的摘要清空?
-delete-abstract-mul                      =	您确定将所选条目的摘要清空?
-del-item-att-sucess =条目和附件已删除。
+delete-abstract =
+ {$count ->
+   [one]您确定将所选条目的摘要清空?
+  *[other] 您确定将所选{ $count }条目的摘要清空?
+  }
+# delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
+# delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
+
+del-item-att-sucess =
+ {$count ->
+   [one] 条目和附件已删除。
+  *[other] {$count}个所选条目及其附件已删除。
+  }
 del-att-sucess = 附件已删除。
 del-abs-sucess =摘要已清空。
 del-extra-sucess =其它已清空。

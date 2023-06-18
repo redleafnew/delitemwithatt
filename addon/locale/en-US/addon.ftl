@@ -25,25 +25,49 @@ delsnap-label=Delete Snapshot(s) only
 delnote-label=Delete Note(s) only
 delextra-label=Empty Extra(s)
 delabstract-label=Empty Abstract(s)
-
-delete-item-and-attachment-sig      =   Are you sure you want to move the selected item including the attachment to the Trash? The linked attachment could not be restored.
-delete-item-and-attachment-mul      =   Are you sure you want to move the selected items including the attachments to the Trash? The linked attachments could not be restored.
-
-delete-attachment-only-sig          =	Are you sure you want to delete the attachment of the item? The linked attachment could not be restored.
-delete-attachment-only-mul          =	Are you sure you want to delete the attachments of the items? The linked attachments could not be restored.
-delete-snapshot-sig                 =	Are you sure you want to delete the snapshot of the item?
-delete-snapshot-mul                 =	Are you sure you want to delete the snapshots of the items?
-delete-note-sig                     =	Are you sure you want to delete the note of the item?
-delete-note-mul                     =	Are you sure you want to delete the notes of the items?
+delete-item-and-attachment =
+  {$count ->
+   [one] Are you sure you want to move the selected item
+   including the attachment to the Trash? The linked attachment could not be restored.
+  *[other] Are you sure you want to move the selected { $count } items including the attachments to the Trash?
+  The linked attachments could not be restored.
+  }
+delete-attachment-only =
+  {$count ->
+   [one] Are you sure you want to delete the attachment of the item? The linked attachment could not be restored.
+  *[other] Are you sure you want to delete the attachments of the {$count} selected items? The linked attachments could not be restored.
+  }
+delete-snapshot =
+  {$count ->
+   [one] Are you sure you want to delete the snapshot of the item?
+  *[other] Are you sure you want to delete the snapshots of the {$count} selected items?
+  }
+# delete-snapshot-sig                 =	Are you sure you want to delete the snapshot of the item?
+# delete-snapshot-mul                 =	Are you sure you want to delete the snapshots of the items?
+delete-note =
+  {$count ->
+   [one] Are you sure you want to delete the note of the item?
+  *[other] Are you sure you want to delete the notes of the {$count} selected items?
+  }
+# delete-note-sig                     =	Are you sure you want to delete the note of the item?
+# delete-note-mul                     =	Are you sure you want to delete the notes of the items?
 delete-extra =
  {$count ->
    [one] Are you sure you want to empty the extra of the item?
-  *[other] Are you sure you want to empty the extras of { $count } items?
+  *[other] Are you sure you want to empty the extras of the {$count} selected items?
   }
-delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
-delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
-
-del-item-att-sucess =Item(s) and attachment(s) removed.
+delete-abstract =
+ {$count ->
+   [one]Are you sure you want to empty the abstract of the item?Are you sure you want to empty the extra of the item?
+  *[other] Are you sure you want to empty the abstracts of the {$count} selected items?
+  }
+# delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
+# delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
+del-item-att-sucess =
+ {$count ->
+   [one] Item and attachment(s) removed.
+  *[other] {$count} selected items and their attachment(s) removed.
+  }
 del-att-sucess = Attachment(s) removed.
 del-abs-sucess =Abstract(s) emptied.
 del-extra-sucess =Extra(s) emptied.
