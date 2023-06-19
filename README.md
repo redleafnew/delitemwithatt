@@ -1,4 +1,11 @@
 
+# Delete item(s) with attachment(s)
+
+[![zotero target version](https://img.shields.io/badge/Zotero-7.0.*-green?style=flat-square&logo=zotero&logoColor=CC2936)](https://www.zotero.org)
+[![version](https://img.shields.io/github/package-json/v/redleafnew/delitemwithatt?style=flat-square)](https://github.com/redleafnew/delitemwithatt/releases/)
+[![download number](https://img.shields.io/github/downloads/redleafnew/delitemwithatt/latest/delitemwithatt.xpi?style=flat-square)](https://github.com/redleafnew/delitemwithatt/releases/)
+[![license](https://img.shields.io/github/license/redleafnew/delitemwithatt?style=flat-square)](#license)
+[![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
 # 插件用途
 
 1. 删除条目或分类的同时将链接的附件也一块删除。

@@ -3,8 +3,8 @@
     "__addonID__": {
       "updates": [
         {
-          "version": "__buildVersion__",
-          "update_link": "__releasepage__",
+          "version": "0.1.06",
+          "update_link": "https://github.com/redleafnew/delitemwithatt/releases/download/0.1.06/delitemwithatt.xpi",
           "applications": {
             "gecko": {
               "strict_min_version": "60.0"
