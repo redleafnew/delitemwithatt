@@ -6,6 +6,8 @@
     "addonName": "Del Item With Attachment",
     "addonID": "delitemwithatt@redleaf.me",
     "addonRef": "delitemwithatt",
+    "addonInstance": "delitemwithatt",
+    "prefsPrefix": "extensions.zotero.delitemwithatt",
     "releasepage": "https://github.com/redleafnew/delitemwithatt/releases/latest/download/delitemwithatt.xpi",
     "updaterdf": "https://raw.githubusercontent.com/redleafnew/delitemwithatt/main/update.json"
   },

@@ -1,5 +1,6 @@
 import { config } from "../../package.json";
 import { getString } from "../utils/locale";
+// import { getPref } from "../utils/prefs";
 
 function example(
   target: any,
