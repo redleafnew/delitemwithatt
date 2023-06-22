@@ -40,7 +40,7 @@ delete-snapshot =
    [one] Are you sure you want to delete the snapshot of the item?
   *[other] Are you sure you want to delete the snapshots of the {$count} selected items?
   }
-# delete-snapshot-sig                 =	Are you sure you want to delete the snapshot of the item?
+# delete-snapshot-sig                  =	Are you sure you want to delete the snapshot of the item?
 # delete-snapshot-mul                 =	Are you sure you want to delete the snapshots of the items?
 delete-note =
   {$count ->

@@ -10,7 +10,7 @@ export function registerNotifier() {
                 unregisterNotifier(notifierID);
                 return;
             }
-            addon.hooks.onNotify(event, type, ids, extraData);
+            // addon.hooks.onNotify(event, type, ids, extraData);
         },
     };
 
@@ -57,7 +57,7 @@ export function registerMutationObserver() {
                 observer.disconnect();
                 return;
             }
-            addon.hooks.onMutationObserver(record, observer);
+            // addon.hooks.onMutationObserver(record, observer);
         });
     }
 
