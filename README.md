@@ -6,6 +6,11 @@
 [![download number](https://img.shields.io/github/downloads/redleafnew/delitemwithatt/latest/delitemwithatt.xpi?style=flat-square)](https://github.com/redleafnew/delitemwithatt/releases/)
 [![license](https://img.shields.io/github/license/redleafnew/delitemwithatt?style=flat-square)](#license)
 [![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
+
+# 注意：
+
+最新版仅支持Zotero 7.0, Zotero 6.0请下载[0.1.06](https://github.com/redleafnew/delitemwithatt/releases/tag/0.1.06)。
+
 # 插件用途
 
 1. 删除条目或分类的同时将链接的附件也一块删除。
@@ -20,6 +25,10 @@
 # 感谢
 
 本插件基于@windingwind的[zotero-plugin-template](https://github.com/windingwind/zotero-plugin-template)开发，在此表示感谢。
+
+# Reminder：
+
+The latest version only supports Ztero 7.0, Zotero 6.0 users could download[0.1.06](https://github.com/redleafnew/delitemwithatt/releases/tag/0.1.06)。
 
 # Usage
 
