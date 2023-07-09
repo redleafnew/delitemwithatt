@@ -28,7 +28,7 @@
 
 # Reminder：
 
-The latest version only supports Zotero 7.0, Zotero 6.0 users could download[0.1.06](https://github.com/redleafnew/delitemwithatt/releases/tag/0.1.06)。
+The latest version only supports Zotero 7.0, Zotero 6.0 users could download [0.1.06](https://github.com/redleafnew/delitemwithatt/releases/tag/0.1.06)。
 
 # Usage
 
