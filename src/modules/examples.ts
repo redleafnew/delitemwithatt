@@ -807,9 +807,9 @@ export class HelperExampleFactory {
               try {
                 // await exportAtts(file, expDir);
 
-                var baseName = OS.Path.basename(file); //得到文件名
-                var destName = OS.Path.join(expDir, baseName);
-                OS.File.copy(file, destName); // 尝试导出文件
+                var baseName = PathUtils.filename(file); //得到文件名
+                var destName = PathUtils.join(expDir, baseName);
+                IOUtils.copy(file, destName); // 尝试导出文件
                 nSucess++;
                 //BasicExampleFactory.exortSucess(); // 导出成功提示
               } catch (error) { // 弹出错误
@@ -831,13 +831,13 @@ export class HelperExampleFactory {
               // var baseName = OS.Path.basename(file); //得到文件名
               // var destName = OS.Path.join(expDir, baseName);
               // OS.File.copy(file, destName); // 尝试导出文件
-              var baseName = OS.Path.basename(file); //得到文件名
-              var destName = OS.Path.join(expDir, baseName);
-              OS.File.copy(file, destName); // 尝试导出文件
+              var baseName = PathUtils.filename(file); //得到文件名
+              var destName = PathUtils.join(expDir, baseName);
+              IOUtils.copy(file, destName); // 尝试导出文件
               // OS.Path.join(replacement: PathUtils.join ? joinRelative ?)
               // OS.Path.basename(replacement: PathUtils.filename)
               // OS.Path.dirname(replacement: PathUtils.parent)
-
+              // await IOUtils.copy(srcPath, destPath);
               nSucess++;
               //BasicExampleFactory.exortSucess(); // 导出成功提示
 
