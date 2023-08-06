@@ -538,7 +538,7 @@ export class HelperExampleFactory {
               var file = await attachment.getFilePathAsync();
               if (file && ifLinks) { //如果文件存在(文件可能已经被删除)且为链接模式删除文件
                 try {
-                  await OS.File.remove(file); // 尝试删除文件
+                  await Zotero.File.removeIfExists(file); // 尝试删除文件
                 } catch (error) { // 弹出错误
                   alert(getString("file-is-open"));
                   return; // 弹出错误后终止执行
@@ -557,7 +557,7 @@ export class HelperExampleFactory {
             var file = await item.getFilePathAsync();
             if (file && ifLinksAtt) { // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
               try {
-                await OS.File.remove(file); // 尝试删除文件
+                await Zotero.File.removeIfExists(file); // 尝试删除文件
               } catch (error) { // 弹出错误
                 alert(getString("file-is-open"));
                 return; // 弹出错误后终止执行
@@ -597,7 +597,7 @@ export class HelperExampleFactory {
 
   }
 
-  // 删除附件
+  // 仅删除附件
   static async delAtt() {
     var zoteroPane = Zotero.getActiveZoteroPane();
 
@@ -612,7 +612,7 @@ export class HelperExampleFactory {
     }
   }
 
-  // 删除附件执行的函数
+  // 仅删除附件执行的函数
   static async delAttDo(items: Zotero.Item[]) {
 
     for (let item of items) {
@@ -625,7 +625,8 @@ export class HelperExampleFactory {
             var file = await attachment.getFilePathAsync();
             if (file && ifLinks) { // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
               try {
-                await OS.File.remove(file); // 尝试删除文件
+                // await OS.File.remove(file); // 尝试删除文件
+                await Zotero.File.removeIfExists(file);
                 //await trash.remove(file);
               } catch (error) { // 弹出错误
                 alert(getString("file-is-open"));
@@ -644,7 +645,8 @@ export class HelperExampleFactory {
           var file = await item.getFilePathAsync();
           if (file && ifLinksAtt) { // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
             try {
-              await OS.File.remove(file); // 尝试删除文件
+              // await OS.File.remove(file); // 尝试删除文件
+              await Zotero.File.removeIfExists(file);
             } catch (error) { // 弹出错误
               alert(getString("file-is-open"));
               return; // 弹出错误后终止执行
@@ -784,6 +786,7 @@ export class HelperExampleFactory {
   }
 
   // 导出附件
+  // 暂不能用
   static async expAtt() {
     var items = ZoteroPane.getSelectedItems();
     await HelperExampleFactory.expAttDo(items)
@@ -825,9 +828,16 @@ export class HelperExampleFactory {
             try {
               // await exportAtts(file, expDir);
 
+              // var baseName = OS.Path.basename(file); //得到文件名
+              // var destName = OS.Path.join(expDir, baseName);
+              // OS.File.copy(file, destName); // 尝试导出文件
               var baseName = OS.Path.basename(file); //得到文件名
               var destName = OS.Path.join(expDir, baseName);
               OS.File.copy(file, destName); // 尝试导出文件
+              // OS.Path.join(replacement: PathUtils.join ? joinRelative ?)
+              // OS.Path.basename(replacement: PathUtils.filename)
+              // OS.Path.dirname(replacement: PathUtils.parent)
+
               nSucess++;
               //BasicExampleFactory.exortSucess(); // 导出成功提示
 
