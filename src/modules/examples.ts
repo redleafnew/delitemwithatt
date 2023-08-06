@@ -526,58 +526,20 @@ export class HelperExampleFactory {
     // var iaInfo = items.length > 1 ? 'delete-item-and-attachment-mul' : 'delete-item-and-attachment-sig';
     // var truthBeTold = ztoolkit.getGlobal("confirm")(getString(iaInfo))
     var truthBeTold = ztoolkit.getGlobal("confirm")(getString("delete-item-and-attachment", { args: { count: items.length } }));
-
     if (truthBeTold) {
+      HelperExampleFactory.delAttDo(items); // 调用仅删除附件的函数
       for (let item of items) {
-        if (item && !item.isNote()) { //2 if
-          if (item.isRegularItem()) { // Regular Item 一般条目//3 if
-            let attachmentIDs = item.getAttachments();
-            for (let id of attachmentIDs) { //4 for
-              let attachment = Zotero.Items.get(id);
-              let ifLinks = (attachment.attachmentLinkMode == Zotero.Attachments.LINK_MODE_LINKED_FILE); // 检测是否为链接模式
-              var file = await attachment.getFilePathAsync();
-              if (file && ifLinks) { //如果文件存在(文件可能已经被删除)且为链接模式删除文件
-                try {
-                  await Zotero.File.removeIfExists(file); // 尝试删除文件
-                } catch (error) { // 弹出错误
-                  alert(getString("file-is-open"));
-                  return; // 弹出错误后终止执行
-                }
-              }
-              // if (attachment.attachmentContentType == 'text/html' ) { //可以筛选删除的附件类型
-              attachment.deleted = true; //删除附件(快照)
-              await attachment.saveTx();
-              // }
-
-            } //4 for
-
-          } // 3 if
-          if (item.isAttachment()) { //附件条目 5 if
-            var ifLinksAtt = (item.attachmentLinkMode == Zotero.Attachments.LINK_MODE_LINKED_FILE); //检测是否为链接模式
-            var file = await item.getFilePathAsync();
-            if (file && ifLinksAtt) { // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
-              try {
-                await Zotero.File.removeIfExists(file); // 尝试删除文件
-              } catch (error) { // 弹出错误
-                alert(getString("file-is-open"));
-                return; // 弹出错误后终止执行
-              }
-            }
-
-          }//5if
-        } //2 if
-        item.deleted = true;
-        await item.saveTx();
-
+        if (item && !item.isNote()) {
+          item.deleted = true;
+          await item.saveTx();
+        }
       }
       BasicExampleFactory.delItemAttSucess(items); // 附件条目删除成功提示;
-
     }
   }
 
   //删除分类条目包括附件
   static async delColItemAtt() {
-
     var collection = ZoteroPane.getSelectedCollection();
     var items = collection!.getChildItems();
     var truthBeTold = window.confirm(getString("delete-collection-and-attachment"))
@@ -607,7 +569,7 @@ export class HelperExampleFactory {
     var truthBeTold = ztoolkit.getGlobal("confirm")(getString("delete-attachment-only", { args: { count: items.length } }));
 
     if (truthBeTold) {
-      HelperExampleFactory.delAttDo(items); // 调用删除条目及附件的函数
+      HelperExampleFactory.delAttDo(items); // 调用仅删除附件的函数
       BasicExampleFactory.delAttSucess(); // 附件删除成功提示;
     }
   }

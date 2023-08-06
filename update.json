@@ -12,7 +12,7 @@
           }
         },
         {
-          "version": "0.2.2",
+          "version": "0.2.3",
           "update_link": "https://github.com/redleafnew/delitemwithatt/releases/latest/download/delitemwithatt.xpi",
           "applications": {
             "zotero": {
