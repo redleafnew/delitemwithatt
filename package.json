@@ -1,6 +1,6 @@
 {
   "name": "delitemwithatt",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Delete item(s) with attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
@@ -24,7 +24,7 @@
     "restart-prod": "npm run build-prod && npm run stop && npm run start",
     "restart": "npm run restart-dev",
     "reload": "npm run build-dev && node scripts/reload.mjs",
-    "watch": "chokidar \"src/**\" \"addon/**\" -c \"npm run reload\"",
+    "watch": "chokidar \"package.json\" \"src/**\" \"addon/**\" -c \"npm run reload\"",
     "release": "release-it",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -41,7 +41,7 @@
   "dependencies": {
     "concurrently": "8.01",
     "trash": "^8.1.0",
-    "zotero-plugin-toolkit": "^2.1.4"
+    "zotero-plugin-toolkit": "^2.2.6"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",
@@ -50,7 +50,7 @@
     "cross-env": "^7.0.3",
     "esbuild": "^0.17.18",
     "minimist": "^1.2.8",
-    "release-it": "^15.10.1",
+    "release-it": "^16.1.5",
     "replace-in-file": "^6.3.5",
     "zotero-types": "^1.0.13"
   }
