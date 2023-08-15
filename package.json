@@ -40,18 +40,18 @@
   "homepage": "https://github.com/redleafnew/delitemwithatt",
   "dependencies": {
     "concurrently": "8.01",
-    "trash": "^8.1.0",
-    "zotero-plugin-toolkit": "^2.2.6"
+    "trash": "^8.1.1",
+    "zotero-plugin-toolkit": "^2.2.7"
   },
   "devDependencies": {
-    "@types/node": "^20.2.5",
+    "@types/node": "^20.5.0",
     "chokidar-cli": "^3.0.0",
-    "compressing": "^1.9.0",
+    "compressing": "^1.9.1",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.17.18",
+    "esbuild": "^0.17.19",
     "minimist": "^1.2.8",
     "release-it": "^16.1.5",
     "replace-in-file": "^6.3.5",
-    "zotero-types": "^1.0.13"
+    "zotero-types": "^1.2.1"
   }
 }
