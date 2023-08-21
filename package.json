@@ -44,14 +44,14 @@
     "zotero-plugin-toolkit": "^2.2.7"
   },
   "devDependencies": {
-    "@types/node": "^20.5.0",
+    "@types/node": "^20.5.1",
     "chokidar-cli": "^3.0.0",
     "compressing": "^1.9.1",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.17.19",
+    "esbuild": "^0.19.2",
     "minimist": "^1.2.8",
     "release-it": "^16.1.5",
     "replace-in-file": "^7.0.1",
-    "zotero-types": "^1.2.1"
+    "zotero-types": "^1.2.2"
   }
 }
