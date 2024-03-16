@@ -41,7 +41,7 @@
   "dependencies": {
     "concurrently": "8.01",
     "trash": "^8.1.1",
-    "zotero-plugin-toolkit": "^2.3.11"
+    "zotero-plugin-toolkit": "^2.3.26"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
