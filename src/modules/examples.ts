@@ -159,17 +159,17 @@ export class KeyExampleFactory {
   @example
   static registerShortcuts() {
     // 删除条目和附件默认快捷键:Alt+I
-    var key_del_item_att = getPref('key_del_item_att') == undefined ? 'I' : getPref('key_del_item_att');
+    var key_del_item_att = getPref('key.del.item.att') == undefined ? 'I' : getPref('key.del.item.att');
     // 删除附件默认快捷键.Alt+A
-    var key_del_att = getPref('key_del_att') == undefined ? 'A' : getPref('key_del_att');
+    var key_del_att = getPref('key.del.att') == undefined ? 'A' : getPref('key.del.att');
     //仅删除快照默认快捷键 Alt+S
-    var key_del_snap = getPref('key_del_snap') == undefined ? 'S' : getPref('key_del_snap');
+    var key_del_snap = getPref('key.del.snap') == undefined ? 'S' : getPref('key.del.snap');
     // 仅删除笔记默认快捷键.Alt+N
-    var key_del_note = getPref('key_del_note') == undefined ? 'N' : getPref('key_del_note');
+    var key_del_note = getPref('key.del.note') == undefined ? 'N' : getPref('key.del.note');
     // 仅删除其它默认快捷键.Alt+X
-    var key_del_extra = getPref('key_del_extra') == undefined ? 'X' : getPref('key_del_extra');
+    var key_del_extra = getPref('key.del.extra') == undefined ? 'X' : getPref('key.del.extra');
     // 仅删除摘要默认快捷键.Alt+Z
-    var key_del_abs = getPref('key_del_abs') == undefined ? 'Z' : getPref('key_del_abs');
+    var key_del_abs = getPref('key.del.abs') == undefined ? 'Z' : getPref('key.del.abs');
 
 
 
@@ -214,7 +214,7 @@ export class KeyExampleFactory {
       },
     });
 
-    // 删除其它要快捷键Alt+X
+    // 删除其它要快捷键 Alt+X
     ztoolkit.Shortcut.register("event", {
       id: `${config.addonRef}-key-del-extra`,
       key: key_del_extra as string,
