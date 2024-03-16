@@ -158,6 +158,8 @@ export class KeyExampleFactory {
   // modifiers逗号分隔，shift就是shift，ctrl跨平台是accel
   @example
   static registerShortcuts() {
+
+    // 修改后重启生效
     // 删除条目和附件默认快捷键:Alt+I
     var key_del_item_att = getPref('key.del.item.att') == undefined ? 'I' : getPref('key.del.item.att');
     // 删除附件默认快捷键.Alt+A

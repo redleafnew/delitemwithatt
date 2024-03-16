@@ -18,6 +18,22 @@
 
     从[https://github.com/redleafnew/delitemwithatt/releases](https://github.com/redleafnew/delitemwithatt/releases)下载xpi，然后在Zotero或JurisM中通过Tools-Addons-Install Add-on From File安装。安装完成后在条目上右击会出现：`删除附件`，如果条目有附件，会出现四个子菜单，`删除附件和条目(Alt+I)`，`仅删除所有附件(Alt+A)`，`仅删除快照(Alt+S)`，`仅删除笔记(Alt+N)`，`清空摘要(Alt+Z)`，`清空其它(Alt+X)`，点击后条目包括附件、附件、快照或笔记会被删除（包括文件）。在分类上右击时会出现：`删除分类条目包括附件`，确认后会在删除分类的同时将分类中的条目包含附件删除，快照也认为是附件。**注意：删除时链接文件不进回收站，直接删除，请删除前备份**。
 
+    以上快捷键修改方法：在`Zotero`中运行`Tools`-`Developer`-`Run JavaScript`，输入：
+
+   `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.item.att', 'I', true); // 修改删除条目和附件默认快捷键，修改I为预设置的快捷字母`
+
+    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.att', 'A', true); // 修改删除附件默认快捷键，修改A为预设置的快捷字母`
+
+   ` Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.snap', 'S', true); // 修改删除快照默认快捷键，修改S为预设置的快捷字母`
+
+    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.note', 'N', true); // 修改删除笔记默认快捷键，修改I为预设置的快捷字母`
+
+    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.extra', 'X', true); // 修改删除其它默认快捷键，修改X为预设置的快捷字母`
+
+    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.abs', 'Z', true); // 修改删除摘要默认快捷键，修改Z为预设置的快捷字母`
+
+    修改后**重启**Zotero生效。
+
 2. 根据条目标题语言将所选条目语言字段设置为`en-US`或`zh-CN`。
 
 3. 将附件导出。
