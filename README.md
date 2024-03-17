@@ -32,8 +32,6 @@
 
     `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.abs', 'Z', true); // 修改删除摘要默认快捷键，修改Z为预设置的快捷字母`
 
-    修改后**重启**Zotero生效。
-
 2. 根据条目标题语言将所选条目语言字段设置为`en-US`或`zh-CN`。
 
 3. 将附件导出。

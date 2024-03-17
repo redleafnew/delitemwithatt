@@ -5,6 +5,7 @@ import {
 } from "./modules/examples";
 import { config } from "../package.json";
 import { getString, initLocale } from "./utils/locale";
+import { registerShortcuts } from "./modules/shortcuts";
 
 
 async function onStartup() {
@@ -30,8 +31,8 @@ async function onStartup() {
     })
     .show();
 
-  KeyExampleFactory.registerShortcuts();
-
+  // KeyExampleFactory.registerShortcuts();
+  registerShortcuts(); //新的注册快捷键
   await Zotero.Promise.delay(1000);
   popupWin.changeLine({
     progress: 30,

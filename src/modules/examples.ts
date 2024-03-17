@@ -156,96 +156,96 @@ export class BasicExampleFactory {
 export class KeyExampleFactory {
 
   // modifiers逗号分隔，shift就是shift，ctrl跨平台是accel
-  @example
-  static registerShortcuts() {
+  // @example
+  // static registerShortcuts() {
 
-    // 修改后重启生效
-    // 删除条目和附件默认快捷键:Alt+I
-    var key_del_item_att = getPref('key.del.item.att') == undefined ? 'I' : getPref('key.del.item.att');
-    // 删除附件默认快捷键.Alt+A
-    var key_del_att = getPref('key.del.att') == undefined ? 'A' : getPref('key.del.att');
-    //仅删除快照默认快捷键 Alt+S
-    var key_del_snap = getPref('key.del.snap') == undefined ? 'S' : getPref('key.del.snap');
-    // 仅删除笔记默认快捷键.Alt+N
-    var key_del_note = getPref('key.del.note') == undefined ? 'N' : getPref('key.del.note');
-    // 仅删除其它默认快捷键.Alt+X
-    var key_del_extra = getPref('key.del.extra') == undefined ? 'X' : getPref('key.del.extra');
-    // 仅删除摘要默认快捷键.Alt+Z
-    var key_del_abs = getPref('key.del.abs') == undefined ? 'Z' : getPref('key.del.abs');
+  //   // 修改后重启生效
+  //   // 删除条目和附件默认快捷键:Alt+I
+  //   var key_del_item_att = getPref('key.del.item.att') == undefined ? 'I' : getPref('key.del.item.att');
+  //   // 删除附件默认快捷键.Alt+A
+  //   var key_del_att = getPref('key.del.att') == undefined ? 'A' : getPref('key.del.att');
+  //   //仅删除快照默认快捷键 Alt+S
+  //   var key_del_snap = getPref('key.del.snap') == undefined ? 'S' : getPref('key.del.snap');
+  //   // 仅删除笔记默认快捷键.Alt+N
+  //   var key_del_note = getPref('key.del.note') == undefined ? 'N' : getPref('key.del.note');
+  //   // 仅删除其它默认快捷键.Alt+X
+  //   var key_del_extra = getPref('key.del.extra') == undefined ? 'X' : getPref('key.del.extra');
+  //   // 仅删除摘要默认快捷键.Alt+Z
+  //   var key_del_abs = getPref('key.del.abs') == undefined ? 'Z' : getPref('key.del.abs');
 
 
 
-    // 删除条目和附件快捷键:Alt+I
-    ztoolkit.Shortcut.register("event", {
-      id: `${config.addonRef}-key-del-item-att`,
-      key: key_del_item_att as string,
-      modifiers: "alt",
-      callback: (keyOptions) => {
-        HelperExampleFactory.delItemAtt();
-      },
-    });
+  //   // 删除条目和附件快捷键:Alt+I
+  //   ztoolkit.Shortcut.register("event", {
+  //     id: `${config.addonRef}-key-del-item-att`,
+  //     key: key_del_item_att as string,
+  //     modifiers: "alt",
+  //     callback: (keyOptions) => {
+  //       HelperExampleFactory.delItemAtt();
+  //     },
+  //   });
 
-    // 删除附件快捷键.Alt+A
-    ztoolkit.Shortcut.register("event", {
-      id: `${config.addonRef}-key-del-att`,
-      key: key_del_att as string,
-      modifiers: "alt",
-      callback: (keyOptions) => {
+  //   // 删除附件快捷键.Alt+A
+  //   ztoolkit.Shortcut.register("event", {
+  //     id: `${config.addonRef}-key-del-att`,
+  //     key: key_del_att as string,
+  //     modifiers: "alt",
+  //     callback: (keyOptions) => {
 
-        HelperExampleFactory.delAtt();
-      },
-    });
+  //       HelperExampleFactory.delAtt();
+  //     },
+  //   });
 
-    //仅删除快照快捷键 Alt+S
-    ztoolkit.Shortcut.register("event", {
-      id: `${config.addonRef}-key-del-snap`,
-      key: key_del_snap as string,
-      modifiers: "alt",
-      callback: (keyOptions) => {
-        HelperExampleFactory.delSnap();
-      },
-    });
+  //   //仅删除快照快捷键 Alt+S
+  //   ztoolkit.Shortcut.register("event", {
+  //     id: `${config.addonRef}-key-del-snap`,
+  //     key: key_del_snap as string,
+  //     modifiers: "alt",
+  //     callback: (keyOptions) => {
+  //       HelperExampleFactory.delSnap();
+  //     },
+  //   });
 
-    //删除笔记快捷键Alt+N
-    ztoolkit.Shortcut.register("event", {
-      id: `${config.addonRef}-key-del-note`,
-      key: key_del_note as string,
-      modifiers: "alt",
-      callback: (keyOptions) => {
-        HelperExampleFactory.delNote();
-      },
-    });
+  //   //删除笔记快捷键Alt+N
+  //   ztoolkit.Shortcut.register("event", {
+  //     id: `${config.addonRef}-key-del-note`,
+  //     key: key_del_note as string,
+  //     modifiers: "alt",
+  //     callback: (keyOptions) => {
+  //       HelperExampleFactory.delNote();
+  //     },
+  //   });
 
-    // 删除其它要快捷键 Alt+X
-    ztoolkit.Shortcut.register("event", {
-      id: `${config.addonRef}-key-del-extra`,
-      key: key_del_extra as string,
-      modifiers: "alt",
-      callback: (keyOptions) => {
-        HelperExampleFactory.delExtra();
-      },
-    });
+  //   // 删除其它要快捷键 Alt+X
+  //   ztoolkit.Shortcut.register("event", {
+  //     id: `${config.addonRef}-key-del-extra`,
+  //     key: key_del_extra as string,
+  //     modifiers: "alt",
+  //     callback: (keyOptions) => {
+  //       HelperExampleFactory.delExtra();
+  //     },
+  //   });
 
-    // 删除摘要快捷键Alt+Z
-    ztoolkit.Shortcut.register("event", {
-      id: `${config.addonRef}-key-del-abs`,
-      key: key_del_abs as string,
-      modifiers: "alt",
-      callback: (keyOptions) => {
-        HelperExampleFactory.delAbstract();
-      },
-    });
+  //   // 删除摘要快捷键Alt+Z
+  //   ztoolkit.Shortcut.register("event", {
+  //     id: `${config.addonRef}-key-del-abs`,
+  //     key: key_del_abs as string,
+  //     modifiers: "alt",
+  //     callback: (keyOptions) => {
+  //       HelperExampleFactory.delAbstract();
+  //     },
+  //   });
 
-    //删除摘要快捷键Alt+Z
-    // ztoolkit.Shortcut.register("event", {
-    //   id: `${config.addonRef}-key-del-abs`,
-    //   key: "U",
-    //   modifiers: "alt",
-    //   callback: (keyOptions) => {
-    //     // HelperExampleFactory.OSnow();
-    //   },
-    // });
-  }
+  //   //删除摘要快捷键Alt+Z
+  //   // ztoolkit.Shortcut.register("event", {
+  //   //   id: `${config.addonRef}-key-del-abs`,
+  //   //   key: "U",
+  //   //   modifiers: "alt",
+  //   //   callback: (keyOptions) => {
+  //   //     // HelperExampleFactory.OSnow();
+  //   //   },
+  //   // });
+  // }
 
 }
 
