@@ -1,6 +1,6 @@
 {
   "name": "delitemwithatt",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Delete item(s) with attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
@@ -41,7 +41,7 @@
   "dependencies": {
     "concurrently": "8.01",
     "trash": "^8.1.1",
-    "zotero-plugin-toolkit": "^2.3.26"
+    "zotero-plugin-toolkit": "^2.3.30"
   },
   "devDependencies": {
     "@types/node": "^20.11.28",
