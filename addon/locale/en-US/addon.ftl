@@ -56,7 +56,7 @@ delete-extra =
   }
 delete-abstract =
  {$count ->
-   [one]Are you sure you want to empty the abstract of the item? Are you sure you want to empty the extra of the item?
+   [one] Are you sure you want to empty the abstract of the item?
   *[other] Are you sure you want to empty the abstracts of the {$count} selected items?
   }
 # delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
