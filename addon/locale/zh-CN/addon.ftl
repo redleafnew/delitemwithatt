@@ -52,7 +52,7 @@ delete-extra =
   }
 delete-abstract =
  {$count ->
-   [one]您确定将所选条目的摘要清空?
+   [one] 您确定将所选条目的摘要清空?
   *[other] 您确定将所选{ $count }条目的摘要清空?
   }
 # delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
