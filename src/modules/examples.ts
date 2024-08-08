@@ -723,7 +723,7 @@ export class HelperExampleFactory {
 
     if (truthBeTold) {
       for (let item of items) {
-        if (item.isRegularItem() && !item.isCollection()) {
+        if (item.isRegularItem() && !(item instanceof Zotero.Collection)) {
           try {
             item.setField('extra', '');
             item.save();
@@ -747,7 +747,7 @@ export class HelperExampleFactory {
     var truthBeTold = window.confirm(getString("delete-abstract", { args: { count: items.length } }))
     if (truthBeTold) {
       for (let item of items) {
-        if (item.isRegularItem() && !item.isCollection()) {
+        if (item.isRegularItem() && !(item instanceof Zotero.Collection)) {
           try {
             item.setField('abstractNote', '')
             item.save();
