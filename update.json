@@ -1,6 +1,6 @@
 {
   "addons": {
-    "__addonID__": {
+    "delitemwithatt@redleaf.me": {
       "updates": [
         {
           "version": "0.1.06",
@@ -12,8 +12,8 @@
           }
         },
         {
-          "version": "__buildVersion__",
-          "update_link": "__releasepage__",
+          "version": "0.3.3",
+          "update_link": "https://github.com/redleafnew/delitemwithatt/releases/latest/download/delitemwithatt.xpi",
           "applications": {
             "zotero": {
               "strict_min_version": "6.999"
