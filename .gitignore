@@ -1,7 +1,7 @@
-**/build
-ex/
-ex
-**/ex
+build
+logs
 node_modules
-package-lock.json
-zotero-cmd.json
+pnpm-lock.yaml
+yarn.lock
+.DS_Store
+.env

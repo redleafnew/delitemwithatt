@@ -7,7 +7,6 @@ import { config } from "../package.json";
 import { getString, initLocale } from "./utils/locale";
 import { registerShortcuts } from "./modules/shortcuts";
 
-
 async function onStartup() {
   await Promise.all([
     Zotero.initializationPromise,
@@ -39,8 +38,11 @@ async function onStartup() {
     text: `[30%] ${getString("startup-begin")}`,
   });
 
-  ZoteroPane.collectionsView.onSelect.addListener(UIExampleFactory.displayColMenuitem); //监听分类右键显示菜单
-
+  // @ts-ignore 忽略 onSelect
+  ZoteroPane.collectionsView.onSelect.addListener(
+    UIExampleFactory.displayColMenuitem
+  ); //监听分类右键显示菜单
+  // @ts-ignore 忽略 onSelect
   ZoteroPane.itemsView.onSelect.addListener(UIExampleFactory.displayMenuitem); //监听右键显示菜单
 
   UIExampleFactory.registerMenuSepartor(); // 分隔条
@@ -60,7 +62,6 @@ async function onStartup() {
     text: `[100%] ${getString("startup-finish")}`,
   });
   popupWin.startCloseTimer(5000);
-
 }
 
 function onShutdown(): void {
@@ -70,10 +71,7 @@ function onShutdown(): void {
   delete Zotero.delitemwithatt;
 }
 
-
-
 export default {
   onStartup,
   onShutdown,
-
 };
