@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/windingwind/zotero-addon-template.git"
+    "url": "git+https://github.com/redleafnew/delitemwithatt.git"
   },
   "author": "Minyi Han",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/windingwind/zotero-addon-template/issues"
+    "url": "https://github.com/redleafnew/delitemwithatt/issues"
   },
   "homepage": "https://github.com/redleafnew/delitemwithatt",
   "dependencies": {
