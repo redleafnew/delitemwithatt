@@ -16,7 +16,7 @@ async function onStartup() {
   initLocale();
   ztoolkit.ProgressWindow.setIconURI(
     "default",
-    `chrome://${config.addonRef}/content/icons/favicon.png`
+    `chrome://${config.addonRef}/content/icons/favicon.png`,
   );
 
   const popupWin = new ztoolkit.ProgressWindow(config.addonName, {
@@ -40,7 +40,7 @@ async function onStartup() {
 
   // @ts-ignore 忽略 onSelect
   ZoteroPane.collectionsView.onSelect.addListener(
-    UIExampleFactory.displayColMenuitem
+    UIExampleFactory.displayColMenuitem,
   ); //监听分类右键显示菜单
   // @ts-ignore 忽略 onSelect
   ZoteroPane.itemsView.onSelect.addListener(UIExampleFactory.displayMenuitem); //监听右键显示菜单
@@ -68,6 +68,7 @@ function onShutdown(): void {
   ztoolkit.unregisterAll();
   // Remove addon object
   addon.data.alive = false;
+  // @ts-ignore types undefined
   delete Zotero.delitemwithatt;
 }
 

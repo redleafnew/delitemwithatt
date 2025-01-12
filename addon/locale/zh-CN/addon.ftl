@@ -25,7 +25,6 @@ delete-item-and-attachment =
    [one] 您确定将所选条目包括附件移动到回收站? 链接的附件不可恢复。
   *[other] 您确定将所选{$count}个条目包括附件移动到回收站? 链接的附件不可恢复。
   }
-delete-collection-and-attachment        =	您确定将所选分类包括附件移动到回收站? 链接的附件不可恢复。
 delete-attachment-only =
   {$count ->
    [one] 您确定将所选条目的附件移动到回收站? 链接的附件不可恢复。
