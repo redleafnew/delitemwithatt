@@ -1,6 +1,5 @@
 import { defineConfig } from "zotero-plugin-scaffold";
 import pkg from "./package.json";
-import { copyFileSync } from "node:fs";
 
 export default defineConfig({
   source: ["src", "addon"],
@@ -32,7 +31,7 @@ export default defineConfig({
         },
         bundle: true,
         target: "firefox115",
-        outfile: `build/addon/chrome/content/scripts/index.js`,
+        outfile: `build/addon/content/scripts/${pkg.config.addonRef}.js`,
       },
     ],
     makeUpdateJson: {
