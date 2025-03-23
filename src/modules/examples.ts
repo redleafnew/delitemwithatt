@@ -823,7 +823,7 @@ export class HelperExampleFactory {
   static async expAttDo(items: Zotero.Item[]) {
     var nSucess = 0; //导出成功附件个数
     var nFail = 0; //导出失败附件个数
-    var expDir = (await HelperExampleFactory.dirExp()) + "\\";
+    var expDir = await HelperExampleFactory.dirExp();
     // const OS = ztoolkit.getGlobal("OS");
     for (let item of items) {
       if (item && !item.isNote()) {
@@ -839,7 +839,7 @@ export class HelperExampleFactory {
                 // await exportAtts(file, expDir);
 
                 var baseName = PathUtils.filename(file); //得到文件名
-                var destName = PathUtils.join(expDir, baseName);
+                var destName = PathUtils.join(expDir as string, baseName);
                 IOUtils.copy(file, destName); // 尝试导出文件
                 nSucess++;
                 //BasicExampleFactory.exortSucess(); // 导出成功提示
@@ -861,11 +861,8 @@ export class HelperExampleFactory {
             try {
               // await exportAtts(file, expDir);
 
-              // var baseName = OS.Path.basename(file); //得到文件名
-              // var destName = OS.Path.join(expDir, baseName);
-              // OS.File.copy(file, destName); // 尝试导出文件
               var baseName = PathUtils.filename(file); //得到文件名
-              var destName = PathUtils.join(expDir, baseName);
+              var destName = PathUtils.join(expDir as string, baseName);
               IOUtils.copy(file, destName); // 尝试导出文件
               // OS.Path.join(replacement: PathUtils.join ? joinRelative ?)
               // OS.Path.basename(replacement: PathUtils.filename)
@@ -896,6 +893,9 @@ export class HelperExampleFactory {
       getString("exort-dir"),
       "folder",
     ).open();
+    if (!path) {
+      throw new Error("No directory selected");
+    }
     return path;
     // ztoolkit.getGlobal("alert")(`Selected ${path}`);
   }
