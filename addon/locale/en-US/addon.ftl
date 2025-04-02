@@ -5,7 +5,7 @@ menupopup-label = Addon Template: Menupopup
 menuitem-submenulabel = Addon Template
 menuitem-filemenulabel = Addon Template: File Menuitem
 
-prefs-title = Green Frog
+prefs-title = Del Item With Attachment
 prefs-table-title = Title
 prefs-table-detail = Detail
 
@@ -21,8 +21,8 @@ delitem-label=Delete Attachment(s) and Item(s)
 delatt-label=Delete All Attachment(s) only
 delsnap-label=Delete Snapshot(s) only
 delnote-label=Delete Note(s) only
-delextra-label=Empty Extra(s)
-delabstract-label=Empty Abstract(s)
+delextra-label=Empty "Extra" Field(s)
+delabstract-label=Empty "Abstract" Field(s)
 delete-item-and-attachment =
   {$count ->
    [one] Are you sure you want to move the selected item
@@ -56,19 +56,19 @@ delete-extra =
   }
 delete-abstract =
  {$count ->
-   [one] Are you sure you want to empty the abstract of the selected item?
-  *[other] Are you sure you want to empty the abstracts of the {$count} selected items?
+   [one] Are you sure you want to empty the "Abstract" fiels of the selected item?
+  *[other] Are you sure you want to empty the "Abstract" fields of the {$count} selected items?
   }
 # delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
 # delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
 del-item-att-sucess =
  {$count ->
-   [one] Item and attachment(s) removed.
+   [one] The selected item and its attachment(s) removed.
   *[other] {$count} selected items and their attachment(s) removed.
   }
 del-att-sucess = Attachment(s) removed.
-del-abs-sucess = Abstract(s) emptied.
-del-extra-sucess = Extra(s) emptied.
+del-abs-sucess = "Abstract" field(s) emptied.
+del-extra-sucess = "Extra" field(s) emptied.
 del-note-sucess = Note(s) removed.
 del-snap-sucess = Snap(s) removed.
 

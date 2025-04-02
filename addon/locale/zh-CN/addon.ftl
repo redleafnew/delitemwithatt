@@ -51,19 +51,19 @@ delete-extra =
   }
 delete-abstract =
  {$count ->
-   [one] 您确定将所选条目的摘要清空?
-  *[other] 您确定将所选{ $count }条目的摘要清空?
+   [one] 您确定将所选条目的“摘要”字段内容清空?
+  *[other] 您确定将所选{ $count }条目的“摘要”字段内容清空?
   }
 # delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
 # delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
 
 del-item-att-sucess =
  {$count ->
-   [one] 条目和附件已删除。
+   [one] 所选条目和附件已删除。
   *[other] {$count}个所选条目及其附件已删除。
   }
 del-att-sucess = 附件已删除。
-del-abs-sucess = 摘要已清空。
+del-abs-sucess = “摘要”字段已清空。
 del-extra-sucess = “其他”字段已清空。
 del-note-sucess = 笔记已删除。
 del-snap-sucess = 快照已删除。
