@@ -313,8 +313,14 @@ export class UIExampleFactory {
   // 分类右键菜单：删除分类及附件，导出附件
   @example
   static registerRightClickCollMenu() {
-    const exportIcon = `chrome://${config.addonRef}/content/icons/export.png`,
-      delColIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
+    const exportIcon = `chrome://${config.addonRef}/content/icons/export.png`;
+    const delColIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
+    // 分类右键菜单分割线
+    ztoolkit.Menu.register("collection", {
+      tag: "menuseparator",
+      id: "zotero-itemmenu-delitemwithatt-separator",
+    });
+
     // 删除分类及附件菜单
     ztoolkit.Menu.register("collection", {
       tag: "menuitem",
@@ -370,12 +376,14 @@ export class UIExampleFactory {
   static registerRightClickMenuPopup() {
     // 菜单组无法使用图标
     // const delIcon = `chrome://${config.addonRef}/content/icons/del.png`;
+    // 右键菜单图标
+    const delIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
     ztoolkit.Menu.register(
       "item",
       {
         tag: "menu",
         label: getString("del-att"),
-
+        icon: delIcon,
         children: [
           { // 删除附件和条目菜单
             tag: "menuitem",
