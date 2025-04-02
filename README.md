@@ -20,11 +20,11 @@
 
    *注意*：火狐浏览器用户请通过在链接上右击，选择“另存为”来下载 .xpi 文件。
 
-插件静默启动，即关闭Zotero软件启动时右下角的Del ltem With Attachment插件弹窗
+**插件静默启动设置**，即关闭Zotero软件启动时右下角的Del ltem With Attachment插件弹窗
 
-   - **静默启动**开启方法：在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，输入以下内容，点击左上角的`执行/Run`即可：
+   - 静默启动开启方法：在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，输入以下内容，点击左上角的`执行/Run`即可：
 
-    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.quiet.boot', 'enable', true); // 开启插件静默启动`
+     `Zotero.Prefs.set('extensions.zotero.delitemwithatt.quiet.boot', 'enable', true); // 开启插件静默启动`
 
 ![Run_JavaScript](./img/Run_JavaScript.jpg "Run JavaScript")
 
@@ -43,7 +43,7 @@
 
     `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.att', 'A', true); // 修改删除附件默认快捷键，修改A为预设置的快捷字母`
 
-    ` Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.snap', 'S', true); // 修改删除快照默认快捷键，修改S为预设置的快捷字母`
+    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.snap', 'S', true); // 修改删除快照默认快捷键，修改S为预设置的快捷字母`
 
     `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.note', 'N', true); // 修改删除笔记默认快捷键，修改I为预设置的快捷字母`
 
@@ -61,7 +61,7 @@
 
 # Reminder：
 
-The latest version only supports Zotero 7.0, Zotero 6.0 users could download [0.1.06](https://github.com/redleafnew/delitemwithatt/releases/tag/0.1.06)。
+The latest version only supports Zotero 7.0 (or later versions), Zotero 6.0 users could download [0.1.06](https://github.com/redleafnew/delitemwithatt/releases/tag/0.1.06)。
 
 # Installation
 
@@ -75,8 +75,8 @@ Download the plugin (.xpi file) from below, and click Tools-Plugins-Install Plug
 
 1. Remove attachment(s) (including linked attachments) when delete the item(s) or collection.
 
-   - When you right-click item(s), you can find `Delete Attachment(s)` context menu. If there is/are attachment(s) attached to the item(s), there will be 6 submenus, `Delete Attachment(s) and Item(s)(Alt+I)`, `Delete All Attachment(s) only(Alt+A)`, `Delete Snapshot(s) only(Alt+S)`, `Delete Note(s) only(Alt+N)`, `Empty "Abstract" Field(s)(Alt+Z)`, `Empty "Extra" Field(s)(Alt+X)`, when confirm, the item(s), attachment(s), snapshot(s) or note(s) will be deleted; 
-   - When you right-click collection, you can find `Delete Collections with Attachments` context menu. When confirm, the collection and the item(s) with attachment(s) in the selected collection will be deleted. Snapshot is also regarded as attachment.
+   - When you right-click item(s), you can find `Delete Attachment(s)` in the context menu. If there is/are attachment(s) attached to the item(s), there will be 6 submenus, `Delete Attachment(s) and Item(s)(Alt+I)`, `Delete All Attachment(s) only(Alt+A)`, `Delete Snapshot(s) only(Alt+S)`, `Delete Note(s) only(Alt+N)`, `Empty "Abstract" Field(s)(Alt+Z)`, `Empty "Extra" Field(s)(Alt+X)`, when confirm, the item(s), attachment(s), snapshot(s) or note(s) will be deleted; 
+   - When you right-click collection, you can find `Delete Collections with Attachments` in the context menu. When confirm, the collection and the item(s) with attachment(s) in the selected collection will be deleted. Snapshot is also regarded as attachment.
 
     > **Note: the linked files could not be restored, they will be removed directly, please backup before removing.**
 
