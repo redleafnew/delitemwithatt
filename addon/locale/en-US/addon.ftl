@@ -32,31 +32,31 @@ delete-item-and-attachment =
   }
 delete-attachment-only =
   {$count ->
-   [one] Are you sure you want to delete the attachment of the item? The linked attachment could not be restored.
+   [one] Are you sure you want to delete the attachment of the selected item? The linked attachment could not be restored.
   *[other] Are you sure you want to delete the attachments of the {$count} selected items? The linked attachments could not be restored.
   }
 delete-snapshot =
   {$count ->
-   [one] Are you sure you want to delete the snapshot of the item?
+   [one] Are you sure you want to delete the snapshot of the selected item?
   *[other] Are you sure you want to delete the snapshots of the {$count} selected items?
   }
 # delete-snapshot-sig                  =	Are you sure you want to delete the snapshot of the item?
 # delete-snapshot-mul                 =	Are you sure you want to delete the snapshots of the items?
 delete-note =
   {$count ->
-   [one] Are you sure you want to delete the note of the item?
+   [one] Are you sure you want to delete the note of the selected item?
   *[other] Are you sure you want to delete the notes of the {$count} selected items?
   }
 # delete-note-sig                     =	Are you sure you want to delete the note of the item?
 # delete-note-mul                     =	Are you sure you want to delete the notes of the items?
 delete-extra =
  {$count ->
-   [one] Are you sure you want to empty the extra of the item?
-  *[other] Are you sure you want to empty the extras of the {$count} selected items?
+   [one] Are you sure you want to empty the "Extra" field of the selected item?
+  *[other] Are you sure you want to empty the "Extra" fields of the {$count} selected items?
   }
 delete-abstract =
  {$count ->
-   [one] Are you sure you want to empty the abstract of the item?
+   [one] Are you sure you want to empty the abstract of the selected item?
   *[other] Are you sure you want to empty the abstracts of the {$count} selected items?
   }
 # delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
@@ -67,10 +67,10 @@ del-item-att-sucess =
   *[other] {$count} selected items and their attachment(s) removed.
   }
 del-att-sucess = Attachment(s) removed.
-del-abs-sucess =Abstract(s) emptied.
-del-extra-sucess =Extra(s) emptied.
-del-note-sucess =Note(s) removed.
-del-snap-sucess =Snap(s) removed.
+del-abs-sucess = Abstract(s) emptied.
+del-extra-sucess = Extra(s) emptied.
+del-note-sucess = Note(s) removed.
+del-snap-sucess = Snap(s) removed.
 
 file-is-open                        =	The file can not be deleted. Please close the file if you have opened it and try again.
 

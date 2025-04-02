@@ -18,8 +18,8 @@ delitem-label=删除条目和附件
 delatt-label=仅删除附件
 delsnap-label=仅删除快照
 delnote-label=仅删除笔记
-delextra-label=清空其它字段
-delabstract-label=清空摘要字段
+delextra-label=清空“其他”字段
+delabstract-label=清空“摘要”字段
 delete-item-and-attachment =
   {$count ->
    [one] 您确定将所选条目包括附件移动到回收站? 链接的附件不可恢复。
@@ -46,8 +46,8 @@ delete-note =
 # delete-note-mul                     =	Are you sure you want to delete the notes of the items?
 delete-extra =
  {$count ->
-   [one] 您确定将所选条目的其它内容清空?
-  *[other] 您确定将所选{ $count }个条目的其它内容清空?
+   [one] 您确定将所选条目的“其他”字段内容清空?
+  *[other] 您确定将所选{ $count }个条目的“其他”字段内容清空?
   }
 delete-abstract =
  {$count ->
@@ -63,10 +63,10 @@ del-item-att-sucess =
   *[other] {$count}个所选条目及其附件已删除。
   }
 del-att-sucess = 附件已删除。
-del-abs-sucess =摘要已清空。
-del-extra-sucess =其它已清空。
-del-note-sucess =笔记已删除。
-del-snap-sucess =快照已删除。
+del-abs-sucess = 摘要已清空。
+del-extra-sucess = “其他”字段已清空。
+del-note-sucess = 笔记已删除。
+del-snap-sucess = 快照已删除。
 
 file-is-open                            =	无法删除文件。如果文件已经打开, 请关闭后重试。
 
