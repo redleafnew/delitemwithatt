@@ -25,8 +25,7 @@ delextra-label=Empty "Extra" Field(s)
 delabstract-label=Empty "Abstract" Field(s)
 delete-item-and-attachment =
   {$count ->
-   [one] Are you sure you want to move the selected item
-   including the attachment to the Trash? The linked attachment could not be restored.
+   [one] Are you sure you want to move the selected item including the attachment to the Trash? The linked attachment could not be restored.
   *[other] Are you sure you want to move the selected { $count } items including the attachments to the Trash?
   The linked attachments could not be restored.
   }
@@ -70,7 +69,7 @@ del-att-sucess = Attachment(s) removed.
 del-abs-sucess = "Abstract" field(s) emptied.
 del-extra-sucess = "Extra" field(s) emptied.
 del-note-sucess = Note(s) removed.
-del-snap-sucess = Snap(s) removed.
+del-snap-sucess = Snapshot(s) removed.
 
 file-is-open                        =	The file can not be deleted. Please close the file if you have opened it and try again.
 

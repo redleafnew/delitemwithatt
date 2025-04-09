@@ -20,9 +20,9 @@
 
    *注意*：火狐浏览器用户请通过在链接上右击，选择“另存为”来下载 .xpi 文件。
 
-**插件静默启动设置**，即关闭Zotero软件启动时右下角的Del ltem With Attachment插件弹窗
+**插件静默启动设置**，即关闭Zotero软件启动时右下角的Del ltem With Attachment插件启动进度弹窗
 
-   - 静默启动开启方法：在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，输入以下内容，点击左上角的`执行/Run`即可：
+   - 静默启动设置：在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，输入以下内容，点击左上角的`执行/Run`即可：
 
      `Zotero.Prefs.set('extensions.zotero.delitemwithatt.quiet.boot', 'enable', true); // 开启插件静默启动`
 
@@ -32,12 +32,27 @@
 
 1. 删除条目或分类的同时将附件（包括链接的附件）一块删除。
 
-   - 在条目上右击会出现：`删除附件`，如果条目有附件，会出现6个子菜单，`删除附件和条目(Alt+I)`，`仅删除所有附件(Alt+A)`，`仅删除快照(Alt+S)`，`仅删除笔记(Alt+N)`，`清空“摘要”字段(Alt+Z)`，`清空“其他”字段(Alt+X)`，点击后对应的条目包括附件、附件、快照或笔记会被删除（包括文件）
+   - 在条目上右击会出现：`删除附件`，如果条目有附件，会出现6个子菜单，`删除附件和条目(Alt/⌥+I)`，`仅删除所有附件(Alt/⌥+A)`，`仅删除快照(Alt/⌥+S)`，`仅删除笔记(Alt/⌥+N)`，`清空“摘要”字段(Alt/⌥+Z)`，`清空“其他”字段(Alt/⌥+X)`，点击后对应的条目包括附件、附件、快照或笔记会被删除（包括文件）
    - 在分类上右击会出现：`删除分类包括附件`，确认后会在删除分类的同时将分类中的条目包含附件删除，快照也认为是附件。
 
     > **注意：删除时链接文件不进回收站，直接删除，请删除前备份**。
 
-    以上快捷键修改方法：在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，输入以下内容并修改快捷键字母，点击左上角的`执行/Run`即可：
+   不同操作系统下的插件默认快捷键：
+
+    | 功能            | Windows/Linux系统快捷键 | MacOS快捷键 | MacOS备用快捷键 |
+    | --------------- | ---------------------- | -------------- |------------------- |
+    | 删除附件和条目   | `Alt+I`                | `⌥+I`          | `⇧+⌥+I`           |
+    | 仅删除所有附件   | `Alt+A`                | `⌥+A`          | `⇧+⌥+A`           |
+    | 仅删除快照       | `Alt+S`                | `⌥+S`          | `⇧+⌥+S`           |
+    | 仅删除笔记       | `Alt+N`                | `⌥+N`          | `⇧+⌥+N`           |
+    | 清空“摘要”字段   | `Alt+Z`                | `⌥+Z`          | `⇧+⌥+Z`           |
+    | 清空“其他”字段   | `Alt+X`                | `⌥+X`          | `⇧+⌥+X`           |
+
+    对于MacOS，以上快捷键不支持自定义修改，提供备用快捷键以防默认快捷键被占用
+
+    对于Windows/Linux系统，以上快捷键支持自定义修改为`Alt+其他快捷字母`，修改方法如下：
+
+    在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，输入以下内容并修改快捷键字母，点击左上角的`执行/Run`即可：
 
     `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.item.att', 'I', true); // 修改删除条目和附件默认快捷键，修改I为预设置的快捷字母`
 
@@ -75,7 +90,7 @@ Download the plugin (.xpi file) from below, and click Tools-Plugins-Install Plug
 
 1. Remove attachment(s) (including linked attachments) when delete the item(s) or collection.
 
-   - When you right-click item(s), you can find `Delete Attachment(s)` in the context menu. If there is/are attachment(s) attached to the item(s), there will be 6 submenus, `Delete Attachment(s) and Item(s)(Alt+I)`, `Delete All Attachment(s) only(Alt+A)`, `Delete Snapshot(s) only(Alt+S)`, `Delete Note(s) only(Alt+N)`, `Empty "Abstract" Field(s)(Alt+Z)`, `Empty "Extra" Field(s)(Alt+X)`, when confirm, the item(s), attachment(s), snapshot(s) or note(s) will be deleted; 
+   - When you right-click item(s), you can find `Delete Attachment(s)` in the context menu. If there is/are attachment(s) attached to the item(s), there will be 6 submenus, `Delete Attachment(s) and Item(s)(Alt/⌥+I)`, `Delete All Attachment(s) only(Alt/⌥+A)`, `Delete Snapshot(s) only(Alt/⌥+S)`, `Delete Note(s) only(Alt/⌥+N)`, `Empty "Abstract" Field(s)(Alt/⌥+Z)`, `Empty "Extra" Field(s)(Alt/⌥+X)`, when confirm, the item(s), attachment(s), snapshot(s) or note(s) will be deleted; 
    - When you right-click collection, you can find `Delete Collections with Attachments` in the context menu. When confirm, the collection and the item(s) with attachment(s) in the selected collection will be deleted. Snapshot is also regarded as attachment.
 
     > **Note: the linked files could not be restored, they will be removed directly, please backup before removing.**
