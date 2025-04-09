@@ -279,7 +279,8 @@ export class UIExampleFactory {
     const items = ZoteroPane.getSelectedItems(),
       menuChanLan = document.getElementById('zotero-itemmenu-delitemwithatt-chan-lan'), // 修改语言菜单
       menuExpAtt = document.getElementById('zotero-itemmenu-delitemwithatt-export-att'), // 导出附件菜单
-      menuDelAtt = document.getElementById('zotero-itemmenu-delitemwithatt-del-att'), // 导出附件菜单
+      menuDelItemAtt = document.getElementById('zotero-itemmenu-delitemwithatt-del-item-att'), // 删除条目附件菜单
+      menuDelAtt = document.getElementById('zotero-itemmenu-delitemwithatt-del-att'), // 删除附件菜单
       menuDelSnap = document.getElementById('zotero-itemmenu-delitemwithatt-del-snap'), // 删除快照
       menuDelNote = document.getElementById('zotero-itemmenu-delitemwithatt-del-note'), // 删除笔记
       menuDelExtra = document.getElementById('zotero-itemmenu-delitemwithatt-del-extra'), // 删除其它
@@ -296,6 +297,7 @@ export class UIExampleFactory {
     //menu.setAttribute('hidden', 'true');
     menuChanLan?.setAttribute('disabled', `${!showMenuChanLan}`); // 禁用修改语言
     menuExpAtt?.setAttribute('disabled', `${!showMenuAtt}`); // 禁用导出附件
+    menuDelItemAtt?.setAttribute('disabled', String(!showMenuChanLan)); // 禁用删除条目附件
     menuDelAtt?.setAttribute('disabled', String(!showMenuAtt)); // 禁用删除附件
     menuDelSnap?.setAttribute('disabled', String(!showMenuSnap)); // 禁用删除快照
     menuDelNote?.setAttribute('disabled', String(!showMenuNote)); // 禁用删除笔记
@@ -313,8 +315,14 @@ export class UIExampleFactory {
   // 分类右键菜单：删除分类及附件，导出附件
   @example
   static registerRightClickCollMenu() {
-    const exportIcon = `chrome://${config.addonRef}/content/icons/export.png`,
-      delColIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
+    const exportIcon = `chrome://${config.addonRef}/content/icons/export.png`;
+    const delColIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
+    // 分类右键菜单分割线
+    ztoolkit.Menu.register("collection", {
+      tag: "menuseparator",
+      id: "zotero-itemmenu-delitemwithatt-separator",
+    });
+
     // 删除分类及附件菜单
     ztoolkit.Menu.register("collection", {
       tag: "menuitem",
@@ -370,12 +378,14 @@ export class UIExampleFactory {
   static registerRightClickMenuPopup() {
     // 菜单组无法使用图标
     // const delIcon = `chrome://${config.addonRef}/content/icons/del.png`;
+    // 右键菜单图标
+    const delIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
     ztoolkit.Menu.register(
       "item",
       {
         tag: "menu",
         label: getString("del-att"),
-
+        icon: delIcon,
         children: [
           { // 删除附件和条目菜单
             tag: "menuitem",
