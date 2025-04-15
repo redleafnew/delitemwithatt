@@ -17,32 +17,32 @@ export function registerShortcuts() {
 
         if (data.type === "keyup" && data.keyboard) {
             // 删除条目和附件默认快捷键: Alt+I
-            if (data.keyboard.equals(`alt,${key_del_item_att}`)) {
+            if (data.keyboard.equals(`alt,${key_del_item_att}`) || data.keyboard.equals("shift,alt,ˆ") || data.keyboard.equals("alt,ˆ")) {
                 HelperExampleFactory.delItemAtt();
                 //Zotero.debug("clt+K pressed")
             }
-            // 删除附件默认快捷键.Alt+A
-            if (data.keyboard.equals(`alt,${key_del_att}`)) {
+            // 删除附件默认快捷键：Alt+A
+            if (data.keyboard.equals(`alt,${key_del_att}`) || data.keyboard.equals("shift,alt,Å") || data.keyboard.equals("alt,å")) {
                 HelperExampleFactory.delAtt();
                 //Zotero.debug("clt+K pressed")
             }
-            //仅删除快照默认快捷键 Alt+S
-            if (data.keyboard.equals(`alt,${key_del_snap}`)) {
+            //仅删除快照默认快捷键：Alt+S
+            if (data.keyboard.equals(`alt,${key_del_snap}`) || data.keyboard.equals("shift,alt,Í") || data.keyboard.equals("alt,ß")) {
                 HelperExampleFactory.delSnap();
                 //Zotero.debug("clt+K pressed")
             }
-            // 仅删除笔记默认快捷键.Alt+N
-            if (data.keyboard.equals(`alt,${key_del_note}`)) {
+            // 仅删除笔记默认快捷键：Alt+N
+            if (data.keyboard.equals(`alt,${key_del_note}`) || data.keyboard.equals("shift,alt,˜") || data.keyboard.equals("alt,˜")) {
                 HelperExampleFactory.delNote();
                 //Zotero.debug("clt+K pressed")
             }
-            // 删除其它
-            if (data.keyboard.equals(`alt,${key_del_extra}`)) {
+            // 删除其他字段快捷键：Alt+X
+            if (data.keyboard.equals(`alt,${key_del_extra}`) || data.keyboard.equals("shift,alt,˛") || data.keyboard.equals("alt,≈")) {
                 HelperExampleFactory.delExtra();
                 //Zotero.debug("clt+K pressed")
             }
-            // 仅删除摘要默认快捷键.Alt+Z
-            if (data.keyboard.equals(`alt,${key_del_abs}`)) {
+            // 仅删除摘要默认快捷键：Alt+Z
+            if (data.keyboard.equals(`alt,${key_del_abs}`) || data.keyboard.equals("shift,alt,¸") || data.keyboard.equals("alt,Ω")) {
                 HelperExampleFactory.delAbstract();
                 //Zotero.debug("clt+K pressed")
             }
