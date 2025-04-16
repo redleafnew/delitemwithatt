@@ -24,23 +24,23 @@ async function updatePrefsUI() {
 function bindPrefEvents() {
   addon.data
     .prefs!.window.document.querySelector(
-      `#zotero-prefpane-${config.addonRef}-enable`
+      `#zotero-prefpane-${config.addonRef}-enable`,
     )
     ?.addEventListener("command", (e) => {
       ztoolkit.log(e);
       addon.data.prefs!.window.alert(
-        `Successfully changed to ${(e.target as XUL.Checkbox).checked}!`
+        `Successfully changed to ${(e.target as XUL.Checkbox).checked}!`,
       );
     });
 
   addon.data
     .prefs!!.window.document.querySelector(
-      `#zotero-prefpane-${config.addonRef}-input`
+      `#zotero-prefpane-${config.addonRef}-input`,
     )
     ?.addEventListener("change", (e) => {
       ztoolkit.log(e);
       addon.data.prefs!.window.alert(
-        `Successfully changed to ${(e.target as HTMLInputElement).value}!`
+        `Successfully changed to ${(e.target as HTMLInputElement).value}!`,
       );
     });
 }

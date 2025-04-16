@@ -271,32 +271,58 @@ export class UIExampleFactory {
   // 是否显示条目右键菜单
   static displayMenuitem() {
     const items = ZoteroPane.getSelectedItems(),
-      menuChanLan = document.getElementById('zotero-itemmenu-delitemwithatt-chan-lan'), // 修改语言菜单
-      menuExpAtt = document.getElementById('zotero-itemmenu-delitemwithatt-export-att'), // 导出附件菜单
-      menuDelItemAtt = document.getElementById('zotero-itemmenu-delitemwithatt-del-item-att'), // 删除条目附件菜单
-      menuDelAtt = document.getElementById('zotero-itemmenu-delitemwithatt-del-att'), // 删除附件菜单
-      menuDelSnap = document.getElementById('zotero-itemmenu-delitemwithatt-del-snap'), // 删除快照
-      menuDelNote = document.getElementById('zotero-itemmenu-delitemwithatt-del-note'), // 删除笔记
-      menuDelExtra = document.getElementById('zotero-itemmenu-delitemwithatt-del-extra'), // 删除其它
-      menuDelAbs = document.getElementById('zotero-itemmenu-delitemwithatt-del-abs'), // 删除摘要
-
-
-      showMenuChanLan = items.some((item) => HelperExampleFactory.checkIsRegularItem(item)),// 检查是否为正常条目
-      showMenuAtt = items.some((item) => HelperExampleFactory.checkItemAtt(item)), // 检查附件
-      showMenuSnap = items.some((item) => HelperExampleFactory.checkItemSnap(item)),  // 检查快照
-      showMenuNote = items.some((item) => HelperExampleFactory.checkItemNote(item)),  // 检查笔记
-      showMenuExtra = items.some((item) => HelperExampleFactory.checkItemExtra(item)),  // 检查其它内容
-      showMenuAbstract = items.some((item) => HelperExampleFactory.checkItemAbstract(item));  // 检查摘要
+      menuChanLan = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-chan-lan",
+      ), // 修改语言菜单
+      menuExpAtt = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-export-att",
+      ), // 导出附件菜单
+      menuDelItemAtt = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-del-item-att",
+      ), // 删除条目附件菜单
+      menuDelAtt = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-del-att",
+      ), // 删除附件菜单
+      menuDelSnap = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-del-snap",
+      ), // 删除快照
+      menuDelNote = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-del-note",
+      ), // 删除笔记
+      menuDelExtra = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-del-extra",
+      ), // 删除其它
+      menuDelAbs = document.getElementById(
+        "zotero-itemmenu-delitemwithatt-del-abs",
+      ), // 删除摘要
+      showMenuChanLan = items.some((item) =>
+        HelperExampleFactory.checkIsRegularItem(item),
+      ), // 检查是否为正常条目
+      showMenuAtt = items.some((item) =>
+        HelperExampleFactory.checkItemAtt(item),
+      ), // 检查附件
+      showMenuSnap = items.some((item) =>
+        HelperExampleFactory.checkItemSnap(item),
+      ), // 检查快照
+      showMenuNote = items.some((item) =>
+        HelperExampleFactory.checkItemNote(item),
+      ), // 检查笔记
+      showMenuExtra = items.some((item) =>
+        HelperExampleFactory.checkItemExtra(item),
+      ), // 检查其它内容
+      showMenuAbstract = items.some((item) =>
+        HelperExampleFactory.checkItemAbstract(item),
+      ); // 检查摘要
 
     //menu.setAttribute('hidden', 'true');
-    menuChanLan?.setAttribute('disabled', `${!showMenuChanLan}`); // 禁用修改语言
-    menuExpAtt?.setAttribute('disabled', `${!showMenuAtt}`); // 禁用导出附件
-    menuDelItemAtt?.setAttribute('disabled', String(!showMenuChanLan)); // 禁用删除条目附件
-    menuDelAtt?.setAttribute('disabled', String(!showMenuAtt)); // 禁用删除附件
-    menuDelSnap?.setAttribute('disabled', String(!showMenuSnap)); // 禁用删除快照
-    menuDelNote?.setAttribute('disabled', String(!showMenuNote)); // 禁用删除笔记
-    menuDelExtra?.setAttribute('disabled', String(!showMenuExtra)); // 禁用删除其它
-    menuDelAbs?.setAttribute('disabled', String(!showMenuAbstract)); // 禁用删除摘要
+    menuChanLan?.setAttribute("disabled", `${!showMenuChanLan}`); // 禁用修改语言
+    menuExpAtt?.setAttribute("disabled", `${!showMenuAtt}`); // 禁用导出附件
+    menuDelItemAtt?.setAttribute("disabled", String(!showMenuChanLan)); // 禁用删除条目附件
+    menuDelAtt?.setAttribute("disabled", String(!showMenuAtt)); // 禁用删除附件
+    menuDelSnap?.setAttribute("disabled", String(!showMenuSnap)); // 禁用删除快照
+    menuDelNote?.setAttribute("disabled", String(!showMenuNote)); // 禁用删除笔记
+    menuDelExtra?.setAttribute("disabled", String(!showMenuExtra)); // 禁用删除其它
+    menuDelAbs?.setAttribute("disabled", String(!showMenuAbstract)); // 禁用删除摘要
   }
   // 分隔条
   @example
