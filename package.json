@@ -29,17 +29,19 @@
   },
   "homepage": "https://github.com/redleafnew/delitemwithatt",
   "dependencies": {
-    "zotero-plugin-toolkit": "^4.1.1"
+    "zotero-plugin-toolkit": "^4.1.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.11.1",
-    "@types/node": "^22.10.5",
-    "eslint": "^9.18.0",
-    "prettier": "^3.4.2",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.19.1",
-    "zotero-plugin-scaffold": "^0.1.7",
-    "zotero-types": "^3.1.2"
-  },
-  "prettier": {}
+    "@types/node": "^22.14.1",
+    "@typescript-eslint/parser": "^8.30.1",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-no-unsanitized": "^4.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "zotero-plugin-scaffold": "^0.4.2",
+    "zotero-types": "^3.1.9"
+  }
 }
