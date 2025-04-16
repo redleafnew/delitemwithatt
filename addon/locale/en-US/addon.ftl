@@ -76,4 +76,4 @@ file-is-open                        =	The file can not be deleted. Please close 
 eport-att=Export Attachment(s)
 exort-dir=Select the save directory
 exp-sucess=attachment(s) export completed!
-exp-fail=attachment(s) eport failed. The attachment(s) may be removed.
+exp-fail=attachment(s) export failed. The attachment(s) may be removed.

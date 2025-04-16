@@ -20,7 +20,8 @@ async function onStartup() {
     `chrome://${config.addonRef}/content/icons/favicon.png`,
   );
   // 允许启用静默启动插件
-  const quiet_boot = getPref('quiet.boot') == undefined ? 'disable' : getPref('quiet.boot');
+  const quiet_boot =
+    getPref("quiet.boot") == undefined ? "disable" : getPref("quiet.boot");
   if (quiet_boot == "disable") {
     const popupWin = new ztoolkit.ProgressWindow(config.addonName, {
       closeOnClick: true,
