@@ -69,7 +69,7 @@ function shutdown({ id, version, resourceURI, rootURI }, reason) {
     .getService(Components.interfaces.nsIStringBundleService)
     .flushBundles();
 
-  Cu.unload(`${rootURI}/content/scripts/__addonRef__.js`);
+  // Cu.unload(`${rootURI}/content/scripts/__addonRef__.js`); // 20250722
 
   if (chromeHandle) {
     chromeHandle.destruct();
