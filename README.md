@@ -1,7 +1,7 @@
 
 # Delete item(s) with attachment(s)
 
-[![zotero target version](https://img.shields.io/badge/Zotero-7.*-green?style=flat-square&logo=zotero&logoColor=CC2936)](https://www.zotero.org)
+[![zotero target version](https://img.shields.io/badge/Zotero-7.*/8.*-green?style=flat-square&logo=zotero&logoColor=CC2936)](https://www.zotero.org)
 [![version](https://img.shields.io/github/package-json/v/redleafnew/delitemwithatt?style=flat-square)](https://github.com/redleafnew/delitemwithatt/releases/)
 [![download number](https://img.shields.io/github/downloads/redleafnew/delitemwithatt/latest/total?style=flat-square)](https://github.com/redleafnew/delitemwithatt/releases/)
 [![license](https://img.shields.io/github/license/redleafnew/delitemwithatt?style=flat-square)](#license)
@@ -41,16 +41,14 @@
 
     | 功能            | Windows/Linux系统快捷键 | MacOS快捷键 | MacOS备用快捷键 |
     | --------------- | ---------------------- | -------------- |------------------- |
-    | 删除附件和条目   | `Alt+I`                | `⌥+I`          | `⇧+⌥+I`           |
+    | 删除附件和条目   | `Alt+I`                | `⌥+R`          | `⇧+⌥+R`           |
     | 仅删除所有附件   | `Alt+A`                | `⌥+A`          | `⇧+⌥+A`           |
     | 仅删除快照       | `Alt+S`                | `⌥+S`          | `⇧+⌥+S`           |
     | 仅删除笔记       | `Alt+N`                | `⌥+N`          | `⇧+⌥+N`           |
     | 清空“摘要”字段   | `Alt+Z`                | `⌥+Z`          | `⇧+⌥+Z`           |
     | 清空“其他”字段   | `Alt+X`                | `⌥+X`          | `⇧+⌥+X`           |
 
-    对于MacOS，以上快捷键不支持自定义修改，提供备用快捷键以防默认快捷键被占用
-
-    对于Windows/Linux系统，以上快捷键支持自定义修改为`Alt+其他快捷字母`，修改方法如下：
+    **以上快捷键支持自定义修改为`Alt+其他快捷字母`，修改方法如下**：
 
     在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，输入以下内容并修改快捷键字母，点击左上角的`执行/Run`即可：
 
