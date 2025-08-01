@@ -47,12 +47,12 @@ delete-note =
 delete-extra =
  {$count ->
    [one] 您确定将所选条目的“其他”字段内容清空?
-  *[other] 您确定将所选{ $count }个条目的“其他”字段内容清空?
+  *[other] 您确定将所选{$count}个条目的“其他”字段内容清空?
   }
 delete-abstract =
  {$count ->
    [one] 您确定将所选条目的“摘要”字段内容清空?
-  *[other] 您确定将所选{ $count }条目的“摘要”字段内容清空?
+  *[other] 您确定将所选{$count}条目的“摘要”字段内容清空?
   }
 # delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
 # delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
@@ -68,7 +68,7 @@ del-extra-sucess = “其他”字段已清空。
 del-note-sucess = 笔记已删除。
 del-snap-sucess = 快照已删除。
 
-file-is-open                            =	无法删除文件。如果文件已经打开, 请关闭后重试。
+file-is-open = 无法删除文件。如果文件已经打开, 请关闭后重试。
 
 eport-att=导出附件
 exort-dir=请选择存放的路径
