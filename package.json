@@ -1,6 +1,6 @@
 {
   "name": "delitemwithatt",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Delete item(s) with attachment(s)",
   "config": {
     "addonName": "Del Item With Attachment",
@@ -38,7 +38,7 @@
     "prettier": "^3.6.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
-    "zotero-plugin-scaffold": "^0.1.7",
+    "zotero-plugin-scaffold": "^0.2.11",
     "zotero-types": "^3.1.9"
   },
   "prettier": {}
