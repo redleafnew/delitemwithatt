@@ -661,12 +661,16 @@ export class HelperExampleFactory {
                 var parrentDir = PathUtils.parent(file); // 得到文件父目录 文件夹
               // await OS.File.remove(file); // 尝试删除文件
                 await Zotero.File.removeIfExists(file);
-                await OS.File.removeEmptyDir(parrentDir); // 删除空文件夹
                 //await trash.remove(file);
               } catch (error) {
                 // 弹出错误
                 alert(getString("file-is-open"));
-                return; // 弹出错误后终止执行
+                continue; // 弹出错误后直接进入下次循环
+              }
+              try {
+                await OS.File.removeEmptyDir(parentDir);
+              } catch (e) {
+                // 目录不空时忽略，不影响主流程
               }
             }
             // if (attachment.attachmentContentType == 'text/html' ) { // 可以筛选删除的附件类型
@@ -686,11 +690,15 @@ export class HelperExampleFactory {
                var parrentDir = PathUtils.parent(file); // 得到文件父目录 文件夹
               // await OS.File.remove(file); // 尝试删除文件
               await Zotero.File.removeIfExists(file);
-              await OS.File.removeEmptyDir(parrentDir); // 删除空文件夹
             } catch (error) {
               // 弹出错误
               alert(getString("file-is-open"));
-              return; // 弹出错误后终止执行
+              continue; // 弹出错误后直接进入下次循环
+            }
+            try {
+              await OS.File.removeEmptyDir(parentDir);
+            } catch (e) {
+              // 目录不空时忽略，不影响主流程
             }
           }
           item.deleted = true;
