@@ -658,7 +658,7 @@ export class HelperExampleFactory {
             if (file && ifLinks) {
               // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
               try {
-                var parrentDir = PathUtils.parent(file); // 得到文件父目录 文件夹
+                var parentDir = PathUtils.parent(file); // 得到文件父目录 文件夹
               // await OS.File.remove(file); // 尝试删除文件
                 await Zotero.File.removeIfExists(file);
                 //await trash.remove(file);
@@ -687,7 +687,7 @@ export class HelperExampleFactory {
           if (file && ifLinksAtt) {
             // 如果文件存在(文件可能已经被删除)且为链接模式删除文件
             try {
-               var parrentDir = PathUtils.parent(file); // 得到文件父目录 文件夹
+               var parentDir = PathUtils.parent(file); // 得到文件父目录 文件夹
               // await OS.File.remove(file); // 尝试删除文件
               await Zotero.File.removeIfExists(file);
             } catch (error) {
