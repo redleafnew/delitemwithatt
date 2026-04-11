@@ -336,8 +336,8 @@ export class UIExampleFactory {
   // 分类右键菜单：删除分类及附件，导出附件
   @example
   static registerRightClickCollMenu() {
-    const exportIcon = `chrome://${config.addonRef}/content/icons/export.png`;
-    const delColIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
+    const exportIcon = `chrome://${config.addonRef}/content/icons/export.svg`;
+    const delColIcon = `chrome://${config.addonRef}/content/icons/favicon.svg`;
     // 分类右键菜单分割线
     ztoolkit.Menu.register("collection", {
       tag: "menuseparator",
@@ -368,7 +368,7 @@ export class UIExampleFactory {
   // 导出附件右键菜单
   @example
   static registerRightClickMenuItem() {
-    const exportIcon = `chrome://${config.addonRef}/content/icons/export.png`;
+    const exportIcon = `chrome://${config.addonRef}/content/icons/export.svg`;
     // item menuitem with icon 导出附件
     ztoolkit.Menu.register("item", {
       tag: "menuitem",
@@ -383,7 +383,7 @@ export class UIExampleFactory {
   // 修改语言右键菜单
   @example
   static registerRightClickChanLan() {
-    const chanLanIcon = `chrome://${config.addonRef}/content/icons/chanLan.png`;
+    const chanLanIcon = `chrome://${config.addonRef}/content/icons/chanLan.svg`;
 
     ztoolkit.Menu.register("item", {
       tag: "menuitem",
@@ -400,7 +400,7 @@ export class UIExampleFactory {
     // 菜单组无法使用图标
     // const delIcon = `chrome://${config.addonRef}/content/icons/del.png`;
     // 右键菜单图标
-    const delIcon = `chrome://${config.addonRef}/content/icons/favicon@0.5x.png`;
+    const delIcon = `chrome://${config.addonRef}/content/icons/favicon.svg`;
     ztoolkit.Menu.register(
       "item",
       {

@@ -17,7 +17,7 @@ async function onStartup() {
   initLocale();
   ztoolkit.ProgressWindow.setIconURI(
     "default",
-    `chrome://${config.addonRef}/content/icons/favicon.png`,
+    `chrome://${config.addonRef}/content/icons/favicon.svg`,
   );
   // 允许启用静默启动插件
   const quiet_boot =
