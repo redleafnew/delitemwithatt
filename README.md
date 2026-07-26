@@ -63,10 +63,16 @@
     `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.extra', 'X', true); // 修改删除其它默认快捷键，修改X为预设置的快捷字母`
 
     `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.del.abs', 'Z', true); // 修改删除摘要默认快捷键，修改Z为预设置的快捷字母`
+   
+    **禁用所有快捷键方法如下**：
 
-2. 根据条目标题语言将所选条目语言字段设置为`en-US`或`zh-CN`。
+    在`Zotero`中点击`工具`-`开发者`-`Run JavaScript`，点击左上角的`执行/Run`，然后重启Zotero：
 
-3. 将附件导出。
+    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.disable', 'ture', true); // 禁用快捷键`
+
+3. 根据条目标题语言将所选条目语言字段设置为`en-US`或`zh-CN`。
+
+4. 将附件导出。
 
 # 感谢
 
@@ -92,6 +98,12 @@ Download the plugin (.xpi file) from below, and click Tools-Plugins-Install Plug
    - When you right-click collection, you can find `Delete Collections with Attachments` in the context menu. When confirm, the collection and the item(s) with attachment(s) in the selected collection will be deleted. Snapshot is also regarded as attachment.
 
     > **Note: the linked files could not be restored, they will be removed directly, please backup before removing.**
+
+    **Disable all shortcuts**：
+
+    In `Zotero` Click `Tools`-`Developer`-`Run JavaScript`，Click `Run`，then restart Zotero：
+
+    `Zotero.Prefs.set('extensions.zotero.delitemwithatt.key.disable', 'ture', true); // diable all shortcuts`
 
 2. Set the language field of selected items as `en-US` or `zh-CN` according to the language of item title.
 
