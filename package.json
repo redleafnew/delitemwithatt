@@ -39,7 +39,7 @@
     "zotero-plugin-toolkit": "^2.0.3"
   },
   "devDependencies": {
-    "@types/node": "^20.1.0",
+    "@types/node": "^26.6.5",
     "compressing": "^1.6.3",
     "cross-env": "^7.0.3",
     "esbuild": "^0.17.4",
