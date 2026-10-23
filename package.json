@@ -46,6 +46,6 @@
     "minimist": "^1.2.7",
     "release-it": "^15.6.0",
     "replace-in-file": "^6.3.5",
-    "zotero-types": "^1.0.0"
+    "zotero-types": "^4.1.3"
   }
 }
