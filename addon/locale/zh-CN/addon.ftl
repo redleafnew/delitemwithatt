@@ -1,25 +1,57 @@
 startup-begin = 插件加载中
 startup-finish = 插件已就绪
-menuitem-label = 插件模板: 帮助工具样例
-menupopup-label = 插件模板: 弹出菜单
-menuitem-submenulabel = 插件模板：子菜单
-menuitem-filemenulabel = 插件模板: 文件菜单
 
-chan-lan=自动设置语言字段
-chan-lan-sucess=语言字段自动设置完成。
+# ---------------------------------------------------------------------------
+# 菜单项文案
+#
+# ⚠️ 用作 Zotero.MenuManager.registerMenu 的 l10nID 时，必须写成 `.label =`
+#    形式，否则菜单项是空白的（FTL 里没有值、只有属性时，菜单读不到 label）。
+#
+# ⚠️ 这些 key 只用于菜单，不要再拿去 getString()：
+#    只有属性的消息用 getString() 取出来是空的。
+#    用 getString() 取文案的 key（确认弹窗、提示条等）保持 `key = 文案` 原样。
+# ---------------------------------------------------------------------------
+
+# 条目右键菜单
+del-att = 删除附件
+    .label = 删除附件
+delitem-label = 删除条目和附件
+    .label = 删除条目和附件
+delatt-label = 仅删除附件
+    .label = 仅删除附件
+delsnap-label = 仅删除快照
+    .label = 仅删除快照
+delnote-label = 仅删除笔记
+    .label = 仅删除笔记
+delabstract-label = 清空“摘要”字段
+    .label = 清空“摘要”字段
+delextra-label = 清空“其他”字段
+    .label = 清空“其他”字段
+eport-att = 导出附件
+    .label = 导出附件
+chan-lan = 自动设置语言字段
+    .label = 自动设置语言字段
+
+# 分类右键菜单
+del-col-item-att = 删除分类包括附件
+    .label = 删除分类包括附件
+
+# ---------------------------------------------------------------------------
+# 以下用 getString() 读取，保持 `key = 文案` 形式，不要改成 .label
+# ---------------------------------------------------------------------------
+
+# 启动提示
+# startup-begin / startup-finish 见文件开头
+
+# 语言设置
+chan-lan-sucess = 语言字段自动设置完成。
 softLanFail = 语言字段自动设置失败。
 
-del-col-item-att=删除分类包括附件
-del-col-item-att-sucess=分类包括附件已删除。
-delete-collection-and-attachment=您确定将所选分类包括附件移动到回收站? 链接的附件不可恢复。
+# 分类删除
+del-col-item-att-sucess = 分类包括附件已删除。
+delete-collection-and-attachment = 您确定将所选分类包括附件移动到回收站? 链接的附件不可恢复。
 
-del-att=删除附件
-delitem-label=删除条目和附件
-delatt-label=仅删除附件
-delsnap-label=仅删除快照
-delnote-label=仅删除笔记
-delextra-label=清空“其他”字段
-delabstract-label=清空“摘要”字段
+# 确认弹窗（带数量复数）
 delete-item-and-attachment =
   {$count ->
    [one] 您确定将所选条目包括附件移动到回收站? 链接的附件不可恢复。
@@ -57,6 +89,7 @@ delete-abstract =
 # delete-abstract-sig                 =	Are you sure you want to empty the abstract of the item?
 # delete-abstract-mul                 =	Are you sure you want to empty the abstracts of the items?
 
+# 操作完成提示
 del-item-att-sucess =
  {$count ->
    [one] 所选条目和附件已删除。
@@ -70,7 +103,15 @@ del-snap-sucess = 快照已删除。
 
 file-is-open = 无法删除文件。如果文件已经打开, 请关闭后重试。
 
-eport-att=导出附件
-exort-dir=请选择存放的路径
-exp-sucess=个附件导出成功！
-exp-fail=个附件导出失败，可能已经删除。
+# 导出
+exort-dir = 请选择存放的路径
+exp-sucess = 个附件导出成功！
+exp-fail = 个附件导出失败，可能已经删除。
+
+# ---------------------------------------------------------------------------
+# 模板遗留、当前代码未使用，可保留也可删除
+# ---------------------------------------------------------------------------
+menuitem-label = 插件模板: 帮助工具样例
+menupopup-label = 插件模板: 弹出菜单
+menuitem-submenulabel = 插件模板：子菜单
+menuitem-filemenulabel = 插件模板: 文件菜单
