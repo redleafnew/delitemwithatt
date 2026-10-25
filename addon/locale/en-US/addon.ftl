@@ -15,27 +15,27 @@ startup-finish = Addon is ready
 # ---------------------------------------------------------------------------
 
 # Item context menu
-del-att = Delete Attachment(s)
+del-att =
     .label = Delete Attachment(s)
-delitem-label = Delete Attachment(s) and Item(s)
+delitem-label =
     .label = Delete Attachment(s) and Item(s)
-delatt-label = Delete All Attachment(s) only
+delatt-label =
     .label = Delete All Attachment(s) only
-delsnap-label = Delete Snapshot(s) only
+delsnap-label =
     .label = Delete Snapshot(s) only
-delnote-label = Delete Note(s) only
+delnote-label =
     .label = Delete Note(s) only
-delabstract-label = Empty "Abstract" Field(s)
+delabstract-label =
     .label = Empty "Abstract" Field(s)
-delextra-label = Empty "Extra" Field(s)
+delextra-label =
     .label = Empty "Extra" Field(s)
-eport-att = Export Attachment(s)
+eport-att =
     .label = Export Attachment(s)
-chan-lan = Set Language Field Automatically
+chan-lan =
     .label = Set Language Field Automatically
 
 # Collection context menu
-del-col-item-att = Delete Collection with Attachment(s)
+del-col-item-att =
     .label = Delete Collection with Attachment(s)
 
 # ---------------------------------------------------------------------------

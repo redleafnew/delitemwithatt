@@ -218,8 +218,6 @@ export class UIExampleFactory {
       pluginID: config.addonID,
       target: "main/library/item",
       menus: [
-        // 原来的 registerMenuSepartor() 已并入此处
-        { menuType: "separator" },
         // 删除附件（子菜单，含 6 个操作）
         {
           menuType: "submenu",
@@ -343,7 +341,6 @@ export class UIExampleFactory {
       pluginID: config.addonID,
       target: "main/library/collection",
       menus: [
-        { menuType: "separator" },
         // 删除分类及附件
         {
           menuType: "menuitem",
@@ -362,9 +359,12 @@ export class UIExampleFactory {
           icon: exportIcon,
           onShowing: (_ev, context) => {
             const collections = HelperExampleFactory.getSelectedCollections();
-            const items = collections.flatMap((c) =>
-              c.getChildItems(),
-            ) as Zotero.Item[];
+            const items: Zotero.Item[] = [];
+            for (const c of collections) {
+              for (const it of c.getChildItems()) {
+                items.push(it);
+              }
+            }
             context.setVisible(
               items.some((i) => HelperExampleFactory.checkItemAtt(i)),
             );
@@ -414,6 +414,16 @@ export class HelperExampleFactory {
     return c ? [c as Zotero.Collection] : [];
   }
 
+  /**
+   * 按 id 取条目并做类型窄化。
+   * zotero-types 里 Zotero.Items.get(单个 id) 返回 `Zotero.Item | false`，
+   * 直接读属性会报 "Property 'xxx' does not exist on type 'false | Item'"。
+   */
+  static getItem(id: number): Zotero.Item | undefined {
+    const item = Zotero.Items.get(id);
+    return item ? (item as Zotero.Item) : undefined;
+  }
+
   // 检查是否为正常条目，附件不显示修改语言
   static checkIsRegularItem(item: Zotero.Item) {
     return item && !item.isNote() && item.isRegularItem(); //条目存在，不为笔记，是正常条目
@@ -426,7 +436,10 @@ export class HelperExampleFactory {
         // not an attachment already
         let attachmentIDs = item.getAttachments();
         for (let id of attachmentIDs) {
-          let attachment = Zotero.Items.get(id);
+          const attachment = HelperExampleFactory.getItem(id);
+          if (!attachment) {
+            continue;
+          }
           var attType = attachment.attachmentContentType;
           if (attType != undefined) {
             //不等于undefined为有附件
@@ -453,7 +466,10 @@ export class HelperExampleFactory {
         // not an attachment already
         let attachmentIDs = item.getAttachments();
         for (let id of attachmentIDs) {
-          let attachment = Zotero.Items.get(id);
+          const attachment = HelperExampleFactory.getItem(id);
+          if (!attachment) {
+            continue;
+          }
           var attType = attachment.attachmentContentType;
           // 如果是text;/html则为快照
           if (attType == "text/html") {
@@ -567,7 +583,12 @@ export class HelperExampleFactory {
   //导出分类附件
   static async colExpAtt() {
     const collections = HelperExampleFactory.getSelectedCollections();
-    const items = collections.flatMap((c) => c.getChildItems()) as Zotero.Item[];
+    const items: Zotero.Item[] = [];
+    for (const c of collections) {
+      for (const it of c.getChildItems()) {
+        items.push(it);
+      }
+    }
     await HelperExampleFactory.expAttDo(items);
   }
 
@@ -594,7 +615,10 @@ export class HelperExampleFactory {
           let attachmentIDs = item.getAttachments();
           for (let id of attachmentIDs) {
             //4 for
-            let attachment = Zotero.Items.get(id);
+            const attachment = HelperExampleFactory.getItem(id);
+            if (!attachment) {
+              continue;
+            }
             let ifLinks =
               attachment.attachmentLinkMode ==
               Zotero.Attachments.LINK_MODE_LINKED_FILE; // 检测是否为链接模式
@@ -663,7 +687,10 @@ export class HelperExampleFactory {
             let attachmentIDs = item.getAttachments();
             for (let id of attachmentIDs) {
               //4 for
-              let attachment = Zotero.Items.get(id);
+              const attachment = HelperExampleFactory.getItem(id);
+              if (!attachment) {
+                continue;
+              }
               if (attachment.attachmentContentType == "text/html") {
                 //筛选删除的附件类型
                 attachment.deleted = true; //删除附件(快照)
@@ -776,7 +803,12 @@ export class HelperExampleFactory {
           let attachmentIDs = item.getAttachments();
           for (let id of attachmentIDs) {
             //4 for
-            var file = await Zotero.Items.get(id).getFilePathAsync();
+            const attItem = HelperExampleFactory.getItem(id);
+            if (!attItem) {
+              nFail++;
+              continue;
+            }
+            var file = await attItem.getFilePathAsync();
             if (file) {
               try {
                 var baseName = PathUtils.filename(file); //得到文件名

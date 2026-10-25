@@ -13,27 +13,27 @@ startup-finish = 插件已就绪
 # ---------------------------------------------------------------------------
 
 # 条目右键菜单
-del-att = 删除附件
+del-att =
     .label = 删除附件
-delitem-label = 删除条目和附件
+delitem-label =
     .label = 删除条目和附件
-delatt-label = 仅删除附件
+delatt-label =
     .label = 仅删除附件
-delsnap-label = 仅删除快照
+delsnap-label =
     .label = 仅删除快照
-delnote-label = 仅删除笔记
+delnote-label =
     .label = 仅删除笔记
-delabstract-label = 清空“摘要”字段
+delabstract-label =
     .label = 清空“摘要”字段
-delextra-label = 清空“其他”字段
+delextra-label =
     .label = 清空“其他”字段
-eport-att = 导出附件
+eport-att =
     .label = 导出附件
-chan-lan = 自动设置语言字段
+chan-lan =
     .label = 自动设置语言字段
 
 # 分类右键菜单
-del-col-item-att = 删除分类包括附件
+del-col-item-att =
     .label = 删除分类包括附件
 
 # ---------------------------------------------------------------------------

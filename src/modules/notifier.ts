@@ -41,9 +41,9 @@ function unregisterNotifier(notifierID: string) {
 }
 
 export function registerMutationObserver() {
-  const targetNode = document.getElementById(
-    "zotero-item-pane-content",
-  ) as HTMLElement;
+  // zotero-types 的 gecko 声明里 document 可能为 null，这里做一次防御
+  const targetNode = (document?.getElementById("zotero-item-pane-content") ??
+    null) as HTMLElement | null;
 
   // ztoolkit.log(targetNode);
   const observerOptions = {
