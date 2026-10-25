@@ -41,9 +41,14 @@ function unregisterNotifier(notifierID: string) {
 }
 
 export function registerMutationObserver() {
-  // zotero-types 的 gecko 声明里 document 可能为 null，这里做一次防御
-  const targetNode = (document?.getElementById("zotero-item-pane-content") ??
-    null) as HTMLElement | null;
+  // zotero-types 的 gecko 声明里 document 可能为 null，
+  // 取不到节点就直接返回，避免 observe(null) 报错
+  const targetNode = document?.getElementById("zotero-item-pane-content") as
+    | HTMLElement
+    | undefined;
+  if (!targetNode) {
+    return;
+  }
 
   // ztoolkit.log(targetNode);
   const observerOptions = {
