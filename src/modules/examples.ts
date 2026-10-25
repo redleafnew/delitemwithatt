@@ -182,6 +182,17 @@ export class KeyExampleFactory {
   // }
 }
 
+/**
+ * 给 FTL message id 加插件命名空间前缀。
+ *
+ * zotero-plugin-scaffold 默认开启 prefixFluentMessages，构建时
+ * 会把 addon.ftl 里所有 key 改写成 `delitemwithatt-xxx`
+ * （并顺带把文件重命名为 delitemwithatt-addon.ftl）。
+ * 而 registerMenu 的 l10nID 是直接传给 document.l10n 的，
+ * 构建时不会被改写 —— 必须自己加前缀，否则解析为空、菜单不显示。
+ */
+const l10n = (key: string) => `${config.addonRef}-${key}`;
+
 export class UIExampleFactory {
   /**
    * 统一注册全部右键菜单（Zotero 8+ 官方 API）。
@@ -192,36 +203,17 @@ export class UIExampleFactory {
    * ⚠️ 请在 startup() 中调用一次即可，不要放到 onMainWindowLoad（会重复注册）。
    */
 
-  /**
-   * 给菜单元素直接写 label。
-   *
-   * 为什么需要它：Zotero 8 的 MenuManager 用 l10nID 在「窗口 document 的 l10n
-   * 上下文」里解析文案，而插件的 ftl 往往没有注册进该上下文，
-   * 于是 label 为空 —— 空 label 的菜单项还会让整个右键菜单渲染失败。
-   * 这里改用 getString()（走插件自己的 Localization，确认弹窗一直在用它，可靠）
-   * 直接写 DOM 属性，绕开 document l10n。
-   */
-  static setMenuLabel(ev: any, context: any, key: string) {
-    try {
-      const el = context?.menuElem ?? ev?.target ?? ev?.originalTarget;
-      if (el) {
-        const text = getString(key);
-        if (text) el.setAttribute("label", text);
-      }
-    } catch (e) {
-      ztoolkit.log("setMenuLabel failed", key, e);
-    }
-  }
 
   @example
   static registerMenus() {
+    Zotero.debug(`[${config.addonRef}] registerMenus start`);
     const exportIcon = `chrome://${config.addonRef}/content/icons/export.svg`;
     const delColIcon = `chrome://${config.addonRef}/content/icons/favicon.svg`;
     const chanLanIcon = `chrome://${config.addonRef}/content/icons/chanLan.svg`;
     const delIcon = `chrome://${config.addonRef}/content/icons/favicon.svg`;
 
     // ---------- 条目右键菜单 ----------
-    Zotero.MenuManager.registerMenu({
+    const rItem = Zotero.MenuManager.registerMenu({
       menuID: ITEM_MENU_ID,
       pluginID: config.addonID,
       target: "main/library/item",
@@ -231,10 +223,9 @@ export class UIExampleFactory {
         // 删除附件（子菜单，含 6 个操作）
         {
           menuType: "submenu",
-          l10nID: "del-att",
+          l10nID: l10n("del-att"),
           icon: delIcon,
           onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "del-att");
             const items = HelperExampleFactory.getMenuItems(context);
             context.setVisible(
               items.some((item) => item && !item.isNote()),
@@ -244,9 +235,8 @@ export class UIExampleFactory {
             {
               // 删除附件和条目
               menuType: "menuitem",
-              l10nID: "delitem-label",
+              l10nID: l10n("delitem-label"),
               onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "delitem-label");
                 const items = HelperExampleFactory.getMenuItems(context);
                 context.setVisible(
                   items.some((i) => HelperExampleFactory.checkIsRegularItem(i)),
@@ -257,9 +247,8 @@ export class UIExampleFactory {
             {
               // 仅删除所有附件
               menuType: "menuitem",
-              l10nID: "delatt-label",
+              l10nID: l10n("delatt-label"),
               onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "delatt-label");
                 const items = HelperExampleFactory.getMenuItems(context);
                 context.setVisible(
                   items.some((i) => HelperExampleFactory.checkItemAtt(i)),
@@ -270,9 +259,8 @@ export class UIExampleFactory {
             {
               // 仅删除快照
               menuType: "menuitem",
-              l10nID: "delsnap-label",
+              l10nID: l10n("delsnap-label"),
               onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "delsnap-label");
                 const items = HelperExampleFactory.getMenuItems(context);
                 context.setVisible(
                   items.some((i) => HelperExampleFactory.checkItemSnap(i)),
@@ -283,9 +271,8 @@ export class UIExampleFactory {
             {
               // 仅删除笔记
               menuType: "menuitem",
-              l10nID: "delnote-label",
+              l10nID: l10n("delnote-label"),
               onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "delnote-label");
                 const items = HelperExampleFactory.getMenuItems(context);
                 context.setVisible(
                   items.some((i) => HelperExampleFactory.checkItemNote(i)),
@@ -296,9 +283,8 @@ export class UIExampleFactory {
             {
               // 清空摘要
               menuType: "menuitem",
-              l10nID: "delabstract-label",
+              l10nID: l10n("delabstract-label"),
               onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "delabstract-label");
                 const items = HelperExampleFactory.getMenuItems(context);
                 context.setVisible(
                   items.some((i) => HelperExampleFactory.checkItemAbstract(i)),
@@ -309,9 +295,8 @@ export class UIExampleFactory {
             {
               // 清空其它
               menuType: "menuitem",
-              l10nID: "delextra-label",
+              l10nID: l10n("delextra-label"),
               onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "delextra-label");
                 const items = HelperExampleFactory.getMenuItems(context);
                 context.setVisible(
                   items.some((i) => HelperExampleFactory.checkItemExtra(i)),
@@ -324,10 +309,9 @@ export class UIExampleFactory {
         // 导出附件
         {
           menuType: "menuitem",
-          l10nID: "eport-att",
+          l10nID: l10n("eport-att"),
           icon: exportIcon,
           onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "eport-att");
             const items = HelperExampleFactory.getMenuItems(context);
             context.setVisible(
               items.some((i) => HelperExampleFactory.checkItemAtt(i)),
@@ -338,10 +322,9 @@ export class UIExampleFactory {
         // 修改语言
         {
           menuType: "menuitem",
-          l10nID: "chan-lan",
+          l10nID: l10n("chan-lan"),
           icon: chanLanIcon,
           onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "chan-lan");
             const items = HelperExampleFactory.getMenuItems(context);
             context.setVisible(
               items.some((i) => HelperExampleFactory.checkIsRegularItem(i)),
@@ -352,8 +335,10 @@ export class UIExampleFactory {
       ],
     });
 
+    Zotero.debug(`[${config.addonRef}] item menu => ${rItem}`);
+
     // ---------- 分类右键菜单 ----------
-    Zotero.MenuManager.registerMenu({
+    const rCol = Zotero.MenuManager.registerMenu({
       menuID: COLLECTION_MENU_ID,
       pluginID: config.addonID,
       target: "main/library/collection",
@@ -362,10 +347,9 @@ export class UIExampleFactory {
         // 删除分类及附件
         {
           menuType: "menuitem",
-          l10nID: "del-col-item-att",
+          l10nID: l10n("del-col-item-att"),
           icon: delColIcon,
           onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "del-col-item-att");
             const collections = HelperExampleFactory.getSelectedCollections();
             context.setVisible(collections.length > 0);
           },
@@ -374,10 +358,9 @@ export class UIExampleFactory {
         // 导出分类附件
         {
           menuType: "menuitem",
-          l10nID: "eport-att",
+          l10nID: l10n("eport-att"),
           icon: exportIcon,
           onShowing: (_ev, context) => {
-            UIExampleFactory.setMenuLabel(_ev, context, "eport-att");
             const collections = HelperExampleFactory.getSelectedCollections();
             const items = collections.flatMap((c) =>
               c.getChildItems(),
@@ -390,6 +373,8 @@ export class UIExampleFactory {
         },
       ],
     });
+
+    Zotero.debug(`[${config.addonRef}] collection menu => ${rCol}`);
   }
 
   /**
