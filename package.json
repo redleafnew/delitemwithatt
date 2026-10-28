@@ -42,7 +42,7 @@
     "@types/node": "^26.6.5",
     "compressing": "^1.6.3",
     "cross-env": "^10.1.0",
-    "esbuild": "^0.17.4",
+    "esbuild": "^0.28.2",
     "minimist": "^1.2.7",
     "release-it": "^15.6.0",
     "replace-in-file": "^6.3.5",
