@@ -44,7 +44,7 @@
     "cross-env": "^10.1.0",
     "esbuild": "^0.17.4",
     "minimist": "^1.2.7",
-    "release-it": "^15.6.0",
+    "release-it": "^21.1.1",
     "replace-in-file": "^6.3.5",
     "zotero-types": "^4.1.3"
   }
