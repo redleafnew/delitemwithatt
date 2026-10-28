@@ -45,7 +45,7 @@
     "esbuild": "^0.28.2",
     "minimist": "^1.2.7",
     "release-it": "^21.1.1",
-    "replace-in-file": "^6.3.5",
+    "replace-in-file": "^9.0.0",
     "zotero-types": "^4.1.3"
   }
 }
